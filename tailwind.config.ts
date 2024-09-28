@@ -10,13 +10,16 @@ const config: Config = {
   ],
   theme: {
   	extend: {
-		fontFamily: {
-			bricolage: ['var(--font-bricolage)', 'sans-serif'],
-			jakarta: ['var(--font-jakarta)', 'sans-serif'],
-		  },
+  		fontFamily: {
+  			bricolage: ['var(--font-bricolage)', 'sans-serif'],
+  			jakarta: ['var(--font-jakarta)', 'sans-serif'],
+  			gloria: ['var(--font-gloria)', 'sans-serif']
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+  			greenPri: 'hsl(var(--green-pri))',
+  			greenSec: 'hsl(var(--green-sec))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -56,27 +59,40 @@ const config: Config = {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
-		backgroundImage: {
-			'gradient-primary': 'var(--gradient-primary)',
-		},
+  		backgroundImage: {
+  			'gradient-primary': 'var(--gradient-primary)'
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-		spacing: {
-			'96px': '96px',
-			'48px': '48px',
-			'24px': '24px',
-			'12px': '12px',
-		},
-		padding: {
-			'container': '1rem', // Default padding for mobile
-			'container-sm': '1.5rem', // Small screens
-			'container-md': '2rem', // Medium screens
-			'container-lg': '96px', // Large screens
-			'container-xl': '96px', // Extra-large screens
-		},
+  		spacing: {
+  			'96px': '96px',
+  			'48px': '48px',
+  			'24px': '24px',
+  			'12px': '12px'
+  		},
+  		padding: {
+  			container: '1rem',
+  			'container-sm': '1.5rem',
+  			'container-md': '2rem',
+  			'container-lg': '96px',
+  			'container-xl': '96px'
+  		},
+  		animation: {
+  			'shiny-text': 'shiny-text 8s infinite'
+  		},
+  		keyframes: {
+  			'shiny-text': {
+  				'0%, 90%, 100%': {
+  					'background-position': 'calc(-100% - var(--shiny-width)) 0'
+  				},
+  				'30%, 60%': {
+  					'background-position': 'calc(100% + var(--shiny-width)) 0'
+  				}
+  			}
+  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
