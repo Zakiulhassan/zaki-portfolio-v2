@@ -35,12 +35,12 @@ const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
       {...animationProps}
       {...props}
       className={cn(
-        "relative rounded-lg px-4 py-1 font-bricolage font-semibold tracking-tight backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_50%,var(--primary)_0%,transparent_70%)] dark:hover:shadow-[0_0_20px_var(--primary)] bg-gradient-to-r from-greenPri to-greenSec",
+        "relative border-2 border-white shadow-sm rounded-lg px-4 py-1 font-bricolage font-semibold tracking-tight backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_50%,var(--primary)_0%,transparent_70%)] dark:hover:shadow-[0_0_20px_var(--primary)] bg-gradient-to-r from-greenPri to-greenSec",
         className,
       )}
     >
       <span
-        className="relative block size-full tracking-tight font-semibold text-[rgba(0,0,0,0.65)] dark:font-semibold dark:text-[rgba(255,255,255,0.9)]"
+        className="relative block size-full tracking-tight font-semibold text-[rgba(255,255,255,0.9)]"
         style={{
           maskImage:
             "linear-gradient(-75deg, rgb(192, 255, 180, 1) calc(var(--x) + 20%), transparent calc(var(--x) + 20%), rgb(192, 255, 180, 1) calc(var(--x) + 100%))",

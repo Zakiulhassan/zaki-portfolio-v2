@@ -66,16 +66,7 @@ const Footer = () => {
             </div>            
           </Container>
         </div>
-      <div className="absolute bottom-0 z-0 w-full">
-        <Image 
-          alt="waves" 
-          src={"/images/assets/waves.png"}
-          width={1920} 
-          height={100} 
-          className="w-full h-auto"
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
+
       </footer>
     );
   };

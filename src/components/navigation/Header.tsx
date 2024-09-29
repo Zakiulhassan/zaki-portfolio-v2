@@ -27,8 +27,8 @@ const Header = () => {
                         </Link>
                     </div>
                     <ul className="flex space-x-6 text-base text-darkpri items-center">
-                        <li><Link href="/case-studies" className="link-hover-gradient font-gloria text-base hover:font-semibold">Case Studies</Link></li>
-                        <li><Link href="/who-am-I" className="link-hover-gradient font-gloria text-base hover:font-semibold">Who am I?</Link></li>
+                        <li><Link href="/case-studies" className="font-gloria text-base hover:text-greenPri">Case Studies</Link></li>
+                        <li><Link href="/who-am-I" className="font-gloria text-base hover:text-greenPri">Who am I?</Link></li>
                         <li>
                         <ShinyButton>Book a Call</ShinyButton>
                             {/* <ButtonPrimary 
