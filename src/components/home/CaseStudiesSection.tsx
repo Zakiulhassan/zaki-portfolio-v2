@@ -16,7 +16,7 @@ const CaseStudiesSection = () => {
             <div className='bg-white border-2 p-6 rounded-2xl flex flex-col gap-2 max-w-2xl'>
               <div><Chip/></div>
               <h1 className='text-2xl font-bricolage font-bold mb-2 leading-tight'>Streamlining App Customization that Improved Onboarding and Retention</h1>
-              <p className='text-sm font-jakarta leading-tight text-secondary'>Leading the design effort, I helped create the 'Pugpig Design Kit' to streamline app customisation, offering clients a user-friendly tool with comprehensive documentation for an enhanced app experience</p>
+              <p className='text-sm font-jakarta leading-tight text-secondary'>Leading the design effort, I helped create the Pugpig Design Kit to streamline app customisation, offering clients a user-friendly tool with comprehensive documentation for an enhanced app experience</p>
 
               <div className='flex justify-between gap-4'>
                 <div className='bg-gray-100 p-2 rounded-lg'>
@@ -35,7 +35,7 @@ const CaseStudiesSection = () => {
             <div className='bg-white border-2 p-6 rounded-2xl flex flex-col gap-2 max-w-2xl'>
               <div><Chip/></div>
               <h1 className='text-2xl font-bricolage font-bold mb-2 leading-tight'>Streamlining App Customization that Improved Onboarding and Retention</h1>
-              <p className='text-sm font-jakarta leading-tight text-secondary'>Leading the design effort, I helped create the 'Pugpig Design Kit' to streamline app customisation, offering clients a user-friendly tool with comprehensive documentation for an enhanced app experience</p>
+              <p className='text-sm font-jakarta leading-tight text-secondary'>Leading the design effort, I helped create the Pugpig Design Kit to streamline app customisation, offering clients a user-friendly tool with comprehensive documentation for an enhanced app experience</p>
 
               <div className='flex justify-between gap-4'>
                 <div className='bg-gray-100 p-2 rounded-lg'>

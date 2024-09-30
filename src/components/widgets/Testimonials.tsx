@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import Marquee from "@/components/UI/marquee";
 import Image from "next/image";
 import { PiQuotesFill } from "react-icons/pi";
