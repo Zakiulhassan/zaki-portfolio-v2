@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 // Import Google fonts from next/font/google
 const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  weight: ['200', '400','500','600', '800'],
+  weight: ['200', '400','500','600', '700', '800'],
   variable: '--font-bricolage',
 });
 
