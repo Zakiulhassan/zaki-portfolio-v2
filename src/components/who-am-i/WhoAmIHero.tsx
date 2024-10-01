@@ -2,10 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import ShinnyTextComp from '../widgets/ShinnyTextComp';
-import ShinyButton from '../UI/shiny-button';
-import { LetterPullUp } from '../UI/LetterPullUp';
-import { FadeDown } from '../UI/FadeDown';
 import AboutTabs from './AboutTabs';
 import Image from 'next/image';
 
