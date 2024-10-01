@@ -4,17 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ShinnyTextComp from '../widgets/ShinnyTextComp';
 import ShinyButton from '../UI/shiny-button';
-import LogoMarquee from '../widgets/LogoMarquee';
-import ProjectsHome from './ProjectsHome';
 import { LetterPullUp } from '../UI/LetterPullUp';
 import { FadeDown } from '../UI/FadeDown';
 
-const Hero = () => {
+const CaseStudiesHero = () => {
   const textParts = [
-    { text: "Crafting Seamless", className: "text-primary" },
-    { text: " User", className: "text-greenPri" },
-    { text: " Experiences", className: "text-greenPri" },
-    { text: " That Drive Results", className: "text-primary" },
+    { text: "Real Results,", className: "text-primary" },
+    { text: " Real Impact", className: "text-greenPri" },
   ];
 
   // Define animation variants for the container to stagger child animations
@@ -22,7 +18,7 @@ const Hero = () => {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.5,  // Delay between children animations
+        staggerChildren: 0.7,  // Delay between children animations
       },
     },
   };
@@ -34,7 +30,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen h-full w-screen flex flex-col gap-16">
+    <section className="h-full w-screen flex flex-col gap-16">
       <motion.div
         initial="hidden"
         animate="show"
@@ -51,8 +47,8 @@ const Hero = () => {
           <LetterPullUp parts={textParts} />
 
           {/* Component 3: FadeDown paragraph */}
-          <FadeDown className="font-jakarta text-secondary text-center text-lg">
-            <p>I design products that drive growth and build loyalty.</p>
+          <FadeDown className="font-jakarta text-secondary text-center text-lg w-full max-w-2xl">
+            <p>Discover how I’ve solved challenges and delivered results. Explore case studies to see the impact we can achieve together.</p>
           </FadeDown>
         </motion.div>
 
@@ -63,17 +59,10 @@ const Hero = () => {
           </ShinyButton>
         </motion.div>
 
-        {/* Component 5: LogoMarquee section with fade-up effect */}
-        <motion.div variants={fadeUpVariant} className="w-full flex flex-col gap-0 items-center mt-8">
-          <h1 className="font-gloria text-base text-darkpri">trusted by brands like:</h1>
-          <LogoMarquee />
-        </motion.div>
       </motion.div>
 
-      {/* ProjectsHome can remain static */}
-      <ProjectsHome />
     </section>
   );
 };
 
-export default Hero;
+export default CaseStudiesHero;

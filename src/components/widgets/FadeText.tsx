@@ -8,7 +8,7 @@ export function FadeTextComp() {
         className="font-gloria text-3xl text-center text-secondary leading-tight tracking-tight"
         direction="up"
         framerProps={{
-          show: { transition: { delay: 2.25 } },
+          show: { transition: { delay: 1.75 } },
         }}
         text="Every challenge has a"
       />
@@ -16,7 +16,7 @@ export function FadeTextComp() {
         className="font-gloria text-3xl text-center text-secondary leading-tight tracking-tight"
         direction="right"
         framerProps={{
-          show: { transition: { delay: 2.5 } },
+          show: { transition: { delay: 2 } },
         }}
         text="solution—let's uncover"
       />
@@ -24,7 +24,7 @@ export function FadeTextComp() {
         className="font-gloria text-3xl text-center text-secondary leading-tight tracking-tight"
         direction="down"
         framerProps={{
-          show: { transition: { delay: 2.75 } },
+          show: { transition: { delay: 2.25 } },
         }}
         text="yours together."
       />

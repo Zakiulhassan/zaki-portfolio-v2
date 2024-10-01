@@ -8,24 +8,30 @@ import WordFadeIn from '../UI/word-fade-in';
 import { FadeTextComp } from '../widgets/FadeText';
 import CardList from '../widgets/CardList';
 import SuccessCardList from '../widgets/SuccessCardList';
+import { motion } from 'framer-motion';
 
 const ProblemSolution = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showImage, setShowImage] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false); // New state for tracking animation completion
   const sectionRef = useRef<HTMLElement | null>(null);
 
   // Intersection Observer to detect when the component is in the viewport
   useEffect(() => {
-    const currentRef = sectionRef.current; // Copy the ref to a local variable
+    const currentRef = sectionRef.current;
 
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
-          setIsVisible(true); // Trigger the animation when the component is visible
+          const timer = setTimeout(() => {
+            setIsVisible(true);
+          }, 500); // Delay before setting visibility
+
+          return () => clearTimeout(timer); // Cleanup timer
         }
       },
-      { threshold: 0.2 } // Trigger when 20% of the component is visible
+      { threshold: 0.2 }
     );
 
     if (currentRef) {
@@ -34,7 +40,7 @@ const ProblemSolution = () => {
 
     return () => {
       if (currentRef) {
-        observer.unobserve(currentRef); // Use the local variable in cleanup
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -43,19 +49,44 @@ const ProblemSolution = () => {
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
-        setShowImage(true); // Show the image after a delay when component is visible
-      }, 2000); // 1000 ms delay (1 second)
+        setShowImage(true);
+      }, 1500); // Delay for image show
 
-      return () => clearTimeout(timer); // Cleanup timer on unmount or state change
+      return () => clearTimeout(timer);
     }
   }, [isVisible]);
+
+  // New effect to trigger fade down animation after initial animation is complete
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setAnimationComplete(true); // Trigger fade down animation after a delay
+      }, 3000); // Adjust this delay as needed (should match the duration of previous animations)
+
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2, // Adjust the delay for each child
+      },
+    },
+  };
+
+  const fadeDownVariant = {
+    hidden: { opacity: 0, y: -20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
     <section ref={sectionRef}>
       <Container>
         <div className="flex md:flex-row flex-col justify-between gap-16">
           <div className="flex flex-col gap-4 w-full max-w-md h-full">
-            {/* Apply animation only when the component is visible */}
             {isVisible && (
               <>
                 <WordPullUp
@@ -66,7 +97,6 @@ const ProblemSolution = () => {
                   words="Your brand needs more than just an update—it needs a transformation that drives results."
                 />
                 
-                {/* Delayed image reveal */}
                 {showImage && (
                   <div className="w-full flex items-center justify-center">
                     <Image src="/arrow-1.png" alt="Arrow" width={36} height={36} />
@@ -79,16 +109,22 @@ const ProblemSolution = () => {
               </>
             )}
           </div>
-          <div className="flex flex-col gap-12 w-full h-full">
-            <div className='flex flex-col gap-4'>
+
+          <motion.div 
+            className='flex flex-col gap-12 w-full h-full'
+            initial="hidden" 
+            animate={animationComplete ? "show" : "hidden"} // Change to trigger on animation completion
+            variants={containerVariants}
+          >
+            <motion.div className='flex flex-col gap-4' variants={fadeDownVariant}>
               <h3 className='font-gloria text-2xl text-primary leading-tight tracking-tight'>Your Problem</h3>
               <CardList />
-            </div>
-            <div className='flex flex-col gap-4'>
+            </motion.div>
+            <motion.div className='flex flex-col gap-4' variants={fadeDownVariant}>
               <h3 className='font-gloria text-2xl text-primary leading-tight tracking-tight'>Your Solution</h3>
               <SuccessCardList />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </Container>
     </section>

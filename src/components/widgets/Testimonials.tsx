@@ -18,31 +18,31 @@ const reviews = [
   {
     name: "John",
     username: "@john",
-    body: "Zaki transformed our website, boosting conversions with his user-centric design approach.",
+    body: "Great! Zaki transformed our website, boosting conversions with his user-centric design approach.",
     img: "/avatar.png",
   },
   {
     name: "Jane",
     username: "@jane",
-    body: "Working with Zaki was a breeze. The final product exceeded our expectations!",
+    body: "I Love it! Working with Zaki was a breeze. The final product exceeded our expectations!",
     img: "/avatar.png",
   },
   {
     name: "Jenny",
     username: "@jenny",
-    body: "Zaki transformed our website, boosting conversions with his user-centric design approach.",
+    body: "Seamless and Efficient! Zaki transformed our website, boosting conversions with his user-centric design approach.",
     img: "/avatar.png",
   },
   {
     name: "James",
     username: "@james",
-    body: "Working with Zaki was a breeze. The final product exceeded our expectations!",
+    body: "Professional and skillfull! Working with Zaki was a breeze. The final product exceeded our expectations!",
     img: "/avatar.png",
   },
 ];
 
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
+const firstRow = reviews.slice(0, reviews.length);
+const secondRow = reviews.slice(reviews.length);
 
 const ReviewCard = ({
   img,
