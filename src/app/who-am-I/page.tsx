@@ -10,11 +10,13 @@ const CaseStudies = () => {
         <div className="h-full w-full bg-[url('/grid.png')] bg-cover bg-center">
           <Header />
       <Container>
-        <WhoAmIHero />
-      </Container>
+        <div className='relative z-10'>
+          <WhoAmIHero />
         </div>
         <div className='bg-gradient-to-t from-[#FFFEF5] to-[#FFFEF5]/0 h-screen w-screen absolute bottom-0 z-0'></div>
         <LogoScrollVelocity/>
+      </Container>
+        </div>
     </section>
   )
 }

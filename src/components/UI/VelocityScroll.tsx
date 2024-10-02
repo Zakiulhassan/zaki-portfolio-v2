@@ -74,7 +74,7 @@ const LogoRow: React.FC<LogoRowProps> = ({ logos, baseVelocity = 5 }) => {
           <div key={i} className="inline-flex" ref={i === 0 ? rowRef : null}>
             {logos.map((logo, index) => (
               <div key={index} className="mx-8 flex items-center justify-center">
-                <Image src={logo} alt={`Logo ${index}`} width={60} height={40} />
+                <Image src={logo} alt={`Logo ${index}`} width={40} height={40} />
               </div>
             ))}
           </div>

@@ -34,7 +34,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
           <button
             key={index}
             ref={(el) => { tabRefs.current[index] = el; }}
-            className={`py-2 px-4 text-base font-jakarta font-regular z-10 relative ${
+            className={`py-1 px-2 text-base font-jakarta font-regular z-10 relative ${
               index === activeTab
                 ? 'text-white font-medium'
                 : 'text-secondary hover:text-primary'
