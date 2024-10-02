@@ -25,12 +25,12 @@ const WhoAmIHero = () => {
   };
 
   return (
-    <section className="min-h-screen h-full w-screen flex flex-col gap-16">
+    <section className="min-h-[64vh] h-full w-full flex flex-col gap-16 justify-start">
       <motion.div
         initial="hidden"
         animate="show"
         variants={containerVariant}  // Apply staggered animation to the container
-        className="flex flex-col gap-4 items-center mt-16"
+        className="flex flex-col gap-4 mt-16"
       >
 
         {/* Component 2: LetterPullUp with fade-up effect */}
@@ -39,8 +39,9 @@ const WhoAmIHero = () => {
           <Image 
             src={"/projects.png"}
             alt='about-image'
-            width={400}
+            width={500}
             height={400}
+            className='object-contain'
           />
         </motion.div>
 

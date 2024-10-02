@@ -1,16 +1,20 @@
 import Header from '@/components/navigation/Header'
+import { LogoScrollVelocity } from '@/components/UI/VelocityScroll'
 import WhoAmIHero from '@/components/who-am-i/WhoAmIHero'
+import Container from '@/components/widgets/Container'
 import React from 'react'
 
 const CaseStudies = () => {
   return (
-    <section className="flex flex-col gap-40">
-      <section className="h-full w-full bg-[url('/grid.png')] bg-cover bg-center">
-        <Header />
-        <div className="flex flex-col items-center justify-center">
-          <WhoAmIHero />
+    <section className="relative z-10 flex flex-col gap-40">
+        <div className="h-full w-full bg-[url('/grid.png')] bg-cover bg-center">
+          <Header />
+      <Container>
+        <WhoAmIHero />
+      </Container>
         </div>
-      </section>
+        <div className='bg-gradient-to-t from-[#FFFEF5] to-[#FFFEF5]/0 h-screen w-screen absolute bottom-0 z-0'></div>
+        <LogoScrollVelocity/>
     </section>
   )
 }
