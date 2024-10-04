@@ -60,7 +60,8 @@ const config: Config = {
   			}
   		},
   		backgroundImage: {
-  			'gradient-primary': 'var(--gradient-primary)'
+  			'gradient-primary': 'var(--gradient-primary)',
+			'text-gradient': 'linear-gradient(to right, #040403, #565750)',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

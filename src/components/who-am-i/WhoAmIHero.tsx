@@ -34,8 +34,8 @@ const WhoAmIHero = () => {
       >
 
         {/* Component 2: LetterPullUp with fade-up effect */}
-        <motion.div variants={fadeUpVariant} className="flex gap-12 justify-between">
-          <AboutTabs/>
+        <motion.div variants={fadeUpVariant} className="flex gap-24 justify-between">
+          <div><AboutTabs/></div>
           <Image 
             src={"/projects.png"}
             alt='about-image'

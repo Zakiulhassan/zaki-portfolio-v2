@@ -61,7 +61,7 @@ const ProblemSolution = () => {
     if (isVisible) {
       const timer = setTimeout(() => {
         setAnimationComplete(true); // Trigger fade down animation after a delay
-      }, 3000); // Adjust this delay as needed (should match the duration of previous animations)
+      }, 2500); // Adjust this delay as needed (should match the duration of previous animations)
 
       return () => clearTimeout(timer);
     }

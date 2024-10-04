@@ -30,12 +30,12 @@ const Footer = () => {
             </div>
             <ul className="flex space-x-6 text-base font-gloria font-bold text-primary items-center">
               <li>
-                <Link href="/privacy-policy" className="hover:text-white hover:font-bold">
+                <Link href="/case-studies" className="hover:text-white hover:font-bold">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/terms-and-conitions" className="hover:text-white hover:font-bold">
+                <Link href="/about-me" className="hover:text-white hover:font-bold">
                   Who am I?
                 </Link>
               </li>

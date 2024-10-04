@@ -42,7 +42,7 @@ const reviews = [
 ];
 
 const firstRow = reviews.slice(0, reviews.length);
-const secondRow = reviews.slice(reviews.length);
+const secondRow = reviews.slice(0, reviews.length);
 
 const ReviewCard = ({
   img,
@@ -57,10 +57,10 @@ const ReviewCard = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col gap-12 bg-white border-2 rounded-2xl p-4 max-w-[320px] justify-between">
+      <div className="flex flex-col gap-8 bg-white border-2 rounded-2xl p-4 max-w-[320px] justify-between">
         <PiQuotesFill className="w-12 h-12 text-primary text-xl flex-shrink-0 rotate-180"/>
 
-        <blockquote className="mt-2 text-xl font-jakarta font-mediun leading-tight text-primary">{body}</blockquote>
+        <blockquote className="text-lg font-jakarta font-mediun leading-snug text-primary">{body}</blockquote>
 
         <div className="flex items-center gap-2">
             <Image
@@ -93,8 +93,8 @@ export function Testimonials() {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#FFFEF5] dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#FFFEF5] dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-[#FFFEF5] dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-[#FFFEF5] dark:from-background"></div>
     </div>
   );
 }

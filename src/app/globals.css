@@ -86,3 +86,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: #03BC74;
+  background: #fff5d9;
+}
+
+::selection {
+  color: #03BC74;
+  background: #fff5d9;
+}

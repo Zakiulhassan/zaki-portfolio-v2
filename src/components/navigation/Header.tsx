@@ -10,6 +10,7 @@ const Header = () => {
 
   return (
     <>
+
         <header className="relative">
 
       <div className='bg-transparent relative z-10 flex py-4 '>
@@ -28,7 +29,7 @@ const Header = () => {
                     </div>
                     <ul className="flex space-x-6 text-base text-darkpri items-center">
                         <li><Link href="/case-studies" className="font-gloria text-base hover:text-greenPri">Case Studies</Link></li>
-                        <li><Link href="/who-am-I" className="font-gloria text-base hover:text-greenPri">Who am I?</Link></li>
+                        <li><Link href="/about-me" className="font-gloria text-base hover:text-greenPri">Who am I?</Link></li>
                         <li>
                         <ShinyButton>Book a Call</ShinyButton>
                             {/* <ButtonPrimary 

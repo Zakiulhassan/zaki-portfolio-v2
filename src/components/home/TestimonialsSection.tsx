@@ -11,7 +11,7 @@ const TestimonialsSection = () => {
                 <p className='text-base text-center font-jakarta leading-tight text-secondary'>A few kind words people have to say about collaborating and solving problems with me.</p>
             </div>
         <Testimonials/>
-        <p className='font-gloria text-lg text-center text-secondary leading-tight tracking-tight'>Want to hear more? <span className='text-primary hover:text-greenPri'>Explore the full range</span> of testimonials!</p>
+        <p className='font-gloria text-lg text-center text-secondary leading-tight tracking-tight my-6'>Want to hear more? <span className='text-primary hover:text-greenPri'>Explore the full range</span> of testimonials!</p>
         </Container>
     </section>
   )
