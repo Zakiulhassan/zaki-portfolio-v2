@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Container from '../widgets/Container';
 import Image from 'next/image';
 import LogoMarquee from '../widgets/LogoMarquee';
+import { FollowerPointerCard } from '../UI/following-pointer';
 
 interface HoverImageWrapperProps {
   imageSrc: string;  // Type for imageSrc prop
@@ -31,6 +32,8 @@ const cardVariants = {
 const caseStudies = [
   {
     id: 1,
+    author: "View case study",
+    authorImg: "/logo.png",
     title: "Cleanly - Website and Dashboard Design and Development",
     description: "Cleanly is a home and office cleaning service platform that offers on-demand, professional cleaning services. Their goal is to provide a seamless, user-friendly booking experience while ensuring high-quality cleaning services for both residential and commercial clients.",
     stats: [
@@ -43,6 +46,8 @@ const caseStudies = [
   },
   {
     id: 2,
+    author: "View case study",
+    authorImg: "/logo.png",
     title: "Furnium - A Furniture E-commerce Platform UI/UX Design",
     description: "Furnium is a contemporary furniture brand that focuses on sleek, minimalist designs. The goal was to create an e-commerce platform reflecting Furnium's modern aesthetic, ensuring a seamless and intuitive shopping experience for customers.",
     stats: [
@@ -55,6 +60,8 @@ const caseStudies = [
   },
   {
     id: 3,
+    author: "View case study",
+    authorImg: "/logo.png",
     title: "Rivo - An E-commerce Tech Store Platform UI/UX Design",
     description: "Rivo is an innovative e-commerce platform aimed at providing a superior online shopping experience. The project involved creating a user interface that supported advanced features while delivering a seamless and intuitive user journey.",
     stats: [
@@ -67,11 +74,30 @@ const caseStudies = [
   }
 ];
 
+const TitleComponent = ({
+  title,
+  avatar,
+}: {
+  title: string;
+  avatar: string;
+}) => (
+  <div className="flex space-x-2 items-center">
+    <Image
+      src={avatar}
+      height="30"
+      width="30"
+      alt="thumbnail"
+      className="rounded-full border-2 border-white"
+    />
+    <p className='font-jakarta text-sm font-medium'>{title}</p>
+  </div>
+);
+
 const CaseStudyCards = () => {
   return (
     <section>
       <Container>
-        <div className="flex flex-col gap-36">
+        <div className="flex flex-col gap-44">
           {caseStudies.map((study) => (
             <motion.div
               key={study.id}
@@ -95,6 +121,14 @@ const CaseStudyCards = () => {
                   />
                 </HoverImageWrapper>
               )}
+              <FollowerPointerCard
+                title={
+                  <TitleComponent
+                    title={study.author}
+                    avatar={study.authorImg}
+                  />
+                }
+              >
               <motion.div 
                 className="bg-white border-2 p-6 rounded-xl flex flex-col gap-2 max-w-2xl"
                 variants={{
@@ -150,6 +184,7 @@ const CaseStudyCards = () => {
                   ))}
                 </div>
               </motion.div>
+              </FollowerPointerCard>
               {study.imageOnRight && (
                 <HoverImageWrapper imageSrc={study.imageSrc}>
                   <Image 
