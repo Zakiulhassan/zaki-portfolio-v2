@@ -28,15 +28,25 @@ const Footer = () => {
                 <b className="font-bricolage text-lg text-white">Zaki ul Hassan </b>
               </p>
             </div>
-            <ul className="flex space-x-6 text-base font-gloria font-bold text-primary items-center">
+            <ul className="flex space-x-6 text-base font-gloria font-medium text-white items-center tracking-wide">
               <li>
-                <Link href="/case-studies" className="hover:text-white hover:font-bold">
-                  Case Studies
+                <Link href="https://www.behance.net/zakiulhassan5" target="blank" className="hover:text-primary">
+                  Behance
                 </Link>
               </li>
               <li>
-                <Link href="/about-me" className="hover:text-white hover:font-bold">
-                  Who am I?
+                <Link href="https://dribbble.com/zakihassan5" target="blank" className="hover:text-primary">
+                  Dribble
+                </Link>
+              </li>
+              <li>
+                <Link href="https://github.com/Zakiulhassan" target="blank" className="hover:text-primary">
+                  GitHub
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.linkedin.com/in/zaki-ul-hassan/" target="blank" className="hover:text-primary">
+                  LinkedIn
                 </Link>
               </li>
             </ul>

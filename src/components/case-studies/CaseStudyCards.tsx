@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from '../widgets/Container'
 import Image from 'next/image'
-import Chip from '../UI/Chip'
 import LogoMarquee from '../widgets/LogoMarquee'
 
 const CaseStudyCards = () => {
@@ -12,7 +11,9 @@ const CaseStudyCards = () => {
           <div className='flex gap-8 justify-center'>
             <div className='bg-greenPri px-4 relative max-w-xs w-full flex items-center justify-center rounded-2xl border-2 overflow-hidden'><Image className='absolute bottom-[-2.5rem]' src={"/case-study-image.png"} alt='case-study-image' width={250} height={250}/></div>
             <div className='bg-white border-2 p-6 rounded-2xl flex flex-col gap-2 max-w-2xl'>
-              <div><Chip/></div>
+            <div>
+              <span className='bg-primary px-[12px] py-[6px] rounded-md text-white inline-flex items-center'>UI/UX Design</span>
+	          </div>
               <h1 className='text-2xl font-bricolage font-bold mb-2 leading-tight'>Streamlining App Customization that Improved Onboarding and Retention</h1>
               <p className='text-sm font-jakarta leading-tight text-secondary'>Leading the design effort, I helped create the Pugpig Design Kit to streamline app customisation, offering clients a user-friendly tool with comprehensive documentation for an enhanced app experience</p>
 
@@ -31,7 +32,9 @@ const CaseStudyCards = () => {
 
           <div className='flex gap-8 justify-center'>
             <div className='bg-white border-2 p-6 rounded-2xl flex flex-col gap-2 max-w-2xl'>
-              <div><Chip/></div>
+            <div>
+              <span className='bg-primary px-[12px] py-[6px] rounded-md text-white inline-flex items-center'>UI/UX Design</span>
+	          </div>
               <h1 className='text-2xl font-bricolage font-bold mb-2 leading-tight'>Streamlining App Customization that Improved Onboarding and Retention</h1>
               <p className='text-sm font-jakarta leading-tight text-secondary'>Leading the design effort, I helped create the Pugpig Design Kit to streamline app customisation, offering clients a user-friendly tool with comprehensive documentation for an enhanced app experience</p>
 
@@ -52,7 +55,9 @@ const CaseStudyCards = () => {
           <div className='flex gap-8 justify-center'>
             <div className='bg-greenPri px-4 relative max-w-xs w-full flex items-center justify-center rounded-2xl border-2 overflow-hidden'><Image className='absolute bottom-[-2.5rem]' src={"/case-study-image.png"} alt='case-study-image' width={250} height={250}/></div>
             <div className='bg-white border-2 p-6 rounded-2xl flex flex-col gap-2 max-w-2xl'>
-              <div><Chip/></div>
+            <div>
+              <span className='bg-primary px-[12px] py-[6px] rounded-md text-white inline-flex items-center'>UI/UX Design</span>
+	          </div>
               <h1 className='text-2xl font-bricolage font-bold mb-2 leading-tight'>Streamlining App Customization that Improved Onboarding and Retention</h1>
               <p className='text-sm font-jakarta leading-tight text-secondary'>Leading the design effort, I helped create the Pugpig Design Kit to streamline app customisation, offering clients a user-friendly tool with comprehensive documentation for an enhanced app experience</p>
 
