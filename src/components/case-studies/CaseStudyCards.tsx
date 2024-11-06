@@ -6,6 +6,7 @@ import Container from '../widgets/Container';
 import Image from 'next/image';
 import LogoMarquee from '../widgets/LogoMarquee';
 import { FollowerPointerCard } from '../UI/following-pointer';
+import Link from 'next/link';
 
 interface HoverImageWrapperProps {
   imageSrc: string;  // Type for imageSrc prop
@@ -34,6 +35,7 @@ const caseStudies = [
     id: 1,
     author: "View case study",
     authorImg: "/logo.png",
+    title1: "cleanly",
     title: "Cleanly - Website and Dashboard Design and Development",
     description: "Cleanly is a home and office cleaning service platform that offers on-demand, professional cleaning services. Their goal is to provide a seamless, user-friendly booking experience while ensuring high-quality cleaning services for both residential and commercial clients.",
     stats: [
@@ -48,6 +50,7 @@ const caseStudies = [
     id: 2,
     author: "View case study",
     authorImg: "/logo.png",
+    title1: "furnium",
     title: "Furnium - A Furniture E-commerce Platform UI/UX Design",
     description: "Furnium is a contemporary furniture brand that focuses on sleek, minimalist designs. The goal was to create an e-commerce platform reflecting Furnium's modern aesthetic, ensuring a seamless and intuitive shopping experience for customers.",
     stats: [
@@ -62,6 +65,7 @@ const caseStudies = [
     id: 3,
     author: "View case study",
     authorImg: "/logo.png",
+    title1: "rivo",
     title: "Rivo - An E-commerce Tech Store Platform UI/UX Design",
     description: "Rivo is an innovative e-commerce platform aimed at providing a superior online shopping experience. The project involved creating a user interface that supported advanced features while delivering a seamless and intuitive user journey.",
     stats: [
@@ -144,6 +148,7 @@ const CaseStudyCards = () => {
                   }
                 }}
               >
+                <Link href={`/case-studies/${study.title1}`} className='cursor-none'>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {study.tag.map((singleTag, idx) => (
                     <motion.span
@@ -183,6 +188,7 @@ const CaseStudyCards = () => {
                     </motion.div>
                   ))}
                 </div>
+              </Link>
               </motion.div>
               </FollowerPointerCard>
               {study.imageOnRight && (
@@ -193,6 +199,7 @@ const CaseStudyCards = () => {
                     width={400}
                     height={250}
                     priority
+                    className='cursor-move'
                   />
                 </HoverImageWrapper>
               )}
