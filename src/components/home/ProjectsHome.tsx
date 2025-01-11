@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const ProjectsHome = () => {
   return (
-    <div className="min-h-screen h-full w-full overflow-x-hidden bg-[url('/projects.png')] bg-cover bg-center box-border">
-      {/* Content here */}
+    <div className="min-h-screen w-full bg-[url('/projects.png')] bg-cover bg-center">
+      <div className="h-full w-full"></div>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectsHome
+export default ProjectsHome;

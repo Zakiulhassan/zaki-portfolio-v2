@@ -3,26 +3,26 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
-interface LetterPullUpProps {
+interface LetterPullUpCenterProps {
   parts: { text: string; className?: string }[]; // Array of objects for text parts
 }
 
-export function LetterPullUp({ parts }: LetterPullUpProps) {
+export function LetterPullUpCenter({ parts }: LetterPullUpCenterProps) {
   const pullupVariant = {
     initial: { y: 100, opacity: 0 },
     animate: (i: number) => ({
       y: 0,
       opacity: 1,
       transition: {
-        delay: i * 0.05, 
-        duration: 0.5, 
+        delay: i * 0.05,
+        duration: 0.5,
       },
     }),
   };
 
   return (
-    <div className="w-full md:max-w-xl"> {/* Confines the width */}
-      <div className="">
+    <div className="w-full flex justify-center"> {/* Centering container */}
+      <div className="text-center"> {/* Centering text */}
         {parts.map((part, i) => (
           <span
             key={i}
@@ -34,10 +34,14 @@ export function LetterPullUp({ parts }: LetterPullUpProps) {
             )}
           >
             {part.text.split("").map((letter, j) => (
-              <motion.span key={j} custom={j} variants={pullupVariant}
+              <motion.span
+                key={j}
+                custom={j}
+                variants={pullupVariant}
                 initial="initial"
                 animate="animate"
-                className="inline-block">
+                className="inline-block"
+              >
                 {letter === " " ? <span>&nbsp;</span> : letter}
               </motion.span>
             ))}

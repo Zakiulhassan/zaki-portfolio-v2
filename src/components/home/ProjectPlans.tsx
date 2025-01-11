@@ -1,6 +1,6 @@
-import React from 'react'
-import ProjectPlanCard from '../widgets/ProjectPlanCard'
-import Container from '../widgets/Container';
+import React from "react";
+import ProjectPlanCard from "../widgets/ProjectPlanCard";
+import Container from "../widgets/Container";
 
 const cardData = [
   {
@@ -18,15 +18,15 @@ const cardData = [
       "Usability Testing.",
     ],
 
-    colorHeading: "#10110F",
-    colorText: "#6C7267",
+    colorHeading: "#fff",
+    colorText: "#E4E7DC",
 
-    btnColorFrom: "#03BC74",
-    btnColorTo: "#67DF72",
-    bgColorFrom: "#ffffff",
-    bgColorTo: "#ffffff",
-    beamColorFrom: "#03BC74",
-    beamColorTo: "#67DF72",
+    btnColorFrom: "#C6FE1E",
+    btnColorTo: "#2BFD86",
+    bgColorFrom: "#242524",
+    bgColorTo: "#242524",
+    beamColorFrom: "#C6FE1E",
+    beamColorTo: "#2BFD86",
   },
   {
     title: "UX Development: Bringing Designs to Life.",
@@ -42,15 +42,15 @@ const cardData = [
       "Accessibility Compliance.",
       "Cross-Browser Compatibility.",
     ],
-    colorHeading: "#10110F",
-    colorText: "#6C7267",
+    colorHeading: "#fff",
+    colorText: "#E4E7DC",
 
-    btnColorFrom: "#03BC74",
-    btnColorTo: "#67DF72",
-    bgColorFrom: "#ffffff",
-    bgColorTo: "#ffffff",
-    beamColorFrom: "#03BC74",
-    beamColorTo: "#67DF72",
+    btnColorFrom: "#C6FE1E",
+    btnColorTo: "#2BFD86",
+    bgColorFrom: "#242524",
+    bgColorTo: "#242524",
+    beamColorFrom: "#C6FE1E",
+    beamColorTo: "#2BFD86",
   },
   {
     title: "Product Launch: From Vision to Reality.",
@@ -66,13 +66,13 @@ const cardData = [
       "Scalability & Performance Optimization.",
       "Launch & Post-Launch Support.",
     ],
-    colorHeading: "#ffffff",
+    colorHeading: "#10110F",
     colorText: "#10110F",
 
     btnColorFrom: "#fff",
     btnColorTo: "#fff",
-    bgColorFrom: "#03BC74",
-    bgColorTo: "#67DF72",
+    bgColorFrom: "#C6FE1E",
+    bgColorTo: "#2BFD86",
     beamColorFrom: "#ffffff",
     beamColorTo: "#ffffff",
   },
@@ -80,12 +80,22 @@ const cardData = [
 
 const ProjectPlans = () => {
   return (
-    <section>
+    <section className="bg-primary min-h-screen">
       <Container>
-        <div className='flex flex-col gap-12'>
-          <div className='flex justify-center md:justify-between items-center flex-col md:flex-row gap-4'>
-                <h1 className='text-2xl max-w-xl md:max-w-xl text-center md:text-left font-bricolage font-bold mb-2 leading-tight'><span className='text-greenPri'>Your project</span> deserves more than just a <span className='text-greenPri'>pretty interface.</span> It needs results!</h1>
-                <p className='font-gloria text-lg max-w-xl md:max-w-xs text-center md:text-right text-secondary leading-tight tracking-tight'><span className='text-primary hover:text-greenPri'>Pick the service</span> that fits your needs. I&apos;ve got you covered.</p>
+        <div className="flex flex-col gap-12 px-12 py-24">
+          <div className="flex justify-center md:justify-between items-center flex-col md:flex-row gap-4">
+            <h1 className="text-2xl text-white max-w-xl md:max-w-xl text-center md:text-left font-bricolage font-medium mb-2 leading-tight">
+              <span className="text-greenPri">Your project</span> deserves more
+              than just a{" "}
+              <span className="text-greenPri">pretty interface.</span> It needs
+              results!
+            </h1>
+            <p className="font-gloria text-lg max-w-xl md:max-w-xs text-center md:text-right text-secondary leading-tight">
+              <span className="hover:text-greenPri">
+                Pick the service
+              </span>{" "}
+              that fits your needs. I&apos;ve got you covered.
+            </p>
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
@@ -109,11 +119,17 @@ const ProjectPlans = () => {
               />
             ))}
           </div>
-          <p className='font-gloria text-lg text-center text-secondary leading-tight tracking-tight'>Ready to see what <span className='text-primary hover:text-greenPri'>great design</span> can do for your business?</p>
+          <p className="font-gloria text-lg text-center text-secondary leading-tight tracking-tight">
+            Ready to see what{" "}
+            <span className="hover:text-greenPri">
+              great design
+            </span>{" "}
+            can do for your business?
+          </p>
         </div>
       </Container>
     </section>
-  )
-}
+  );
+};
 
-export default ProjectPlans
+export default ProjectPlans;

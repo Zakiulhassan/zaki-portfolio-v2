@@ -38,17 +38,17 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 
   return (
     <div className="flex flex-col items-start">
-      <div className="inline-flex border border-gray-400 rounded-xl bg-white p-2 relative">
+      <div className="inline-flex rounded-xl bg-background p-2 relative">
         {tabs.map((tab, index) => (
           <button
             key={index}
             ref={(el) => {
               tabRefs.current[index] = el;
             }}
-            className={`py-1 px-2 text-sm font-jakarta font-regular z-10 relative ${
+            className={`py-1 px-2 text-sm font-regular z-10 relative ${
               index === activeTab && !isTransitioning
-                ? "text-white font-semibold" // White text only after the transition
-                : "text-secondary hover:text-primary" // Default color during transition
+                ? "text-primary font-medium" // White text only after the transition
+                : "text-muted-dark hover:text-muted" // Default color during transition
             }`}
             onClick={() => setActiveTab(index)}
           >
@@ -62,7 +62,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
       </div>
 
       <div className="mt-6">
-        <p className="font-bricolage font-semibold text-[2.5rem] leading-tight bg-clip-text text-transparent bg-text-gradient">
+        <p className="font-normal text-4xl leading-tight text-white">
           {tabs[activeTab].content}
         </p>
       </div>

@@ -13,13 +13,13 @@ const EducationCardList: React.FC<EducationCardProps> = ({ role, company, yearRa
       {/* Gradient border on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-green-400 to-green-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></div>
       
-      <div className="relative z-20 w-full bg-gray-50 border rounded-xl shadow-sm p-4 flex items-start justify-between">
+      <div className="relative z-20 w-full bg-foreground rounded-xl shadow-sm p-4 flex items-start justify-between">
         <div className='flex gap-2'>
           <BiSolidBadge className="w-6 h-6 text-[#FFBD4A] flex-shrink-0"/>
 
           <div className='flex flex-col items-start'>
-            <h1 className="text-xl bg-clip-text text-transparent bg-text-gradient font-bricolage leading-tight font-semibold">{role}</h1>
-            <p className="text-md text-secondary font-jakarta font-medium leading-tight">{company}</p>
+            <h1 className="text-xl text-white leading-tight font-medium">{role}</h1>
+            <p className="text-md text-muted-dark font-medium leading-tight">{company}</p>
           </div>
         </div>
         <p className="text-sm text-secondary font-jakarta font-medium">{yearRange}</p>

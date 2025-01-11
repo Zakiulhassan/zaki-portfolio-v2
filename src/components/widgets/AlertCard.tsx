@@ -7,13 +7,13 @@ interface AlertCardProps {
 
 const AlertCard: React.FC<AlertCardProps> = ({ message }) => {
   return (
-    <div className="relative group overflow-hidden rounded-lg p-px">
+    <div className="relative group overflow-hidden rounded-xl p-px">
       {/* Gradient border on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-red-50/50 via-red-400 to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></div>
       
-      <div className="relative z-20 w-full bg-red-50 border rounded-lg shadow-sm p-4 flex items-start space-x-4">
+      <div className="relative z-20 w-full bg-foreground rounded-xl shadow-sm p-4 flex items-start space-x-4">
         <IoAlertCircleSharp className="w-6 h-6 text-red-500 flex-shrink-0" />
-        <p className="text-md text-secondary font-jakarta font-medium">{message}</p>
+        <p className="text-md text-secondary">{message}</p>
       </div>
       
       {/* Gradient shine effect */}
