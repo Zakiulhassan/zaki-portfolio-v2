@@ -1,48 +1,50 @@
-"use client"
-import Link from 'next/link';
-import Container from '../widgets/Container';
-import Image from 'next/image';
-// import ButtonPrimary from '../UI/ButtonPrimary';
-import ShinyButton from '../UI/shiny-button';
+"use client";
+import Link from "next/link";
+import Container from "../widgets/Container";
+import Image from "next/image";
+import ShinyButtonSM from "../UI/shiny-buttonSM";
 
 const Header = () => {
-
-
   return (
-    <>
-
-        <header className="relative">
-
-      <div className='bg-transparent relative z-10 flex py-4 '>
-
-            <Container>
-                <nav className="flex justify-between items-center">
-                    <div className="text-lg font-bold">
-                        <Link href="/">
-                            <Image
-                                src="/logo.png"
-                                alt="logo"
-                                width="88"
-                                height="88"
-                            />
-                        </Link>
-                    </div>
-                    <ul className="flex space-x-6 text-base text-darkpri items-center">
-                        <li><Link href="/case-studies" className="font-gloria text-base hover:text-greenPri">Case Studies</Link></li>
-                        <li><Link href="/about-me" className="font-gloria text-base hover:text-greenPri">Who am I?</Link></li>
-                        <li>
-                        <ShinyButton>Book a Call</ShinyButton>
-                            {/* <ButtonPrimary 
-                                text="Book a Call" 
-                                onClick={() => console.log('Button clicked')}
-                            /> */}
-                        </li>
-                    </ul>
-                </nav>
-            </Container>
+    <header className="fixed top-0 left-0 right-0 w-full z-50">
+      <div className="bg-white py-4 border-b-greenPri border-b-[1px]">
+        <Container>
+          <nav className="flex justify-between items-center">
+            <div className="text-lg font-bold">
+              <Link href="/">
+                <Image
+                  src="/zaki-logo.svg"
+                  alt="logo"
+                  width="80"
+                  height="80"
+                />
+              </Link>
+            </div>
+            <ul className="flex space-x-4 text-base text-primary items-center uppercase">
+              <li>
+                <Link
+                  href="/case-studies"
+                  className="text-base hover:text-greenPri"
+                >
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about-me"
+                  className="text-base hover:text-greenPri"
+                >
+                  Who am I?
+                </Link>
+              </li>
+              <li>
+                <ShinyButtonSM>Book a Call</ShinyButtonSM>
+              </li>
+            </ul>
+          </nav>
+        </Container>
       </div>
-        </header>
-    </>
+    </header>
   );
 };
 

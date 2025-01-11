@@ -2,15 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/Aeonik-Light.ttf') format('ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/Aeonik-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/Aeonik-Medium.ttf') format('ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@layer utilities {
+  .text-gloria {
+    font-family: var(--font-gloria);
+  }
+  
+  .text-aeonik {
+    font-family: var(--font-aeonik);
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: box-border;
   overflow-x: hidden;
+  font-family: var(--font-aeonik);
 }
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
+p{
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
 @layer utilities {
@@ -21,19 +51,20 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --font-aeonik: 'Aeonik', sans-serif;
+    --background: 75, 17%, 93%;
+    --foreground: 72, 100%, 99%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 217, 43%, 12%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 93, 5%, 39%;
-    --secondary-foreground: 240 5.9% 10%;
-    --green-pri: 156, 88%, 43%;
-    --green-sec: 126, 65%, 64%;
-    --muted: 240 4.8% 95.9%;
+    --primary: 0, 0%, 10%;
+    --primary-foreground: 120,1.4%,14.3%;
+    --secondary: 75, 17%, 93%;
+    --secondary-foreground: 72, 100%, 99%;
+    --green-pri: 75, 99%, 56%;
+    --green-sec: 146, 98%, 58%;
+    --muted: 80 6% 42%;
     --muted-foreground: 240 3.8% 46.1%;
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
@@ -87,12 +118,68 @@ body {
   }
 }
 
+/* Scrollbar */
+/* Global scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #1A1A1A, #242524); /* Thumb color */
+  border-radius: 6px; /* Rounded corners */
+  border: 2px solid transparent; /* Padding for the thumb */
+  background-clip: content-box; /* Ensures border spacing */
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1A; /* Track color */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1A1A1A, #242524); /* Lighter thumb on hover */
+}
+
+/* For horizontal scrollbars */
+::-webkit-scrollbar-corner {
+  background: transparent; /* Transparent corner for cross-scrollbars */
+}
+
+
 ::-moz-selection { /* Code for Firefox */
-  color: #03BC74;
-  background: #fff5d9;
+  color: #C6FE1E;
+  background: #fff5d916;
 }
 
 ::selection {
-  color: #03BC74;
-  background: #fff5d9;
+  color: #C6FE1E;
+  background: #fff5d916;
+}
+
+/* Noise */
+@keyframes moveNoise {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-10px, 10px);
+  }
+  50% {
+    transform: translate(10px, -10px);
+  }
+  75% {
+    transform: translate(-10px, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.header-scroll {
+  transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
 }

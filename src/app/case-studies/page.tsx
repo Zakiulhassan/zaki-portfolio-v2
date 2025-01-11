@@ -5,9 +5,8 @@ import React from 'react'
 
 const CaseStudies = () => {
   return (
-    <section className="flex flex-col gap-40">
-      <section className="h-full w-full bg-[url('/grid.png')] bg-cover bg-center">
-        <Header />
+    <section className="flex flex-col">
+      <section className="h-full w-full">
         <div className="flex flex-col items-center justify-center">
           <CaseStudiesHero />
         </div>

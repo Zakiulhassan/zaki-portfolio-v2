@@ -25,17 +25,17 @@ const animationProps = {
     },
   },
 } as AnimationProps;
-interface ShinyButtonProps {
+interface ShinyButtonSMProps {
   children: React.ReactNode;
   className?: string;
 }
-const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
+const ShinyButtonSM = ({ children, className, ...props }: ShinyButtonSMProps) => {
   return (
     <motion.button
       {...animationProps}
       {...props}
       className={cn(
-        "relative shadow-sm rounded-sm px-4 py-2 uppercase tracking-tight backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_50%,var(--primary)_0%,transparent_70%)] dark:hover:shadow-[0_0_20px_var(--primary)] bg-gradient-to-r from-greenPri to-greenSec",
+        "relative shadow-sm rounded-sm px-3 py-[4px] uppercase tracking-tight backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_50%,var(--primary)_0%,transparent_70%)] dark:hover:shadow-[0_0_20px_var(--primary)] bg-gradient-to-r from-greenPri to-greenSec",
         className,
       )}
     >
@@ -59,4 +59,4 @@ const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
   );
 };
 
-export default ShinyButton;
+export default ShinyButtonSM;

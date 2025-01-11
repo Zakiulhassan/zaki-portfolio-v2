@@ -13,7 +13,7 @@ const EducationCardList: React.FC = () => {
 
   const jobExperiences = [
     {
-      role: "Foundations of User Experience (UX) Design",
+      role: "User Experience (UX) Design",
       company: "Google",
       yearRange: "August 2024"
     },

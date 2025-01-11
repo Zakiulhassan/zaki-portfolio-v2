@@ -30,13 +30,12 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        bricolage: ['var(--font-bricolage)', 'sans-serif'],
-        jakarta: ['var(--font-jakarta)', 'sans-serif'],
-        gloria: ['var(--font-gloria)', 'sans-serif']
+        aeonik: ['var(--font-aeonik)'],
+        gloria: ['var(--font-gloria)'],
       },
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: '#1A1A1A',
+        foreground: '#242524',
         greenPri: 'hsl(var(--green-pri))',
         greenSec: 'hsl(var(--green-sec))',
         card: {
@@ -56,8 +55,9 @@ const config = {
           foreground: 'hsl(var(--secondary-foreground))'
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: '#E4E7DC',
+          foreground: '#6D7065',
+          dark: '#6D7065',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
@@ -97,7 +97,7 @@ const config = {
         container: '1rem',
         'container-sm': '1.5rem',
         'container-md': '2rem',
-        'container-lg': '96px',
+        'container-lg': '48px',
         'container-xl': '96px'
       },
       animation: {

@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, ReactNode } from 'react';
@@ -101,11 +102,11 @@ const CaseStudyCards = () => {
   return (
     <section>
       <Container>
-        <div className="flex flex-col gap-44">
+        <div className="flex flex-col gap-44 px-12 py-24">
           {caseStudies.map((study) => (
             <motion.div
               key={study.id}
-              className="flex flex-col md:flex-row gap-4 justify-center"
+              className="flex flex-col md:flex-row gap-6 justify-center items-center"
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
@@ -119,7 +120,7 @@ const CaseStudyCards = () => {
                   <Image 
                     src={study.imageSrc}
                     alt="case-study-image"
-                    width={400}
+                    width={800}
                     height={250}
                     priority
                   />
@@ -134,7 +135,7 @@ const CaseStudyCards = () => {
                 }
               >
               <motion.div 
-                className="bg-white border-2 p-6 rounded-xl flex flex-col gap-2 max-w-2xl"
+                className="rounded-xl flex flex-col gap-2 max-w-2xl"
                 variants={{
                   hidden: { opacity: 0, scale: 0.95 },
                   visible: { 
@@ -149,11 +150,11 @@ const CaseStudyCards = () => {
                 }}
               >
                 <Link href={`/case-studies/${study.title1}`} className='cursor-none'>
-                <div className="flex flex-wrap gap-2 mb-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {study.tag.map((singleTag, idx) => (
                     <motion.span
                       key={idx}
-                      className="bg-primary px-[10px] py-[4px] rounded-md text-white text-sm font-jakarta font-normal inline-flex items-center"
+                      className="bg-foreground px-[10px] py-[4px] rounded-md text-white text-sm font-jakarta font-normal inline-flex items-center"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.4 + (idx * 0.1) }}
@@ -163,23 +164,23 @@ const CaseStudyCards = () => {
                     </motion.span>
                   ))}
                 </div>
-                <h1 className="text-2xl font-bricolage font-bold leading-tight">
+                <h1 className="text-2xl mb-2 font-bricolage font-medium leading-tight bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">
                   {study.title}
                 </h1>
-                <p className="text-sm font-jakarta leading-tight text-secondary mb-2">
+                <p className="text-sm font-jakarta leading-tight text-secondary mb-4">
                   {study.description}
                 </p>
-                <div className="flex flex-col md:flex-row justify-between gap-4">
+                <div className="flex flex-col md:flex-row justify-between gap-4 pt-4">
                   {study.stats.map((stat, idx) => (
                     <motion.div 
                       key={idx} 
-                      className="bg-gray-100 p-2 rounded-lg"
+                      className="bg-foreground p-2 rounded-lg"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.6 + (idx * 0.1) }}
                       viewport={{ once: false }}
                     >
-                      <h3 className="text-2xl font-bricolage font-bold mb-2 leading-tight">
+                      <h3 className="text-2xl font-bricolage font-bold mb-2 leading-tight bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">
                         {stat.percentage}
                       </h3>
                       <p className="text-sm font-jakarta leading-tight text-secondary">
@@ -196,7 +197,7 @@ const CaseStudyCards = () => {
                   <Image 
                     src={study.imageSrc}
                     alt="case-study-image"
-                    width={400}
+                    width={800}
                     height={250}
                     priority
                     className='cursor-move'
@@ -206,18 +207,6 @@ const CaseStudyCards = () => {
             </motion.div>
           ))}
 
-          <motion.div 
-            className="w-full flex flex-col gap-0 items-center my-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: false }}
-          >
-            <h1 className="font-gloria text-base text-darkpri">
-              trusted by brands like:
-            </h1>
-            <LogoMarquee />
-          </motion.div>
         </div>
       </Container>
     </section>
@@ -229,12 +218,12 @@ const HoverImageWrapper: React.FC<HoverImageWrapperProps> = ({ children }) => {
 
   return (
     <div 
-      className="relative max-w-sm w-full flex items-center justify-center rounded-2xl border-2 overflow-hidden"
+      className="relative w-full min-h-[20rem] flex flex-1 items-center justify-center rounded-2xl border-2 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className={`absolute top-0 transition-transform duration-1000 ${isHovered ? 'translate-y-[-10%]' : 'translate-y-0'}`}
+        className={`absolute top-0 transition-transform duration-1000 ${isHovered ? 'translate-y-[-20%]' : 'translate-y-0'}`}
       >
         {children}
       </motion.div>

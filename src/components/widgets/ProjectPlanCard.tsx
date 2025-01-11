@@ -31,14 +31,14 @@ const ProjectPlanCard: React.FC<ProjectPlanCardProps> = ({
   colorText,
   btnColorFrom,
   btnColorTo,
-  bgColorFrom = "#ffffff",  // Default background color is white
-  bgColorTo = "#ffffff",  // Default background color is white
+  bgColorFrom = "#242524",  // Default background color is white
+  bgColorTo = "#242524",  // Default background color is white
   beamColorFrom = "#00FF00", // Default border beam colors
   beamColorTo = "#00FFFF",
 }) => {
   return (
     <section className="relative flex flex-wrap items-center justify-center">
-      <div className={`relative max-w-sm rounded-3xl shadow-lg overflow-hidden `} style={{
+      <div className={`relative max-w-full rounded-2xl shadow-lg overflow-hidden `} style={{
           background: `linear-gradient(to right, ${bgColorFrom}, ${bgColorTo})`,
         }}>
         <div className="p-8">
@@ -50,7 +50,7 @@ const ProjectPlanCard: React.FC<ProjectPlanCardProps> = ({
         }}>{description}</p>
           <a
             href={buttonLink}
-            className="text-primary hover:shadow-lg px-[12px] py-[6px] rounded-md text-lg font-bricolage font-semibold transition-colors duration-300" style={{
+            className="text-primary hover:shadow-lg px-[12px] py-2 rounded-md text-lg font-bricolage font-medium uppercase transition-colors duration-300" style={{
               background: `linear-gradient(to right, ${btnColorFrom}, ${btnColorTo})`,
             }}
           >
@@ -62,12 +62,14 @@ const ProjectPlanCard: React.FC<ProjectPlanCardProps> = ({
                 <span>{durationText}</span>
             </div>
           </div>
-          <ul className="mt-4 space-y-1">
+          <ul className="mt-4 space-y-1 text-muted">
             {listItems.map((item, index) => (
               <li key={index} className="flex items-center text-base text-secondary font-jakarta" style={{
                 color: `${colorHeading}`,
               }}>
-                <FaCircle className="w-2 h-2 mr-2 mb-[1px] text-primary" />
+                <FaCircle className="w-2 h-2 mr-2 mb-[1px]" style={{
+                color: `${colorText}`,
+              }}/>
                 {item}
               </li>
             ))}

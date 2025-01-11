@@ -1,41 +1,54 @@
 "use client";
 
-import React from 'react';
-import classNames from 'classnames';
+import React from "react";
+import { useRouter } from "next/navigation";
+import classNames from "classnames";
 
 interface ButtonGhostProps {
   text: string;
   icon?: React.ReactNode;
+  href?: string; // New prop for navigation
   onClick?: () => void;
   className?: string;
 }
 
-const ButtonGhost: React.FC<ButtonGhostProps> = ({ text, icon, onClick, className }) => {
+const ButtonGhost: React.FC<ButtonGhostProps> = ({
+  text,
+  icon,
+  href,
+  onClick,
+  className,
+}) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick(); // Trigger the passed onClick function
+    }
+    if (href) {
+      router.push(href); // Redirect to the href page
+    }
+  };
+
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       className={classNames(
-        'relative bg-[#F5F8FF] px-4 py-2 flex items-center gap-2 rounded-lg font-chesnaMed text-[16px]',
-        'transition-all duration-300 ease-in-out',
-        'border border-darksec hover:border-primary',
-        'group', // Add group class for nested element styling
+        "relative flex items-center gap-2 px-4 py-2 rounded-sm uppercase tracking-tight font-medium shadow-sm backdrop-blur-xl transition-shadow duration-300 ease-in-out bg-primary hover:bg-primary-foreground text-white hover:shadow-lg",
         className
       )}
     >
-      {/* Gradient border on hover */}
-      <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
-      {/* Button content */}
-      <span className="relative z-10 text-darksec group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#706CFB] group-hover:to-[#3A36D3] transition-all duration-300 ease-in-out group-hover:font-chesnaMed">
-        {text}
-      </span>
+      {/* Button text */}
+      <span className="flex-grow">{text}</span>
+
+      {/* Icon (if provided) */}
       {icon && (
-        <span className="relative z-10 flex-shrink-0 text-2xl text-darksec group-hover:text-primary transition-transform duration-300 ease-in-out group-hover:scale-125">
+        <span className="text-xl flex-shrink-0 transition-transform duration-300 ease-in-out text-greenPri">
           {icon}
         </span>
       )}
     </button>
   );
-}
+};
 
 export default ButtonGhost;
