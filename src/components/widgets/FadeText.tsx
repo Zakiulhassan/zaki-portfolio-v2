@@ -23,7 +23,7 @@ export function FadeTextComp() {
         }}
         text={
           <>
-            <span className="text-greenPri">solution</span>—let's uncover
+            <span className="text-greenPri">solution</span>—let&apos;s uncover
           </>
         }
       />

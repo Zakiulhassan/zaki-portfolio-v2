@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Container from "../widgets/Container";
-import Image from "next/image";
 import WordPullUp from "../UI/word-pull-up";
 import WordFadeIn from "../UI/word-fade-in";
 import { FadeTextComp } from "../widgets/FadeText";
@@ -12,7 +11,6 @@ import { motion } from "framer-motion";
 
 const ProblemSolution = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [showImage, setShowImage] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false); // New state for tracking animation completion
   const sectionRef = useRef<HTMLElement | null>(null);
 
@@ -45,16 +43,7 @@ const ProblemSolution = () => {
     };
   }, []);
 
-  // Delay for image reveal
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => {
-        setShowImage(true);
-      }, 1500); // Delay for image show
 
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible]);
 
   // New effect to trigger fade down animation after initial animation is complete
   useEffect(() => {

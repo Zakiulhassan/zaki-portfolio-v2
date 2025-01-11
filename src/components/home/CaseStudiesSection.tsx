@@ -2,9 +2,7 @@ import React from "react";
 import Container from "../widgets/Container";
 import Image from "next/image";
 import Chip from "../UI/Chip";
-import LogoMarquee from "../widgets/LogoMarquee";
 import ShinyButton from "../UI/shiny-button";
-import { LuArrowUpRight } from "react-icons/lu";
 
 const CaseStudiesSection = () => {
   return (

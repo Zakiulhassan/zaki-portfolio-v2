@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Container from "../widgets/Container";
-import Image from "next/image";
+
 
 const Footer = () => {
   return (
