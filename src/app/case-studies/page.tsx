@@ -1,6 +1,5 @@
 import CaseStudiesHero from '@/components/case-studies/caseStudiesHero'
 import CaseStudyCards from '@/components/case-studies/CaseStudyCards'
-import Header from '@/components/navigation/Header'
 import React from 'react'
 
 const CaseStudies = () => {

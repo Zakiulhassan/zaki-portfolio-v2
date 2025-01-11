@@ -5,7 +5,6 @@ import React, { useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Container from '../widgets/Container';
 import Image from 'next/image';
-import LogoMarquee from '../widgets/LogoMarquee';
 import { FollowerPointerCard } from '../UI/following-pointer';
 import Link from 'next/link';
 

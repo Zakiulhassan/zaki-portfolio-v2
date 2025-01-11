@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import localFont from 'next/font/local';
 import { Gloria_Hallelujah } from "next/font/google";
 import Footer from "@/components/navigation/Footer";
 import Header from "@/components/navigation/Header";

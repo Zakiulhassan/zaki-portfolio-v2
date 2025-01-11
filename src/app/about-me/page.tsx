@@ -1,4 +1,3 @@
-import Header from "@/components/navigation/Header";
 import { LogoScrollVelocity } from "@/components/UI/VelocityScroll";
 import ProofIHaveBeenBusy from "@/components/who-am-i/ProofIHaveBeenBusy";
 import WhereWasIBefore from "@/components/who-am-i/WhereWasIBefore";

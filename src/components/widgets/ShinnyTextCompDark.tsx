@@ -1,5 +1,4 @@
 import React from 'react'
-import { HiMiniArrowLongRight } from 'react-icons/hi2'
 import { cn } from "@/lib/utils";
 import AnimatedShinyTextDark from '../UI/animated-shiny-textDark';
 import { RxArrowRight } from 'react-icons/rx';
