@@ -101,6 +101,7 @@ const Hero = () => {
                 src="/profile-1.png" // Add your image path here
                 alt="Zaki ul Hassan"
                 fill
+                priority
                 className="object-cover"
               />
             </motion.div>
@@ -121,6 +122,7 @@ const Hero = () => {
                     alt="Zaki ul Hassan"
                     width={44}
                     height={44}
+                    priority
                     className="object-cover"
                   />
                   <div className="flex flex-col items-start">
@@ -138,6 +140,7 @@ const Hero = () => {
                     alt="Zaki ul Hassan"
                     width={48}
                     height={48}
+                    priority
                     className="object-cover"
                   />
                   <div className="flex flex-col items-start">
@@ -154,6 +157,7 @@ const Hero = () => {
                     alt="Zaki ul Hassan"
                     width={48}
                     height={48}
+                    priority
                     className="object-cover"
                   />
                   <div className="flex flex-col items-start">

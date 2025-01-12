@@ -90,6 +90,7 @@ const TitleComponent = ({
       src={avatar}
       height="30"
       width="30"
+      priority
       alt="thumbnail"
       className="rounded-full border-2 border-white"
     />
@@ -150,7 +151,7 @@ const CaseStudyCards = () => {
                     }
                   }}
                 >
-                  <Link href={`/case-studies/${study.title1}`} className='cursor-none'>
+                  <Link href={`/case-studies/${study.title1}`} passHref className='cursor-none'>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {study.tag.map((singleTag, idx) => (
                     <motion.span

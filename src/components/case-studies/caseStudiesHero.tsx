@@ -2,10 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import ShinyButton from "../UI/shiny-button";
 import { FadeDown } from "../UI/FadeDown";
 import ShinnyTextCompDark from "../widgets/ShinnyTextCompDark";
 import { LetterPullUpCenter } from "../UI/LetterPullUpCenter";
+import ShinyButtonSM from "../UI/shiny-buttonSM";
 
 const CaseStudiesHero = () => {
   const textParts = [
@@ -63,9 +63,9 @@ const CaseStudiesHero = () => {
 
         {/* Component 4: ShinyButton with delay */}
         <motion.div variants={fadeUpVariant}>
-          <ShinyButton className="outline-gray-400 outline-2 text-sm sm:text-lg">
+          <ShinyButtonSM className="outline-gray-400 outline-2 text-sm sm:text-lg">
             Get Started Now
-          </ShinyButton>
+          </ShinyButtonSM>
         </motion.div>
       </motion.div>
     </section>

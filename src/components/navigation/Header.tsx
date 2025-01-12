@@ -54,6 +54,7 @@ const Header = () => {
                   alt="logo"
                   width="80"
                   height="80"
+                  priority
                   className="transition-transform duration-300 hover:scale-105"
                 />
               </Link>
@@ -79,7 +80,9 @@ const Header = () => {
                 <ButtonGhostSmall
                 text="Book a call"
                 icon={<LuArrowUpRight />}
-                href="https://calendly.com/zakiulhassan/30min"
+                onClick={() =>
+                  window.open('https://calendly.com/zakiulhassan/30min', '_blank', 'noopener noreferrer')
+                } 
                 className="text-lg cursor-pointer"
               />
               </li>
