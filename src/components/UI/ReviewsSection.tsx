@@ -14,6 +14,7 @@ const ReviewsSection = () => {
           alt="User 1"
           width={44}
           height={44}
+          priority
           className="rounded-full border-2 border-white"
         />
         <Image
@@ -21,6 +22,7 @@ const ReviewsSection = () => {
           alt="User 2"
           width={44}
           height={44}
+          priority
           className="rounded-full border-2 border-white"
         />
         <Image
@@ -28,6 +30,7 @@ const ReviewsSection = () => {
           alt="User 3"
           width={44}
           height={44}
+          priority
           className="rounded-full border-2 border-white"
         />
         <Image
@@ -35,6 +38,7 @@ const ReviewsSection = () => {
           alt="User 4"
           width={44}
           height={44}
+          priority
           className="rounded-full border-2 border-white"
         />
       </div>

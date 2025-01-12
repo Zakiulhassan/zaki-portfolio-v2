@@ -4,7 +4,7 @@ const NoiseOverlay = () => {
   return (
     <div
       className="fixed inset-0 pointer-events-none"
-      style={{ mixBlendMode: "multiply", opacity: 0.25 }}
+      style={{ mixBlendMode: "multiply", opacity: 0.8 }}
     >
       <svg 
         viewBox="0 0 400 400" 

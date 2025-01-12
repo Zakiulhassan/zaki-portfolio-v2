@@ -6,52 +6,115 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/navigation/Header';
 
-// Sample data structure matching the Roqqu case study
-const caseStudyData = {
-  title: "Boosting Roqqu's Expansion AcrossAfrica & Europe",
-  company: "Roqqu",
-  projectImage: "/furnium-header.png",
-  projectImage2: "/furnium-solution.png",
-  tag: ["UI/UX Design", "Full Stack Development", "React.JS", "Next.JS", "Python Django"],
-  myRole: {
-    positions: [
-      "Design Lead",
-      "User Researcher",
-      "UX Designer",
-      "UI Designer"
-    ]
-  },
-  deliverables: [
-    "Component Library",
-    "Design System",
-    "High Fidelity Designs",
-    "User Interviews"
-  ],
-  team: [
-    "Product Designer",
-    "Developers",
-    "Marketers",
-    "Designers",
-    "Business Analysts"
-  ],
-  year: "2022 - Now",
-  projectSummary: `I helped expand Roqqu's user base in Africa and Europe by leading a comprehensive design overhaul. The team and I focused on creating an intuitive cryptocurrency trading platform, enhancing security measures, and tailoring the platform to meet regional needs. We simplified navigation while maintaining robust functionality and implemented multi-language support to cater to a diverse audience.`,
-  additionalSummary: `These improvements made Roqqu a trusted space for trading and safeguarding digital money, significantly increasing user engagement and satisfaction in target markets.`,
-  outcomeStatement: `A comprehensive design overhaul, including enhanced security features, intuitive navigation, and multi-language support, significantly boosted Roqqu's market presence. This strategy increased user engagement and satisfaction, while maintaining the platform's commitment to safeguarding digital money. As a result, user adoption data in these regions soared, significantly boosting overall growth and market presence.`,
-  usersAndNeed: `Roqqu's target users for the platform were individuals in Africa and Europe seeking a secure and easy-to-use digital money management tool. These users faced significant barriers in accessing traditional financial services, which led to low adoption rates. Our research indicated that they valued intuitive interfaces and advanced security features.
+// Define TypeScript interfaces
+interface Stat {
+  percentage: string;
+  text: string;
+}
 
-  We also discovered that regional variations in language and financial regulations posed significant challenges to simplifying the interface while ensuring security, authentication, and compliance. We needed to maintain a balance between meeting their needs and keeping Roqqu's market presence and user expectations.`,
-  myRoleDetailed: `As the Lead Designer, I led efforts with a team of four other designers to expand Roqqu's presence across Africa and Europe. Collaborating with our lead software engineers, front-end developers, and mobile developers, we devised solutions to address potential impediments to achieve user engagement.
+interface CaseStudy {
+  id: number;
+  author: string;
+  authorImg: string;
+  title1: string;
+  title: string;
+  description: string;
+  stats: Stat[];
+  imageSrc: string;
+  HeroImage: string;
+  imagesGallery: string[];
+  tag: string[];
+  imageOnRight: boolean;
+  role?: string[];
+  deliverables?: string[];
+  team?: string[];
+  year?: string;
+  detailedDescription?: string;
+  challenge?: string;
+  solution?: string;
+}
 
-  Each team member had specific responsibilities; my primary role was to oversee the design process and ensure consistency across all platforms. Through continuous usability testing sessions to identify pain points and understand our users' struggles with the platform. By implementing their feedback, we were able to create a secure and user-friendly experience, significantly boosting user adoption and satisfaction.`,
-  highlights: {
-    title: "Streamlining App Customization that Improved Onboarding and Retention",
+// Using the same case studies data
+const caseStudies: CaseStudy[] = [
+  {
+    id: 1,
+    author: "View case study",
+    authorImg: "/logo.png",
+    title1: "cleanly",
+    title: "Cleanly - Website and Dashboard Design and Development",
+    description: "Cleanly is a home and office cleaning service platform that offers on-demand, professional cleaning services. Their goal is to provide a seamless, user-friendly booking experience while ensuring high-quality cleaning services for both residential and commercial clients.",
     stats: [
-      { value: "50%", label: "Increase in platform trading despite crypto winter" },
-      { value: "60%", label: "YoY suggests increased customer engagement" }
-    ]
+      { percentage: "200%", text: "Increase in satisfaction resulting to customer onboarding efficiency." },
+      { percentage: "70%", text: "Visits suggests increased customization interest." }
+    ],
+    imageSrc: "/cleanly-home.png",
+    HeroImage: "/case-studies/cleanly-hero.png",
+    imagesGallery: ["/furnium-website.png", "/furnium-website.png", "/furnium-website.png"],
+    tag: ["UI/UX Design", "Full Stack Development", "React.JS", "Next.JS", "Python Django"],
+    imageOnRight: false,
+    role: ["Design Lead", "Full Stack Developer"],
+    deliverables: ["Website Design", "Dashboard Development", "User Flow Optimization"],
+    team: ["UI/UX Designer", "Frontend Developer", "Backend Developer"],
+    year: "2023 - Present",
+    detailedDescription: `As the lead designer and developer for Cleanly, I spearheaded the creation of an intuitive booking platform that revolutionized how users schedule and manage cleaning services. The project focused on streamlining the user journey while ensuring robust functionality for both customers and service providers.`,
+    challenge: `The main challenge was creating a seamless booking experience that could handle complex scheduling requirements while maintaining simplicity for users. We needed to balance feature-rich functionality with an intuitive interface that wouldn't overwhelm users.`,
+    solution: `We implemented a step-by-step booking process with real-time availability checking and integrated a sophisticated scheduling system. The dashboard was designed to provide clear visibility of upcoming services, cleaning history, and easy management of recurring bookings.`
+  },
+  {
+    id: 2,
+    author: "View case study",
+    authorImg: "/logo.png",
+    title1: "furnium",
+    title: "Furnium - A Furniture E-commerce Platform UI/UX Design",
+    description: "Furnium is a contemporary furniture brand that focuses on sleek, minimalist designs. The goal was to create an e-commerce platform reflecting Furnium's modern aesthetic, ensuring a seamless and intuitive shopping experience for customers.",
+    stats: [
+      { percentage: "150%", text: "Increase in user engagement on the site, driven by intuitive design and high-quality visuals." },
+      { percentage: "95%", text: "Positive feedback from users on the seamless navigation and clean layout." }
+    ],
+    imageSrc: "/furnium-website.png",
+    HeroImage: "/case-studies/furnium-hero.png",
+    imagesGallery: ["/furnium-website.png", "/furnium-website.png", "/furnium-website.png"],
+    tag: ["UI/UX Design", "User Research", "Responsive Design"],
+    imageOnRight: true,
+    role: ["UX Designer", "Research Lead"],
+    deliverables: ["E-commerce Platform Design", "User Research Report", "Design System"],
+    team: ["UI/UX Designer", "User Researcher", "Product Manager"],
+    year: "2023",
+    detailedDescription: `Leading the design of Furnium's e-commerce platform involved creating an experience that matched their premium brand while ensuring intuitive navigation and seamless purchasing flows.`,
+    challenge: `The challenge was balancing aesthetic appeal with functional e-commerce requirements, ensuring the platform could effectively showcase furniture while maintaining fast load times and easy navigation.`,
+    solution: `We developed a minimal yet effective design system that prioritized product imagery while maintaining clear navigation and purchase paths. The implementation included advanced filtering and search capabilities.`
+  },
+  {
+    id: 3,
+    author: "View case study",
+    authorImg: "/logo.png",
+    title1: "rivo",
+    title: "Rivo - An E-commerce Tech Store Platform UI/UX Design",
+    description: "Rivo is an innovative e-commerce platform aimed at providing a superior online shopping experience. The project involved creating a user interface that supported advanced features while delivering a seamless and intuitive user journey.",
+    stats: [
+      { percentage: "120%", text: "Increase in user engagement due to personalized shopping experiences." },
+      { percentage: "80%", text: "Improvement in repeat purchases as a result of tailored product recommendations." }
+    ],
+    imageSrc: "/rivo-app.png",
+    HeroImage: "/case-studies/rivo-hero.png",
+    imagesGallery: ["/furnium-website.png", "/furnium-website.png", "/furnium-website.png"],
+    tag: ["UI/UX Design", "User Research"],
+    imageOnRight: false,
+    role: ["UI Designer", "UX Researcher"],
+    deliverables: ["Platform Design", "User Testing Reports", "Interactive Prototypes"],
+    team: ["UI Designer", "UX Researcher", "Product Owner"],
+    year: "2023",
+    detailedDescription: `For Rivo, we focused on creating a tech-forward e-commerce experience that caters to both tech-savvy users and those new to online tech shopping.`,
+    challenge: `The main challenge was creating an interface that could handle complex product specifications and comparisons while maintaining an approachable and non-intimidating shopping experience.`,
+    solution: `We implemented an advanced yet user-friendly product comparison system and created intuitive category navigation that helps users find exactly what they're looking for without feeling overwhelmed.`
   }
-};
+];
+
+interface PageProps {
+  params: {
+    title: string;
+  };
+}
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -59,195 +122,166 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
-const CaseStudyDetail = () => {
+const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
+  // Find the case study based on the URL parameter
+  const caseStudy = caseStudies.find(study => study.title1 === params.title);
+  console.log("params", params)
+
+  if (!caseStudy) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bricolage font-bold mb-4">Case study not found</h1>
+          <Link href="/case-studies" className="text-greenPri hover:text-greenSec">
+            ← Back to Case Studies
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-    <Header />
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Header with Back Button */}
-      <div className="flex items-center gap-2 mb-8">
-        <Link href="/case-studies" className="text-sm text-gray-600 hover:text-gray-900 flex items-center gap-2">
-          ← Back to Case Studies
-        </Link>
-      </div>
+      <Header />
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Back Button */}
+        <div className="mb-8">
+          <Link href="/case-studies" className="text-sm text-secondary hover:text-primary flex items-center gap-2">
+            ← Back to Case Studies
+          </Link>
+        </div>
 
-      {/* Company Name and Title */}
-      <motion.div 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-8"
-      >
-        <div className="text-green-500 mb-2">{caseStudyData.company}</div>
-        <h1 className="text-4xl font-bold mb-8">{caseStudyData.title}</h1>
-      </motion.div>
-
-      {/* Hero Image */}
-      <motion.div 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-12"
-      >
-        <Image
-          src={caseStudyData.projectImage}
-          alt="Project Preview"
-          className="w-full rounded-lg shadow-lg"
-          width={500}
-          height={500}
-        />
-      </motion.div>
-
-      {/* Info Grid */}
-      <motion.div 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16"
-      >
-        <div>
-          <h3 className="font-bold mb-4">MY ROLE</h3>
-          <ul className="space-y-2">
-            {caseStudyData.myRole.positions.map((position, index) => (
-              <li key={index} className="text-gray-600">{position}</li>
+        {/* Title Section */}
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          animate="animate"
+          className="mb-8"
+        >
+          <div className="text-muted mb-2 capitalize">{caseStudy.title1}</div>
+          <h1 className="text-4xl font-medium mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">{caseStudy.title}</h1>
+          <div className="flex flex-wrap gap-2">
+            {caseStudy.tag.map((tag, index) => (
+              <span key={index} className="bg-foreground px-3 py-1 rounded-md text-white text-sm">
+                {tag}
+              </span>
             ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold mb-4">DELIVERABLES</h3>
-          <ul className="space-y-2">
-            {caseStudyData.deliverables.map((deliverable, index) => (
-              <li key={index} className="text-gray-600">{deliverable}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold mb-4">TEAM</h3>
-          <ul className="space-y-2">
-            {caseStudyData.team.map((member, index) => (
-              <li key={index} className="text-gray-600">{member}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold mb-4">YEAR</h3>
-          <p className="text-gray-600">{caseStudyData.year}</p>
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
 
-      {/* Project Summary */}
-      <motion.section 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-16"
-      >
-        <h2 className="text-xl font-bold mb-6">PROJECT SUMMARY</h2>
-        <p className="text-gray-700 mb-4">{caseStudyData.projectSummary}</p>
-        <p className="text-gray-700">{caseStudyData.additionalSummary}</p>
-        <button className="mt-6 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors">
-          View Project →
-        </button>
-      </motion.section>
+        {/* Hero Image */}
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          animate="animate"
+          className="mb-12"
+        >
+          <div className="rounded-xl overflow-hidden">
+            <Image
+              src={caseStudy.HeroImage}
+              alt="Project Preview"
+              width={1400}
+              height={600}
+              priority
+              className="w-full object-cover"
+            />
+          </div>
+        </motion.div>
 
-      {/* Solution Image */}
-      <motion.div 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-12"
-      >
-        <Image
-          src={caseStudyData.projectImage2}
-          alt="Project Preview"
-          className="w-full rounded-lg shadow-lg"
-          width={500}
-          height={500}
-        />
-      </motion.div>
+        {/* Project Info Grid */}
+        <motion.div 
+          variants={fadeInUp}
+          initial="initial"
+          animate="animate"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+        >
+          <div>
+            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">MY ROLE</h3>
+            <ul className="space-y-2">
+              {caseStudy.role?.map((position, index) => (
+                <li key={index} className="text-secondary font-jakarta">{position}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">DELIVERABLES</h3>
+            <ul className="space-y-2">
+              {caseStudy.deliverables?.map((deliverable, index) => (
+                <li key={index} className="text-secondary font-jakarta">{deliverable}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">TEAM</h3>
+            <ul className="space-y-2">
+              {caseStudy.team?.map((member, index) => (
+                <li key={index} className="text-secondary font-jakarta">{member}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">YEAR</h3>
+            <p className="text-secondary font-jakarta">{caseStudy.year}</p>
+          </div>
+        </motion.div>
 
-      {/* Outcome Statement */}
-      <motion.section 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-16"
-      >
-        <h2 className="text-xl font-bold mb-6">OUTCOME STATEMENT</h2>
-        <p className="text-gray-700">{caseStudyData.outcomeStatement}</p>
-      </motion.section>
+        {/* Project Description */}
+        <motion.section 
+          variants={fadeInUp}
+          initial="initial"
+          animate="animate"
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-bricolage font-bold mb-6 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">PROJECT OVERVIEW</h2>
+          <p className="text-secondary font-jakarta mb-6">{caseStudy.description}</p>
+          <p className="text-secondary font-jakarta mb-6">{caseStudy.detailedDescription}</p>
+        </motion.section>
 
-      {/* Users and Need */}
-      <motion.section 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-16"
-      >
-        <h2 className="text-xl font-bold mb-6">USERS AND NEED</h2>
-        <div className="whitespace-pre-line text-gray-700">
-          {caseStudyData.usersAndNeed}
-        </div>
-      </motion.section>
+        {/* Challenge & Solution */}
+        <motion.section 
+          variants={fadeInUp}
+          initial="initial"
+          animate="animate"
+          className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <div>
+            <h2 className="text-2xl font-bricolage font-bold mb-6 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">THE CHALLENGE</h2>
+            <p className="text-secondary font-jakarta">{caseStudy.challenge}</p>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bricolage font-bold mb-6 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">THE SOLUTION</h2>
+            <p className="text-secondary font-jakarta">{caseStudy.solution}</p>
+          </div>
+        </motion.section>
 
-      {/* My Role Detailed */}
-      <motion.section 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-16"
-      >
-        <h2 className="text-xl font-bold mb-6">MY ROLE</h2>
-        <div className="whitespace-pre-line text-gray-700">
-          {caseStudyData.myRoleDetailed}
-        </div>
-      </motion.section>
-
-      {/* Highlights */}
-      <motion.section 
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-16"
-      >
-        <h2 className="text-xl font-bold mb-6">HIGHLIGHTS</h2>
-        <div className="bg-gray-100 p-8 rounded-lg">
-          <h3 className="font-bold mb-8">{caseStudyData.highlights.title}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {caseStudyData.highlights.stats.map((stat, index) => (
-              <div key={index}>
-                <div className="text-4xl font-bold text-green-500 mb-2">{stat.value}</div>
-                <div className="text-gray-600">{stat.label}</div>
+        {/* Results */}
+        <motion.section 
+          variants={fadeInUp}
+          initial="initial"
+          animate="animate"
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-bricolage bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent font-bold mb-6">RESULTS</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {caseStudy.stats.map((stat, index) => (
+              <div key={index} className="bg-foreground p-6 rounded-xl">
+                <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">
+                  {stat.percentage}
+                </div>
+                <div className="text-secondary font-jakarta">{stat.text}</div>
               </div>
             ))}
           </div>
-        </div>
-      </motion.section>
+        </motion.section>
 
-      {/* Conclusion */}
-      <motion.section
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        className="mb-16"
-      >
-        <h2 className="text-xl font-bold mb-6">CONCLUSION</h2>
-        <p className="text-gray-700 mb-6">
-          Working as the lead product designer at Roqqu has been both exciting and challenging. We&apos;re indebted to enhance user experience and streamline processes, keeping in mind the diverse cultural backgrounds of users across our target geography. These efforts have successfully challenged and established us as innovators in the fintech space, making crypto trading more accessible and engaging.
-        </p>
-        <p className="text-gray-700 mb-6">
-          This recap — increased user engagement and more sign-ups— these have not mobility sweetspots, highlighting our team&apos;s hard work and its ability to deliver impactful products. Despite the challenges, such as technical issues, user metrics and keeping up with volume trends, this case has been an exciting exercise in creativity, innovation, and growth, marking a new milestone along our the realm of digital finance.
-        </p>
-      </motion.section>
-
-      {/* Back to Case Studies Button */}
-      <Link 
-        href="/case-studies"
-        className="inline-block text-sm text-gray-600 hover:text-gray-900"
-      >
-        ← Back to Case Studies
-      </Link>
-    </div>
+        {/* Back to Case Studies Button */}
+        <Link 
+          href="/case-studies"
+          className="inline-block text-sm text-secondary hover:text-primary font-jakarta"
+        >
+          ← Back to Case Studies
+        </Link>
+      </div>
     </>
   );
 };

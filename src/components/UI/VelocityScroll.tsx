@@ -74,7 +74,7 @@ const LogoRow: React.FC<LogoRowProps> = ({ logos, baseVelocity = 5 }) => {
           <div key={i} className="inline-flex" ref={i === 0 ? rowRef : null}>
             {logos.map((logo, index) => (
               <div key={index} className="mx-8 flex items-center justify-center">
-                <Image src={logo} alt={`Logo ${index}`} width={40} height={40} />
+                <Image src={logo} alt={`Logo ${index}`} width={40} height={40} priority />
               </div>
             ))}
           </div>
@@ -113,7 +113,7 @@ export const LogoScrollVelocity = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-8 w-full">
+    <div className="flex flex-col gap-8 w-full mt-12">
       <LogoRow logos={logos1} baseVelocity={1.5} /> {/* Normal speed */}
       <LogoRow logos={logos2} baseVelocity={-1.5} /> {/* Different speed */}
     </div>

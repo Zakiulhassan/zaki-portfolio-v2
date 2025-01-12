@@ -11,10 +11,9 @@ import { motion } from "framer-motion";
 
 const ProblemSolution = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false); // New state for tracking animation completion
+  const [animationComplete, setAnimationComplete] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // Intersection Observer to detect when the component is in the viewport
   useEffect(() => {
     const currentRef = sectionRef.current;
 
@@ -24,9 +23,9 @@ const ProblemSolution = () => {
         if (entry.isIntersecting) {
           const timer = setTimeout(() => {
             setIsVisible(true);
-          }, 500); // Delay before setting visibility
+          }, 500);
 
-          return () => clearTimeout(timer); // Cleanup timer
+          return () => clearTimeout(timer);
         }
       },
       { threshold: 0.2 }
@@ -43,25 +42,21 @@ const ProblemSolution = () => {
     };
   }, []);
 
-
-
-  // New effect to trigger fade down animation after initial animation is complete
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
-        setAnimationComplete(true); // Trigger fade down animation after a delay
-      }, 2500); // Adjust this delay as needed (should match the duration of previous animations)
+        setAnimationComplete(true);
+      }, 2500);
 
       return () => clearTimeout(timer);
     }
   }, [isVisible]);
 
-  // Animation variants
   const containerVariants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.2, // Adjust the delay for each child
+        staggerChildren: 0.2,
       },
     },
   };
@@ -72,34 +67,27 @@ const ProblemSolution = () => {
   };
 
   return (
-    <section ref={sectionRef} className="bg-primary min-h-screen">
+    <section
+      ref={sectionRef}
+      className="bg-primary min-h-screen flex flex-col justify-center"
+    >
       <Container>
-        <div className="flex flex-col justify-between gap-24 px-12 py-28">
-          <div className="flex flex-col gap-4 w-full h-full">
+        <div className="flex flex-col gap-16 px-4 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-28">
+          <div className="flex flex-col lg:flex-row justify-between gap-12">
             {isVisible && (
-              <div className="w-full flex justify-between">
-                <div className="w-full">
+              <div className="flex flex-col lg:flex-row w-full gap-8">
+                {/* Left Text Section */}
+                <div className="flex-1">
                   <WordPullUp
-                    className="text-muted text-lg mb-2"
+                    className="text-muted text-sm md:text-base lg:text-lg mb-4"
                     words="Is this you right now?"
                   />
                   <WordFadeIn words="Your brand needs more than just an update—it needs a transformation that drives results." />
                 </div>
 
-                <div className="relative w-full flex justify-center">
-                  {/* {showImage && (
-                    <div className="absolute top-0 left-0">
-                      <Image
-                        src="/arrow-1.png"
-                        alt="Arrow"
-                        width={36}
-                        height={36}
-                        className="rotate-6"
-                      />
-                    </div>
-                  )} */}
-
-                  <div className="max-w-[380px] items-center rotate-[-8deg]">
+                {/* Right Animation Section */}
+                <div className="flex-1 relative flex justify-center items-center">
+                  <div className="max-w-[300px] md:max-w-[360px] lg:max-w-[380px] rotate-[-8deg]">
                     <FadeTextComp />
                   </div>
                 </div>
@@ -108,28 +96,35 @@ const ProblemSolution = () => {
           </div>
 
           <motion.div
-            className="flex gap-12 w-full h-full"
+            className="flex flex-col lg:flex-row gap-12 w-full"
             initial="hidden"
-            animate={animationComplete ? "show" : "hidden"} // Change to trigger on animation completion
+            animate={animationComplete ? "show" : "hidden"}
             variants={containerVariants}
           >
+            {/* Problem Section */}
             <motion.div
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-4 flex-1"
               variants={fadeDownVariant}
             >
-              <h3 className="font-gloria text-xl font-light text-muted leading-tight tracking-tight">
+              <h3 className="font-gloria text-lg md:text-xl font-light text-muted leading-tight tracking-tight">
                 Your Problem
               </h3>
-              <CardList />
+              <div className="flex flex-wrap gap-4">
+                <CardList />
+              </div>
             </motion.div>
+
+            {/* Solution Section */}
             <motion.div
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-4 flex-1"
               variants={fadeDownVariant}
             >
-              <h3 className="font-gloria text-xl font-light text-muted  leading-tight tracking-tight">
+              <h3 className="font-gloria text-lg md:text-xl font-light text-muted leading-tight tracking-tight">
                 Your Solution
               </h3>
-              <SuccessCardList />
+              <div className="flex flex-wrap gap-4">
+                <SuccessCardList />
+              </div>
             </motion.div>
           </motion.div>
         </div>

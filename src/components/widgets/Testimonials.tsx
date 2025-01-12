@@ -69,6 +69,7 @@ const ReviewCard = ({
             alt={""}
             width={48}
             height={48}
+            priority
             className="object-contain rounded-full border-2"
           />
           <div>

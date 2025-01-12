@@ -23,7 +23,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.8,
       ease: "easeOut"
     }
   }
@@ -90,6 +90,7 @@ const TitleComponent = ({
       src={avatar}
       height="30"
       width="30"
+      priority
       alt="thumbnail"
       className="rounded-full border-2 border-white"
     />
@@ -110,8 +111,9 @@ const CaseStudyCards = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ 
-                once: false,
-                margin: "-100px"
+                once: true, 
+                amount: 0.3, 
+                margin: "0px"  
               }}
             >
               {!study.imageOnRight && (
@@ -122,6 +124,7 @@ const CaseStudyCards = () => {
                     width={800}
                     height={250}
                     priority
+                    className="transition-transform duration-700 ease-out" 
                   />
                 </HoverImageWrapper>
               )}
@@ -133,22 +136,22 @@ const CaseStudyCards = () => {
                   />
                 }
               >
-              <motion.div 
-                className="rounded-xl flex flex-col gap-2 max-w-2xl"
-                variants={{
-                  hidden: { opacity: 0, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, 
-                    scale: 1,
-                    transition: {
-                      duration: 0.6,
-                      ease: "easeOut",
-                      delay: 0.3
+                <motion.div 
+                  className="rounded-xl flex flex-col gap-2 max-w-2xl"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.95 },
+                    visible: { 
+                      opacity: 1, 
+                      scale: 1,
+                      transition: {
+                        duration: 0.6,
+                        ease: "easeOut",
+                        delay: 0.2
+                      }
                     }
-                  }
-                }}
-              >
-                <Link href={`/case-studies/${study.title1}`} className='cursor-none'>
+                  }}
+                >
+                  <Link href={`/case-studies/${study.title1}`} passHref className='cursor-none'>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {study.tag.map((singleTag, idx) => (
                     <motion.span
@@ -222,12 +225,20 @@ const HoverImageWrapper: React.FC<HoverImageWrapperProps> = ({ children }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className={`absolute top-0 transition-transform duration-1000 ${isHovered ? 'translate-y-[-20%]' : 'translate-y-0'}`}
+        initial={false} // Prevent initial animation
+        animate={{
+          y: isHovered ? '-20%' : '0%'
+        }}
+        transition={{
+          duration: 0.7,
+          ease: "easeInOut"
+        }}
+        className="absolute top-0"
       >
         {children}
       </motion.div>
     </div>
   );
-}
+};
 
 export default CaseStudyCards;
