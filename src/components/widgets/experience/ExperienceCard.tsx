@@ -16,12 +16,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ role, company, yearRang
       <div className="relative z-20 w-full bg-foreground rounded-xl shadow-sm p-4 flex items-start justify-between">
         <div className='flex gap-2'>
           <TbBadgeFilled className="w-6 h-6 text-green-500 flex-shrink-0" />
-          <div className='flex flex-col items-start'>
-            <h1 className="text-xl text-white leading-tight font-medium">{role}</h1>
-            <p className="text-md text-muted-dark font-medium leading-tight">{company}</p>
+          <div className='flex flex-col items-start gap-1'>
+            <h1 className="text-lg md:text-xl text-white leading-tight font-medium">{role}</h1>
+            <p className="text-sm md:text-md text-muted-dark font-medium leading-tight">{company}</p>
           </div>
         </div>
-        <p className="text-sm text-secondary font-jakarta font-medium">{yearRange}</p>
+        <p className="text-sm text-secondary font-medium text-right">{yearRange}</p>
       </div>
       
       {/* Gradient shine effect */}

@@ -27,6 +27,7 @@ export default function RootLayout({
     <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable}`}>
       <body className="antialiased bg-background font-aeonik">
         <Header />
+        {/* <NoiseOverlay/> */}
         <main className="flex-grow">{children}</main>
         <Footer />
       </body>

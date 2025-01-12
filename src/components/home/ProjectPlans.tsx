@@ -17,10 +17,8 @@ const cardData = [
       "Visual Design.",
       "Usability Testing.",
     ],
-
     colorHeading: "#fff",
     colorText: "#E4E7DC",
-
     btnColorFrom: "#C6FE1E",
     btnColorTo: "#2BFD86",
     bgColorFrom: "#242524",
@@ -44,7 +42,6 @@ const cardData = [
     ],
     colorHeading: "#fff",
     colorText: "#E4E7DC",
-
     btnColorFrom: "#C6FE1E",
     btnColorTo: "#2BFD86",
     bgColorFrom: "#242524",
@@ -68,7 +65,6 @@ const cardData = [
     ],
     colorHeading: "#10110F",
     colorText: "#10110F",
-
     btnColorFrom: "#fff",
     btnColorTo: "#fff",
     bgColorFrom: "#C6FE1E",
@@ -82,26 +78,26 @@ const ProjectPlans = () => {
   return (
     <section className="bg-primary min-h-screen">
       <Container>
-        <div className="flex flex-col gap-12 px-12 py-24">
-          <div className="flex justify-center md:justify-between items-center flex-col md:flex-row gap-4">
-            <h1 className="text-2xl text-white max-w-xl md:max-w-xl text-center md:text-left font-bricolage font-medium mb-2 leading-tight">
+        <div className="flex flex-col gap-12 px-4 py-12 sm:px-8 sm:py-16 lg:px-24 lg:py-24">
+          {/* Header Section */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl text-white max-w-xl text-center md:text-left font-bricolage font-medium leading-tight">
               <span className="text-greenPri">Your project</span> deserves more
               than just a{" "}
               <span className="text-greenPri">pretty interface.</span> It needs
               results!
             </h1>
-            <p className="font-gloria text-lg max-w-xl md:max-w-xs text-center md:text-right text-secondary leading-tight">
-              <span className="hover:text-greenPri">
-                Pick the service
-              </span>{" "}
-              that fits your needs. I&apos;ve got you covered.
+            <p className="font-gloria text-base sm:text-lg lg:text-xl max-w-xl md:max-w-xs text-center md:text-right text-secondary leading-tight">
+              <span className="hover:text-greenPri">Pick the service</span> that
+              fits your needs. I&apos;ve got you covered.
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
+          {/* Cards Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cardData.map((card, index) => (
               <ProjectPlanCard
-                key={index} // Add a unique key for each card
+                key={index}
                 title={card.title}
                 description={card.description}
                 buttonText={card.buttonText}
@@ -119,12 +115,12 @@ const ProjectPlans = () => {
               />
             ))}
           </div>
-          <p className="font-gloria text-lg text-center text-secondary leading-tight tracking-tight">
+
+          {/* Footer Section */}
+          <p className="font-gloria text-lg sm:text-xl lg:text-2xl text-center text-secondary leading-tight tracking-tight">
             Ready to see what{" "}
-            <span className="hover:text-greenPri">
-              great design
-            </span>{" "}
-            can do for your business?
+            <span className="hover:text-greenPri">great design</span> can do for
+            your business?
           </p>
         </div>
       </Container>

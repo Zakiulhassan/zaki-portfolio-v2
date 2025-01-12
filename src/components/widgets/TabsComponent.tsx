@@ -37,7 +37,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
   }, [activeTab]);
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-center md:items-start ">
       <div className="inline-flex rounded-xl bg-background p-2 relative">
         {tabs.map((tab, index) => (
           <button
@@ -45,7 +45,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
             ref={(el) => {
               tabRefs.current[index] = el;
             }}
-            className={`py-1 px-2 text-sm font-regular z-10 relative ${
+            className={`py-1 px-2 text-xs font-regular z-10 relative ${
               index === activeTab && !isTransitioning
                 ? "text-primary font-medium" // White text only after the transition
                 : "text-muted-dark hover:text-muted" // Default color during transition
@@ -62,7 +62,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
       </div>
 
       <div className="mt-6">
-        <p className="font-normal text-4xl leading-tight text-white">
+        <p className="font-normal text-2xl text-center md:text-start md:text-3xl lg:text-4xl leading-normal  md:leading-tight lg:leading-normal text-white">
           {tabs[activeTab].content}
         </p>
       </div>

@@ -10,7 +10,6 @@ import ButtonGhost from "../UI/ButtonGhost";
 import { LuArrowUpRight } from "react-icons/lu";
 import ReviewsSection from "../UI/ReviewsSection";
 import Image from "next/image";
-import NoiseOverlay from "../widgets/NoiseOverlay";
 
 const Hero = () => {
   const textParts = [
@@ -49,10 +48,10 @@ const Hero = () => {
           initial="hidden"
           animate="show"
           variants={containerVariant}
-          className="flex flex-col-reverse lg:flex-row items-center gap-8 w-full"
+          className="flex flex-col-reverse md:flex-row items-center gap-8 w-full"
         >
           {/* Left Content Section */}
-          <div className="relative z-10 flex flex-col justify-center gap-4 flex-1 ml-20">
+          <div className="relative flex flex-col justify-center max-w-md md:max-w-lg lg:max-w-full w-full gap-4 ml-8 lg:ml-12 xl:ml-20">
             <motion.div variants={fadeUpVariant} className="flex w-full">
               <ShinnyTextComp />
             </motion.div>
@@ -91,12 +90,12 @@ const Hero = () => {
           </div>
 
           {/* Right Image Section */}
-          <div className="flex-1 flex items-center justify-end absolute top-0 right-0 h-[90vh] w-full">
+          <div className="hidden md:flex flex-1 items-center justify-end absolute z-0 top-0 right-0 h-[90vh] w-full">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute bottom-0 right-0 w-96 h-[80vh] z-10 mr-16"
+              className="absolute bottom-0 right-0 w-96 h-[80vh] z-10 mr-8 lg:mr-12 xl:mr-20"
             >
               <Image
                 src="/profile-1.png" // Add your image path here
@@ -175,7 +174,6 @@ const Hero = () => {
           </div>
         </motion.div>
       </motion.div>
-      <NoiseOverlay />
     </section>
   );
 };

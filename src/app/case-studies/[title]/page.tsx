@@ -145,9 +145,6 @@ const CaseStudyDetail = () => {
         <h2 className="text-xl font-bold mb-6">PROJECT SUMMARY</h2>
         <p className="text-gray-700 mb-4">{caseStudyData.projectSummary}</p>
         <p className="text-gray-700">{caseStudyData.additionalSummary}</p>
-        <button className="mt-6 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors">
-          View Project →
-        </button>
       </motion.section>
 
       {/* Solution Image */}

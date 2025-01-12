@@ -22,7 +22,7 @@ const EducationCardList: React.FC<EducationCardProps> = ({ role, company, yearRa
             <p className="text-md text-muted-dark font-medium leading-tight">{company}</p>
           </div>
         </div>
-        <p className="text-sm text-secondary font-jakarta font-medium">{yearRange}</p>
+        <p className="text-sm text-secondary font-medium text-right">{yearRange}</p>
       </div>
       
       {/* Gradient shine effect */}

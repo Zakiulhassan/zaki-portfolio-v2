@@ -113,7 +113,7 @@ export const LogoScrollVelocity = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-8 w-full">
+    <div className="flex flex-col gap-8 w-full mt-12">
       <LogoRow logos={logos1} baseVelocity={1.5} /> {/* Normal speed */}
       <LogoRow logos={logos2} baseVelocity={-1.5} /> {/* Different speed */}
     </div>
