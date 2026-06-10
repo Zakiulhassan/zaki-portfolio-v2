@@ -57,7 +57,7 @@ const ProjectPlanCard: React.FC<ProjectPlanCardProps> = ({
             {buttonText}
           </a>
           <div className="flex items-center mt-4 text-sm text-white font-jakarta">
-            <div className='flex bg-primary px-[12px] py-[6px] rounded-md items-center'>
+            <div className='flex bg-coal-soft px-[12px] py-[6px] rounded-md items-center'>
                 <Clock className="w-4 h-4 mr-1" />
                 <span>{durationText}</span>
             </div>

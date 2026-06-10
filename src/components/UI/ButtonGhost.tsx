@@ -33,8 +33,9 @@ const ButtonGhost: React.FC<ButtonGhostProps> = ({
   return (
     <button
       onClick={handleClick}
+      data-cursor="hover"
       className={classNames(
-        "relative flex items-center gap-2 px-4 py-2 rounded-sm uppercase tracking-tight font-medium shadow-sm backdrop-blur-xl transition-shadow duration-300 ease-in-out bg-primary hover:bg-primary-foreground text-white hover:shadow-lg",
+        "group relative flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 uppercase tracking-widest font-medium backdrop-blur-xl transition-all duration-300 ease-in-out text-ink hover:border-acid hover:text-acid",
         className
       )}
     >
@@ -43,7 +44,7 @@ const ButtonGhost: React.FC<ButtonGhostProps> = ({
 
       {/* Icon (if provided) */}
       {icon && (
-        <span className="text-xl flex-shrink-0 transition-transform duration-300 ease-in-out text-greenPri">
+        <span className="text-xl flex-shrink-0 transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1">
           {icon}
         </span>
       )}

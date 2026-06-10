@@ -7,16 +7,16 @@ import ProjectsHome from "@/components/home/ProjectsHome";
 
 export default function Home() {
   return (
-    <section className="relative">
+    <section className="relative bg-coal">
       {/* Hero Section */}
-      <section className="fixed inset-0 z-10 min-h-screen w-full bg-secondary-foreground pt-24"> {/* Added pt-24 for header space */}
+      <section className="fixed inset-0 z-10 h-screen w-full">
         <Hero />
       </section>
 
       {/* Scrolling Content */}
       <section className="relative z-20">
-        <div className="min-h-screen"></div> 
-        <div>
+        <div className="h-screen"></div>
+        <div className="rounded-t-[2.5rem] overflow-hidden bg-coal shadow-[0_-40px_80px_rgba(0,0,0,0.6)]">
           <ProjectsHome/>
           <ProblemSolution />
           <CaseStudiesSection />

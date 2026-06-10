@@ -3,18 +3,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "../widgets/Container";
-import Image from "next/image";
-import ShinyButtonSM from "../UI/shiny-buttonSM";
 import { Menu, X } from "lucide-react";
-import ButtonGhostSmall from "../UI/ButtonGhostSmall";
 import { LuArrowUpRight } from "react-icons/lu";
+import Magnetic from "../motion/Magnetic";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -23,7 +20,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -36,104 +32,101 @@ const Header = () => {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "shadow-lg" : ""
+        isScrolled ? "bg-coal/80 backdrop-blur-md border-b border-white/5" : ""
       }`}
     >
-      <div className={`bg-white/95 backdrop-blur-sm py-4 border-b-greenPri border-b-[1px] transition-all duration-300 ${
-        isScrolled ? "py-2" : "py-4"
-      }`}>
-        <Container>
-          <nav className="flex justify-between items-center">
-            {/* Logo */}
-            <div className="text-lg font-bold">
-              <Link href="/">
-                <Image
-                  src="/zaki-logo.svg"
-                  alt="logo"
-                  width="80"
-                  height="80"
-                  priority
-                  className="transition-transform duration-300 hover:scale-105"
-                />
-              </Link>
-            </div>
-
-            {/* Desktop Menu */}
-            <ul className="hidden md:flex space-x-6 text-base text-primary items-center uppercase">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`text-base transition-all duration-100 hover:text-[#B2EB09] relative ${
-                      isActive(link.href) 
-                        ? "text-primary font-medium after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-0.5 after:bg-greenPri"
-                        : ""
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <ButtonGhostSmall
-                text="Book a call"
-                icon={<LuArrowUpRight />}
-                onClick={() =>
-                  window.open('https://calendly.com/zakiulhassan/30min', '_blank', 'noopener noreferrer')
-                } 
-                className="text-lg cursor-pointer"
-              />
-              </li>
-            </ul>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+      <Container>
+        <nav className="flex justify-between items-center py-5">
+          {/* Logo */}
+          <Magnetic strength={0.4}>
+            <Link
+              href="/"
+              className="text-lg tracking-[0.2em] uppercase text-ink font-medium"
+              data-cursor="hover"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6 text-primary" />
-              ) : (
-                <Menu className="w-6 h-6 text-primary" />
-              )}
-            </button>
-          </nav>
+              Zaki<span className="text-acid">.</span>
+            </Link>
+          </Magnetic>
 
-          {/* Mobile Menu */}
-          <div
-            className={`md:hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen
-                ? "max-h-64 opacity-100 mt-4"
-                : "max-h-0 opacity-0 overflow-hidden"
-            }`}
-          >
-            <ul className="flex flex-col space-y-4 py-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex space-x-10 text-sm tracking-widest uppercase text-ink items-center">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Magnetic strength={0.3}>
                   <Link
                     href={link.href}
-                    className={`text-base block w-full px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100 ${
-                      isActive(link.href)
-                        ? "text-greenPri font-medium bg-gray-50"
-                        : "text-primary"
+                    data-cursor="hover"
+                    className={`link-sweep transition-colors duration-300 hover:text-acid ${
+                      isActive(link.href) ? "text-acid" : "text-ink"
                     }`}
                   >
                     {link.label}
                   </Link>
-                </li>
-              ))}
-              <li className="px-4">
-                <ShinyButtonSM className="w-full justify-center">
-                  Book a Call
-                </ShinyButtonSM>
+                </Magnetic>
               </li>
-            </ul>
-          </div>
-        </Container>
-      </div>
+            ))}
+            <li>
+              <Magnetic strength={0.3}>
+                <button
+                  data-cursor="hover"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/zakiulhassan/30min",
+                      "_blank",
+                      "noopener noreferrer"
+                    )
+                  }
+                  className="flex items-center gap-2 rounded-full border border-acid/40 px-5 py-2 text-acid transition-colors duration-300 hover:bg-acid hover:text-coal"
+                >
+                  Book a call <LuArrowUpRight />
+                </button>
+              </Magnetic>
+            </li>
+          </ul>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-ink"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+            data-cursor="hover"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </nav>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? "max-h-64 opacity-100 pb-6" : "max-h-0 opacity-0"
+          }`}
+        >
+          <ul className="flex flex-col space-y-4 uppercase tracking-widest text-sm">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`block py-2 transition-colors ${
+                    isActive(link.href) ? "text-acid" : "text-ink"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/book-a-call"
+                className="inline-flex items-center gap-2 rounded-full border border-acid/40 px-5 py-2 text-acid"
+              >
+                Book a call <LuArrowUpRight />
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </Container>
     </header>
   );
 };

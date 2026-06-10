@@ -1,10 +1,67 @@
-import React from 'react';
+import React from "react";
+import Container from "../widgets/Container";
+import { SplitReveal } from "../motion/SplitReveal";
+import TextMarquee from "../motion/TextMarquee";
+import Image from "next/image";
+import { FadeIn } from "../motion/SplitReveal";
 
 const ProjectsHome = () => {
   return (
-    <div className="min-h-screen w-full bg-[url('/projects.png')] bg-cover bg-center">
-      <div className="h-full w-full"></div>
-    </div>
+    <section className="relative bg-coal pt-24 pb-12">
+      <Container>
+        <div className="flex flex-col gap-12">
+          <SplitReveal
+            as="h2"
+            mode="words"
+            className="text-display text-[10vw] leading-[0.95] text-ink sm:text-[7vw] lg:text-[5vw]"
+          >
+            Selected Work
+          </SplitReveal>
+
+          <FadeIn className="grid gap-6 md:grid-cols-3" y={60}>
+            {[
+              { src: "/cleanly-home.png", label: "Cleanly" },
+              { src: "/furnium-website.png", label: "Furnium" },
+              { src: "/rivo-app.png", label: "Rivo" },
+            ].map((p, i) => (
+              <div
+                key={i}
+                data-cursor="hover"
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10"
+              >
+                <Image
+                  src={p.src}
+                  alt={p.label}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-coal/80 via-transparent to-transparent" />
+                <span className="absolute bottom-4 left-4 text-sm uppercase tracking-[0.3em] text-ink">
+                  {p.label}
+                </span>
+              </div>
+            ))}
+          </FadeIn>
+        </div>
+      </Container>
+
+      <div className="mt-16 border-y border-white/10">
+        <TextMarquee baseSpeed={55} direction={-1} className="py-6">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span
+              key={i}
+              className="mx-6 flex items-center gap-6 text-display text-3xl text-ink-dim sm:text-5xl"
+            >
+              Design
+              <span className="text-acid">&middot;</span>
+              Development
+              <span className="text-acid">&middot;</span>
+              Strategy
+            </span>
+          ))}
+        </TextMarquee>
+      </div>
+    </section>
   );
 };
 

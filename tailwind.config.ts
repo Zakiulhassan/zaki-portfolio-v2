@@ -32,10 +32,16 @@ const config = {
       fontFamily: {
         aeonik: ['var(--font-aeonik)'],
         gloria: ['var(--font-gloria)'],
+        serif: ['var(--font-serif)'],
       },
       colors: {
-        background: '#1A1A1A',
-        foreground: '#242524',
+        background: '#0A0A0B',
+        foreground: '#131312',
+        coal: '#0A0A0B',
+        'coal-soft': '#131312',
+        ink: '#EDEDE8',
+        'ink-dim': '#8A8D82',
+        acid: '#C6FE1E',
         greenPri: 'hsl(var(--green-pri))',
         greenSec: 'hsl(var(--green-sec))',
         card: {

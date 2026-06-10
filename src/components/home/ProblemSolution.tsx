@@ -69,7 +69,7 @@ const ProblemSolution = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-primary min-h-screen flex flex-col justify-center"
+      className="bg-coal min-h-screen flex flex-col justify-center"
     >
       <Container>
         <div className="flex flex-col gap-16 px-4 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-28">

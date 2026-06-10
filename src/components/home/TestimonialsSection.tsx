@@ -4,7 +4,7 @@ import { Testimonials } from '../widgets/Testimonials'
 
 const TestimonialsSection = () => {
   return (
-    <section className='bg-primary min-h-screen lg:px-12 py-28'>
+    <section className='bg-coal min-h-screen lg:px-12 py-28'>
         <Container>
             <div className='mb-6'>
                 <h1 className='text-2xl font-medium leading-tight text-white'><span className='bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent'>Testimonial</span> from peers & coworkers</h1>

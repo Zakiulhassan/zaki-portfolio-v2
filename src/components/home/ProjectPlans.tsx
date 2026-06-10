@@ -76,7 +76,7 @@ const cardData = [
 
 const ProjectPlans = () => {
   return (
-    <section className="bg-primary min-h-screen">
+    <section className="bg-coal min-h-screen">
       <Container>
         <div className="flex flex-col gap-12 px-4 py-12 sm:px-8 sm:py-16 lg:px-24 lg:py-24">
           {/* Header Section */}

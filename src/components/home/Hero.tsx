@@ -1,183 +1,86 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import ShinnyTextComp from "../widgets/ShinnyTextComp";
-import ShinyButton from "../UI/shiny-button";
-import { LetterPullUp } from "../UI/LetterPullUp";
-import { FadeDown } from "../UI/FadeDown";
+import FluidBackground from "../effects/FluidBackground";
+import { SplitReveal } from "../motion/SplitReveal";
+import TextMarquee from "../motion/TextMarquee";
 import ButtonGhost from "../UI/ButtonGhost";
-import { LuArrowUpRight } from "react-icons/lu";
-import ReviewsSection from "../UI/ReviewsSection";
-import Image from "next/image";
+import { LuArrowDown, LuArrowUpRight } from "react-icons/lu";
+import Container from "../widgets/Container";
+
+const SKILLS = [
+  "UX Design",
+  "Brand Identity",
+  "Product Strategy",
+  "Full-Stack Development",
+  "Interaction Design",
+  "Design Systems",
+];
 
 const Hero = () => {
-  const textParts = [
-    { text: "Crafting Seamless", className: "text-primary" },
-    { text: " User", className: "text-greenPri" },
-    { text: "Experiences", className: "text-greenPri" },
-    { text: " That Drive Results", className: "text-primary" },
-  ];
-
-  // Define animation variants for the container to stagger child animations
-  const containerVariant = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.5, // Delay between children animations
-      },
-    },
-  };
-
-  // Define animation for fading up each component
-  const fadeUpVariant = {
-    hidden: { opacity: 0, y: 20 }, // Start below and invisible
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
   return (
-    <section className="min-h-screen h-full w-full flex flex-col gap-16">
-      
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={containerVariant}
-        className="flex flex-col justify-center gap-4 min-h-[80vh]"
-      >
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={containerVariant}
-          className="flex flex-col-reverse md:flex-row items-center gap-8 w-full"
-        >
-          {/* Left Content Section */}
-          <div className="relative flex flex-col justify-center max-w-md md:max-w-lg lg:max-w-full w-full gap-4 ml-8 lg:ml-12 xl:ml-20">
-            <motion.div variants={fadeUpVariant} className="flex w-full">
-              <ShinnyTextComp />
-            </motion.div>
-            <motion.div
-              variants={fadeUpVariant}
-              className="flex flex-col gap-0"
-            >
-              <LetterPullUp parts={textParts} />
+    <section className="relative h-screen w-full overflow-hidden bg-coal text-ink">
+      <FluidBackground />
 
-              <FadeDown className="text-muted-dark font-light text-lg">
-                <p>
-                  Hey, I&apos;m{" "}
-                  <span className="font-normal hover:text-primary">
-                    Zaki ul Hassan.
-                  </span>{" "}
-                  I design products that drive growth and build loyalty.
-                </p>
-              </FadeDown>
-            </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-b from-coal/10 via-coal/40 to-coal" />
 
-            <motion.div variants={fadeUpVariant} className="flex gap-4 z-100">
-              <ShinyButton className="outline-gray-400 outline-2 text-lg">
-                Let&apos;s Get Started
-              </ShinyButton>
+      <Container className="relative z-10 flex h-full flex-col justify-between pb-10 pt-28">
+        <div className="flex flex-col gap-6">
+          <SplitReveal
+            as="h1"
+            mode="words"
+            immediate
+            delay={0.2}
+            className="text-display text-[14vw] leading-[0.9] sm:text-[12vw] lg:text-[8vw]"
+          >
+            Crafting Digital
+          </SplitReveal>
+          <SplitReveal
+            as="h1"
+            mode="words"
+            immediate
+            delay={0.35}
+            className="text-display text-[14vw] leading-[0.9] sm:text-[12vw] lg:text-[8vw] text-outline-acid"
+          >
+            Experiences
+          </SplitReveal>
+        </div>
+
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <p className="max-w-md font-serif-accent text-2xl text-ink-dim sm:text-3xl">
+              Hey, I&apos;m Zaki ul Hassan — a designer &amp; developer who
+              builds products that drive growth and build loyalty.
+            </p>
+            <div className="flex shrink-0 items-center gap-4">
               <ButtonGhost
                 text="Case Studies"
                 icon={<LuArrowUpRight />}
                 href="/case-studies"
                 className="text-lg cursor-pointer"
               />
-            </motion.div>
-
-            <motion.div variants={fadeUpVariant} className="flex gap-4">
-              <ReviewsSection />
-            </motion.div>
-          </div>
-
-          {/* Right Image Section */}
-          <div className="hidden md:flex flex-1 items-center justify-end absolute z-0 top-0 right-0 h-[90vh] w-full">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute bottom-0 right-0 w-96 h-[80vh] z-10 mr-8 lg:mr-12 xl:mr-20"
-            >
-              <Image
-                src="/profile-1.png" // Add your image path here
-                alt="Zaki ul Hassan"
-                fill
-                priority
-                className="object-cover"
-              />
-            </motion.div>
-
-            {/* Card Overlay */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-              className="absolute bottom-[-2rem] right-[-2rem] transform -translate-x-1/2 z-20 bg-white/75 border-[1px] backdrop-blur-md border-gray-300 rounded-xl flex items-start px-4 pr-12 py-4 w-[80%] lg:w-[40%]"
-            >
-              {/* Social Links */}
-              <div className="flex items-center gap-6">
-                {/* Google */}
-                <div className="flex gap-2 items-center text-center">
-                  <Image
-                    src="/icons/google.svg"
-                    alt="Zaki ul Hassan"
-                    width={44}
-                    height={44}
-                    priority
-                    className="object-cover"
-                  />
-                  <div className="flex flex-col items-start">
-                    <p className="text-sm text-gray-400 leading-tight">
-                      Certified
-                    </p>
-                    <p className="text-xs text-primary tracking-normal font-medium">UX Designer</p>
-                  </div>
-                </div>
-
-                {/* Full Stack Developer */}
-                <div className="flex gap-2 items-center text-center">
-                  <Image
-                    src="/icons/developer.svg"
-                    alt="Zaki ul Hassan"
-                    width={48}
-                    height={48}
-                    priority
-                    className="object-cover"
-                  />
-                  <div className="flex flex-col items-start">
-                    <p className="text-sm text-gray-400 leading-tight">
-                      Experienced
-                    </p>
-                    <p className="text-xs text-primary tracking-normal font-medium">Full Stack Developer</p>
-                  </div>
-                </div>
-                {/* Full Stack Developer */}
-                <div className="flex gap-2 items-center text-center">
-                  <Image
-                    src="/icons/learner.png"
-                    alt="Zaki ul Hassan"
-                    width={48}
-                    height={48}
-                    priority
-                    className="object-cover"
-                  />
-                  <div className="flex flex-col items-start">
-                    <p className="text-sm text-gray-400 leading-tight">
-                      Curious
-                    </p>
-                    <p className="text-xs text-primary tracking-normal font-medium">Explorer & Learner</p>
-                  </div>
-                </div>
+              <div
+                data-cursor="hover"
+                className="flex h-14 w-14 shrink-0 animate-bounce items-center justify-center rounded-full border border-acid/40 text-acid"
+              >
+                <LuArrowDown />
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ height: "0%" }}
-              animate={{ height: "100%" }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              className="w-64 bg-gradient-to-b from-greenPri to-greenSec absolute right-0 top-0 z-0"
-            ></motion.div>
+            </div>
           </div>
-        </motion.div>
-      </motion.div>
+
+          <TextMarquee baseSpeed={45} className="border-t border-white/10 py-4">
+            {SKILLS.map((skill, i) => (
+              <span
+                key={i}
+                className="mx-6 flex items-center gap-6 text-sm uppercase tracking-[0.3em] text-ink-dim"
+              >
+                {skill}
+                <span className="text-acid">/</span>
+              </span>
+            ))}
+          </TextMarquee>
+        </div>
+      </Container>
     </section>
   );
 };
