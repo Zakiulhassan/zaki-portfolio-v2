@@ -62,8 +62,8 @@ const config = {
         },
         muted: {
           DEFAULT: '#E4E7DC',
-          foreground: '#6D7065',
-          dark: '#6D7065',
+          foreground: '#9B9E92',
+          dark: '#9B9E92',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',

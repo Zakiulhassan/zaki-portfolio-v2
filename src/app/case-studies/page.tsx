@@ -4,7 +4,7 @@ import React from 'react'
 
 const CaseStudies = () => {
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col bg-coal pt-24">
       <section className="h-full w-full">
         <div className="flex flex-col items-center justify-center">
           <CaseStudiesHero />

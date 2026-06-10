@@ -8,7 +8,7 @@ import React from "react";
 
 const CaseStudies = () => {
   return (
-    <section className="z-10 flex flex-col gap-12">
+    <section className="z-10 flex flex-col gap-12 bg-coal pt-24">
         <Container>
           <WhoAmIHero />
           <LogoScrollVelocity />

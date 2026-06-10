@@ -4,7 +4,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import Header from '@/components/navigation/Header';
 
 // Define TypeScript interfaces
 interface Stat {
@@ -129,10 +128,10 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
 
   if (!caseStudy) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-coal text-ink">
         <div className="text-center">
           <h1 className="text-2xl font-bricolage font-bold mb-4">Case study not found</h1>
-          <Link href="/case-studies" className="text-greenPri hover:text-greenSec">
+          <Link href="/case-studies" className="text-acid hover:text-greenSec">
             ← Back to Case Studies
           </Link>
         </div>
@@ -141,12 +140,11 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
   }
 
   return (
-    <>
-      <Header />
+    <div className="bg-coal min-h-screen text-ink pt-24">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <div className="mb-8">
-          <Link href="/case-studies" className="text-sm text-secondary hover:text-primary flex items-center gap-2">
+          <Link href="/case-studies" className="text-sm text-ink-dim hover:text-acid flex items-center gap-2">
             ← Back to Case Studies
           </Link>
         </div>
@@ -275,14 +273,14 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
         </motion.section>
 
         {/* Back to Case Studies Button */}
-        <Link 
+        <Link
           href="/case-studies"
-          className="inline-block text-sm text-secondary hover:text-primary font-jakarta"
+          className="inline-block text-sm text-ink-dim hover:text-acid font-jakarta"
         >
           ← Back to Case Studies
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 
