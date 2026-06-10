@@ -34,17 +34,14 @@ const ButtonGhost: React.FC<ButtonGhostProps> = ({
     <button
       onClick={handleClick}
       data-cursor="hover"
-      className={classNames(
-        "group relative flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 uppercase tracking-widest font-medium backdrop-blur-xl transition-all duration-300 ease-in-out text-ink hover:border-acid hover:text-acid",
-        className
-      )}
+      className={classNames("btn btn-secondary group", className)}
     >
       {/* Button text */}
       <span className="flex-grow">{text}</span>
 
       {/* Icon (if provided) */}
       {icon && (
-        <span className="text-xl flex-shrink-0 transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1">
+        <span className="flex-shrink-0 text-xl transition-transform duration-base ease-brand group-hover:translate-x-1 group-hover:-translate-y-1">
           {icon}
         </span>
       )}

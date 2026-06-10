@@ -1,11 +1,13 @@
 "use client";
 
 import { ReactNode, useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Magnetic hover: the child is gently pulled toward the cursor while
- * hovered and springs back on leave.
+ * Magnetic hover: the child gently follows the cursor while hovered and
+ * eases back to rest on leave. Ease-out tween only, no spring physics.
  */
 const Magnetic = ({
   children,
@@ -19,20 +21,20 @@ const Magnetic = ({
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
-  const sy = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const onMouseMove = (e: React.MouseEvent) => {
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    x.set((e.clientX - rect.left - rect.width / 2) * strength);
-    y.set((e.clientY - rect.top - rect.height / 2) * strength);
+    const targetX = (e.clientX - rect.left - rect.width / 2) * strength;
+    const targetY = (e.clientY - rect.top - rect.height / 2) * strength;
+    animate(x, targetX, { type: "tween", ease: EASE, duration: 0.3 });
+    animate(y, targetY, { type: "tween", ease: EASE, duration: 0.3 });
   };
 
   const onMouseLeave = () => {
-    x.set(0);
-    y.set(0);
+    animate(x, 0, { type: "tween", ease: EASE, duration: 0.3 });
+    animate(y, 0, { type: "tween", ease: EASE, duration: 0.3 });
   };
 
   return (
@@ -40,7 +42,7 @@ const Magnetic = ({
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      style={{ x: sx, y: sy }}
+      style={{ x, y }}
       className={`inline-block ${className}`}
     >
       {children}

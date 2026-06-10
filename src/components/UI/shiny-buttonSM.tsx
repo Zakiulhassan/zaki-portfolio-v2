@@ -1,61 +1,26 @@
 "use client";
 
 import React from "react";
-import { motion, type AnimationProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
-const animationProps = {
-  initial: { "--x": "100%", scale: 0.8 },
-  animate: { "--x": "-100%", scale: 1 },
-  whileTap: { scale: 0.95 },
-  transition: {
-    repeat: Infinity,
-    repeatType: "loop",
-    repeatDelay: 1,
-    type: "spring",
-    stiffness: 20,
-    damping: 15,
-    mass: 2,
-    scale: {
-      type: "spring",
-      stiffness: 200,
-      damping: 5,
-      mass: 0.5,
-    },
-  },
-} as AnimationProps;
 interface ShinyButtonSMProps {
   children: React.ReactNode;
   className?: string;
 }
+
+/**
+ * Small solid signal-green button. Sharp corners, ease-out hover only —
+ * no infinite shimmer/spring loop per the brand motion spec.
+ */
 const ShinyButtonSM = ({ children, className, ...props }: ShinyButtonSMProps) => {
   return (
-    <motion.button
-      {...animationProps}
+    <button
       {...props}
-      className={cn(
-        "relative shadow-sm rounded-sm px-3 py-[4px] uppercase tracking-tight backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_50%,var(--primary)_0%,transparent_70%)] dark:hover:shadow-[0_0_20px_var(--primary)] bg-gradient-to-r from-greenPri to-greenSec",
-        className,
-      )}
+      className={cn("btn btn-primary px-3 py-[6px] text-sm", className)}
     >
-      <span
-        className="relative block size-full font-medium text-primary"
-        style={{
-          maskImage:
-            "linear-gradient(-75deg, rgb(192, 255, 180, 1) calc(var(--x) + 20%), transparent calc(var(--x) + 20%), rgb(192, 255, 180, 1) calc(var(--x) + 100%))",
-        }}
-      >
-        {children}
-      </span>
-      <span
-        style={{
-          mask: "linear-gradient(rgb(0,0,0), rgb(0,0,0)) content-box,linear-gradient(rgb(192, 255, 180), rgb(192, 255, 180))",
-          maskComposite: "exclude",
-        }}
-        className="absolute inset-0 z-10 block rounded-[inherit] bg-[linear-gradient(-75deg,hsl(var(--primary)/10%)_calc(var(--x)+20%),hsl(var(--primary)/50%)_calc(var(--x)+25%),hsl(var(--primary)/10%)_calc(var(--x)+100%))] p-px"
-      ></span>
-    </motion.button>
+      {children}
+    </button>
   );
 };
 

@@ -56,8 +56,8 @@ const ReviewCard = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col gap-8 bg-background hover:bg-foreground rounded-2xl p-4 max-w-[320px] justify-between">
-        <PiQuotesFill className="w-12 h-12 text-muted-dark text-xl flex-shrink-0 rotate-180" />
+      <div className="flex flex-col gap-8 bg-coal-soft border border-line700 rounded p-4 max-w-[320px] justify-between transition-colors duration-base ease-brand hover:border-line600">
+        <PiQuotesFill className="w-12 h-12 text-ink-dim text-xl flex-shrink-0 rotate-180" />
 
         <blockquote className="text-lg font-jakarta font-mediun leading-snug text-white pb-12">
           {body}

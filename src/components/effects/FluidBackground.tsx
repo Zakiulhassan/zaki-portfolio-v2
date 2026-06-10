@@ -176,7 +176,7 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none absolute inset-0 ${className}`}
+      className={`pointer-events-none absolute inset-0 opacity-[0.12] ${className}`}
       aria-hidden
     />
   );

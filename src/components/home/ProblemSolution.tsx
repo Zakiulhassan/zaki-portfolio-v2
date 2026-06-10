@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Container from "../widgets/Container";
-import WordPullUp from "../UI/word-pull-up";
 import WordFadeIn from "../UI/word-fade-in";
 import { FadeTextComp } from "../widgets/FadeText";
 import CardList from "../widgets/CardList";
@@ -78,10 +77,13 @@ const ProblemSolution = () => {
               <div className="flex flex-col lg:flex-row w-full gap-8">
                 {/* Left Text Section */}
                 <div className="flex-1">
-                  <WordPullUp
-                    className="text-muted text-sm md:text-base lg:text-lg mb-4"
-                    words="Is this you right now?"
-                  />
+                  <div className="rail mb-4">
+                    <span className="idx">02</span>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight">
+                      Is this you right now?
+                    </h2>
+                    <span className="tick"></span>
+                  </div>
                   <WordFadeIn words="Your brand needs more than just an update—it needs a transformation that drives results." />
                 </div>
 

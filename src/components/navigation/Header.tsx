@@ -33,8 +33,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-coal/80 backdrop-blur-md border-b border-white/5" : ""
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-base ease-brand ${
+        isScrolled
+          ? "bg-coal/[.86] backdrop-blur-md border-b border-line700"
+          : ""
       }`}
     >
       <Container>

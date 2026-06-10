@@ -81,15 +81,17 @@ const ProjectPlans = () => {
         <div className="flex flex-col gap-12 px-4 py-12 sm:px-8 sm:py-16 lg:px-24 lg:py-24">
           {/* Header Section */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl text-white max-w-xl text-center md:text-left font-bricolage font-medium leading-tight">
-              <span className="text-greenPri">Your project</span> deserves more
-              than just a{" "}
-              <span className="text-greenPri">pretty interface.</span> It needs
-              results!
-            </h1>
-            <p className="font-gloria text-base sm:text-lg lg:text-xl max-w-xl md:max-w-xs text-center md:text-right text-secondary leading-tight">
-              <span className="hover:text-greenPri">Pick the service</span> that
-              fits your needs. I&apos;ve got you covered.
+            <div className="rail w-full md:w-auto">
+              <span className="idx">03</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight max-w-xl">
+                Your project deserves more than just a{" "}
+                <span className="text-acid">pretty</span> interface. It needs
+                results!
+              </h2>
+              <span className="tick"></span>
+            </div>
+            <p className="text-base sm:text-lg lg:text-xl max-w-xl md:max-w-xs text-center md:text-right text-ink-dim leading-tight">
+              Pick the service that fits your needs. I&apos;ve got you covered.
             </p>
           </div>
 

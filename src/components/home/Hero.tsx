@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import FluidBackground from "../effects/FluidBackground";
-import { SplitReveal } from "../motion/SplitReveal";
+import { SplitReveal, FadeIn } from "../motion/SplitReveal";
 import TextMarquee from "../motion/TextMarquee";
-import ButtonGhost from "../UI/ButtonGhost";
-import { LuArrowDown, LuArrowUpRight } from "react-icons/lu";
 import Container from "../widgets/Container";
 
 const SKILLS = [
@@ -20,7 +19,9 @@ const SKILLS = [
 const Hero = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-coal text-ink">
-      <FluidBackground />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-full sm:w-2/3 lg:w-1/2">
+        <FluidBackground />
+      </div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-coal/10 via-coal/40 to-coal" />
 
@@ -31,44 +32,56 @@ const Hero = () => {
             mode="words"
             immediate
             delay={0.2}
-            className="text-display text-[14vw] leading-[0.9] sm:text-[12vw] lg:text-[8vw]"
+            className="text-display tracking-display text-[14vw] leading-[0.9] sm:text-[10vw] lg:text-[7vw]"
           >
-            Crafting Digital
+            Design that makes
           </SplitReveal>
-          <SplitReveal
-            as="h1"
-            mode="words"
-            immediate
-            delay={0.35}
-            className="text-display text-[14vw] leading-[0.9] sm:text-[12vw] lg:text-[8vw] text-outline-acid"
-          >
-            Experiences
-          </SplitReveal>
+          <h1 className="text-display tracking-display text-[14vw] leading-[0.9] sm:text-[10vw] lg:text-[7vw]">
+            <SplitReveal
+              as="span"
+              mode="words"
+              immediate
+              delay={0.35}
+              className="inline"
+            >
+              products easier to
+            </SplitReveal>{" "}
+            <SplitReveal
+              as="span"
+              mode="words"
+              immediate
+              delay={0.45}
+              className="inline text-acid"
+            >
+              trust.
+            </SplitReveal>
+          </h1>
         </div>
 
         <div className="flex flex-col gap-10">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <p className="max-w-md font-serif-accent text-2xl text-ink-dim sm:text-3xl">
-              Hey, I&apos;m Zaki ul Hassan — a designer &amp; developer who
-              builds products that drive growth and build loyalty.
-            </p>
-            <div className="flex shrink-0 items-center gap-4">
-              <ButtonGhost
-                text="Case Studies"
-                icon={<LuArrowUpRight />}
-                href="/case-studies"
-                className="text-lg cursor-pointer"
-              />
-              <div
-                data-cursor="hover"
-                className="flex h-14 w-14 shrink-0 animate-bounce items-center justify-center rounded-full border border-acid/40 text-acid"
-              >
-                <LuArrowDown />
-              </div>
-            </div>
+            <FadeIn immediate delay={0.5} className="max-w-md">
+              <p className="text-lg text-ink-dim sm:text-xl">
+                I help agencies, startups, and product teams turn complex
+                digital experiences into clear, polished, high-quality
+                interfaces that feel credible from the first interaction.
+              </p>
+            </FadeIn>
+            <FadeIn
+              immediate
+              delay={0.65}
+              className="flex shrink-0 flex-wrap items-center gap-4"
+            >
+              <Link href="/case-studies" data-cursor="hover" className="btn btn-primary">
+                View Selected Work
+              </Link>
+              <Link href="/book-a-call" data-cursor="hover" className="btn btn-secondary">
+                Let&apos;s Talk Design
+              </Link>
+            </FadeIn>
           </div>
 
-          <TextMarquee baseSpeed={45} className="border-t border-white/10 py-4">
+          <TextMarquee baseSpeed={45} className="border-t border-line700 py-4">
             {SKILLS.map((skill, i) => (
               <span
                 key={i}

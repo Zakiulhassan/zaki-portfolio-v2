@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Gloria_Hallelujah, Instrument_Serif } from "next/font/google";
+import { Gloria_Hallelujah, JetBrains_Mono } from "next/font/google";
 import Footer from "@/components/navigation/Footer";
 import Header from "@/components/navigation/Header";
 import SmoothScroll from "@/components/providers/SmoothScroll";
@@ -14,12 +14,11 @@ const gloriaHallelujah = Gloria_Hallelujah({
   variable: '--font-gloria', // Add this for CSS variable
 });
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
-  variable: '--font-serif',
+  variable: '--font-mono',
 });
 
 
@@ -34,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable} ${jetbrainsMono.variable}`}>
       <body className="grain antialiased bg-background font-aeonik">
         <SmoothScroll>
           <CursorTrail />

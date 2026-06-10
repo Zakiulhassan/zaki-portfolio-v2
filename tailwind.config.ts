@@ -32,18 +32,43 @@ const config = {
       fontFamily: {
         aeonik: ['var(--font-aeonik)'],
         gloria: ['var(--font-gloria)'],
-        serif: ['var(--font-serif)'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
+      },
+      letterSpacing: {
+        display: '-0.035em',
+        heading: '-0.02em',
+        label: '0.14em',
+      },
+      transitionTimingFunction: {
+        brand: 'cubic-bezier(.22,1,.36,1)',
+      },
+      transitionDuration: {
+        fast: '150ms',
+        base: '300ms',
+        slow: '600ms',
       },
       colors: {
-        background: '#0A0A0B',
-        foreground: '#131312',
-        coal: '#0A0A0B',
-        'coal-soft': '#131312',
-        ink: '#EDEDE8',
-        'ink-dim': '#8A8D82',
+        background: '#101010',
+        foreground: '#181818',
+        coal: '#101010',
+        'coal-soft': '#181818',
+        ink: '#F4F4EF',
+        'ink-dim': '#8A8A84',
         acid: '#C6FE1E',
         greenPri: 'hsl(var(--green-pri))',
         greenSec: 'hsl(var(--green-sec))',
+        ink950: '#0B0B0B',
+        ink900: '#101010',
+        ink850: '#141414',
+        ink800: '#181818',
+        ink750: '#1F1F1E',
+        line700: '#2A2A2A',
+        line600: '#3A3A38',
+        paper: '#F4F4EF',
+        signal: {
+          DEFAULT: '#C6FE1E',
+          600: '#A8DB12',
+        },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
@@ -62,8 +87,8 @@ const config = {
         },
         muted: {
           DEFAULT: '#E4E7DC',
-          foreground: '#9B9E92',
-          dark: '#9B9E92',
+          foreground: '#8A8A84',
+          dark: '#8A8A84',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
