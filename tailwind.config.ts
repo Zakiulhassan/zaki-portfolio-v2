@@ -35,8 +35,8 @@ const config = {
         mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
       },
       letterSpacing: {
-        display: '-0.015em',
-        heading: '-0.01em',
+        display: '-0.025em',
+        heading: '-0.015em',
         label: '0.14em',
       },
       transitionTimingFunction: {
