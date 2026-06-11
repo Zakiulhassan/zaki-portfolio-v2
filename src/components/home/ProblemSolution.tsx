@@ -80,7 +80,7 @@ const ProblemSolution = () => {
                 <div className="flex-1">
                   <div className="rail mb-4">
                     <span className="idx">02</span>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight">
                       Is this you right now?
                     </h2>
                     <RevealTick />

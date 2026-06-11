@@ -15,7 +15,7 @@ const CaseStudiesSection = () => {
             <SplitReveal
               as="h2"
               mode="words"
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight"
             >
               Case studies
             </SplitReveal>

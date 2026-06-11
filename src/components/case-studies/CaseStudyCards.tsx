@@ -154,7 +154,7 @@ const CaseStudyCards = () => {
                       <span className="label">0{index + 1} / 0{caseStudies.length}</span>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-bold tracking-heading leading-tight text-ink">
+                    <h3 className="text-xl md:text-2xl font-semibold tracking-heading leading-tight text-ink">
                       {study.title}
                     </h3>
 
@@ -174,7 +174,7 @@ const CaseStudyCards = () => {
                     </div>
 
                     <div className="mt-2 pt-4 border-t border-line700">
-                      <p className="text-3xl font-bold tracking-heading text-acid">
+                      <p className="text-3xl font-semibold tracking-heading text-acid">
                         <CountUp value={study.stat.value} suffix={study.stat.suffix} />
                       </p>
                       <p className="text-sm leading-relaxed text-ink-dim">

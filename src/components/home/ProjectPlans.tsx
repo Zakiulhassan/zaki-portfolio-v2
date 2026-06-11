@@ -84,7 +84,7 @@ const ProjectPlans = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="rail w-full md:w-auto">
               <span className="idx">04</span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight max-w-xl">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight max-w-xl">
                 Your project deserves more than just a{" "}
                 <span className="text-acid">pretty</span> interface. It needs
                 results!

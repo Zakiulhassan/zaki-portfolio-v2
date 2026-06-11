@@ -42,7 +42,7 @@ const ProjectPlanCard: React.FC<ProjectPlanCardProps> = ({
           background: `linear-gradient(to right, ${bgColorFrom}, ${bgColorTo})`,
         }}>
         <div className="p-8">
-          <h2 className={` text-xl font-bricolage font-bold mb-2 leading-tight`} style={{
+          <h2 className={` text-xl font-bricolage font-semibold mb-2 leading-tight`} style={{
           color: `${colorHeading}`,
         }}>{title}</h2>
           <p className="text-sm mb-8 font-jakarta leading-tight" style={{

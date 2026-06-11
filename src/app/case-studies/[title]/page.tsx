@@ -130,7 +130,7 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-coal text-ink">
         <div className="text-center">
-          <h1 className="text-2xl font-bold tracking-heading mb-4">Case study not found</h1>
+          <h1 className="text-2xl font-semibold tracking-heading mb-4">Case study not found</h1>
           <Link href="/case-studies" className="btn-ghost">
             <span className="arr">←</span> Back to case studies
           </Link>
@@ -157,7 +157,7 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
           className="mb-8"
         >
           <div className="label green mb-2">{caseStudy.title1}</div>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-heading mb-4 text-ink">{caseStudy.title}</h1>
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-heading mb-4 text-ink">{caseStudy.title}</h1>
           <div className="flex flex-wrap gap-2">
             {caseStudy.tag.map((tag, index) => (
               <span key={index} className="tag">
@@ -263,7 +263,7 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {caseStudy.stats.map((stat, index) => (
               <div key={index} className="border border-line700 p-6">
-                <div className="text-4xl font-bold tracking-heading mb-2 text-acid">
+                <div className="text-4xl font-semibold tracking-heading mb-2 text-acid">
                   {stat.percentage}
                 </div>
                 <div className="text-ink-dim text-sm leading-relaxed">{stat.text}</div>

@@ -73,7 +73,7 @@ const ReviewCard = ({
             className="object-contain rounded-full border-2"
           />
           <div>
-            <figcaption className="text-base font-bricolage font-bold leading-tight text-secondary">
+            <figcaption className="text-base font-bricolage font-semibold leading-tight text-secondary">
               {name}{" "}
               <span className="text-xs font-medium text-secondary">
                 {username}

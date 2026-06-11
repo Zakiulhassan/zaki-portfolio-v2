@@ -12,7 +12,7 @@ const ProjectsHome = () => {
         <div className="flex flex-col gap-12">
           <FadeIn className="rail">
             <span className="idx">01</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight">
               Selected Work
             </h2>
             <RevealTick />
