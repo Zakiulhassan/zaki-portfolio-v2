@@ -3,14 +3,15 @@ import Container from "../widgets/Container";
 import TextMarquee from "../motion/TextMarquee";
 import { FadeIn } from "../motion/SplitReveal";
 import FluidImage from "../motion/FluidImage";
+import Parallax from "../motion/Parallax";
 import RevealTick from "../motion/RevealTick";
 
 const ProjectsHome = () => {
   return (
-    <section className="relative bg-coal pt-24 pb-12">
+    <section className="relative bg-coal pt-24 pb-12 sm:pt-32">
       <Container>
         <div className="flex flex-col gap-12">
-          <FadeIn className="flex flex-col gap-4">
+          <FadeIn className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="rail">
               <span className="idx">01</span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight">
@@ -18,41 +19,44 @@ const ProjectsHome = () => {
               </h2>
               <RevealTick />
             </div>
-            <p className="max-w-xl text-base text-ink-dim sm:text-lg">
+            <p className="max-w-md text-base text-ink-dim sm:text-lg md:text-right">
               Three shipped products, three measurable outcomes. The full case
               studies show the decisions behind each one.
             </p>
           </FadeIn>
 
-          <FadeIn className="grid gap-6 md:grid-cols-3" y={60}>
+          <div className="grid gap-6 md:grid-cols-3">
             {[
               { src: "/cleanly-home.png", label: "Cleanly" },
               { src: "/furnium-website.png", label: "Furnium" },
               { src: "/rivo-app.png", label: "Rivo" },
             ].map((p, i) => (
-              <div
-                key={i}
-                data-cursor="hover"
-                data-cursor-label="View"
-                className="group relative aspect-[4/3] overflow-hidden rounded border border-line700"
-              >
-                <FluidImage
-                  src={p.src}
-                  alt={p.label}
-                  className="h-full w-full"
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-coal/80 via-transparent to-transparent" />
-                <span className="absolute bottom-4 left-4 text-sm uppercase tracking-[0.3em] text-ink">
-                  {p.label}
-                </span>
-              </div>
+              <Parallax key={i} amount={i === 1 ? 56 : 24}>
+                <FadeIn delay={i * 0.08} y={60}>
+                  <div
+                    data-cursor="hover"
+                    data-cursor-label="View"
+                    className="group relative aspect-[4/3] overflow-hidden rounded border border-line700"
+                  >
+                    <FluidImage
+                      src={p.src}
+                      alt={p.label}
+                      className="h-full w-full"
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-coal/80 via-transparent to-transparent" />
+                    <span className="absolute bottom-4 left-4 text-sm uppercase tracking-[0.3em] text-ink">
+                      {p.label}
+                    </span>
+                  </div>
+                </FadeIn>
+              </Parallax>
             ))}
-          </FadeIn>
+          </div>
         </div>
       </Container>
 
-      <div className="mt-16 border-y border-white/10">
+      <div className="mt-16 border-t border-line700">
         <TextMarquee baseSpeed={55} direction={-1} className="py-6">
           {Array.from({ length: 6 }).map((_, i) => (
             <span

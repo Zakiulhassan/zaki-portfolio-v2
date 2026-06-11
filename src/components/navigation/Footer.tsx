@@ -1,6 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Container from "../widgets/Container";
 import { SplitReveal, FadeIn } from "../motion/SplitReveal";
 import Magnetic from "../motion/Magnetic";
@@ -15,8 +22,26 @@ const SOCIALS = [
 ];
 
 const Footer = () => {
+  const ref = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  // Parallax reveal: footer content lags behind the scroll so the section
+  // appears uncovered from beneath the page above it.
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduced ? ["0%", "0%"] : ["-30%", "0%"]
+  );
+
   return (
-    <footer className="relative z-30 border-t border-line700 bg-coal-soft text-ink">
+    <footer
+      ref={ref}
+      className="relative z-30 overflow-hidden border-t border-line700 bg-coal-soft text-ink"
+    >
+      <motion.div style={{ y }}>
       <Container>
         <div className="flex flex-col gap-12 py-24">
           <div className="flex flex-col gap-6">
@@ -87,6 +112,7 @@ const Footer = () => {
           </div>
         </div>
       </Container>
+      </motion.div>
     </footer>
   );
 };

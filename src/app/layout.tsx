@@ -7,6 +7,7 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import PageTransition from "@/components/providers/PageTransition";
 import CursorTrail from "@/components/effects/CursorTrail";
 import FluidCardLayer from "@/components/effects/FluidCardLayer";
+import Preloader from "@/components/effects/Preloader";
 
 // Set up Gloria Hallelujah
 const gloriaHallelujah = Gloria_Hallelujah({
@@ -38,6 +39,7 @@ export default function RootLayout({
     <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable} ${jetbrainsMono.variable}`}>
       <body className="grain antialiased bg-background font-aeonik">
         <SmoothScroll>
+          <Preloader />
           <CursorTrail />
           <FluidCardLayer />
           <Header />

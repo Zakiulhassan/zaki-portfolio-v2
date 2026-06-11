@@ -77,11 +77,11 @@ const cardData = [
 
 const ProjectPlans = () => {
   return (
-    <section className="bg-coal min-h-screen">
+    <section className="border-t border-line700 bg-coal">
       <Container>
-        <div className="flex flex-col gap-12 px-4 py-12 sm:px-8 sm:py-16 lg:px-24 lg:py-24">
+        <div className="flex flex-col gap-12 py-24 sm:py-32">
           {/* Header Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="rail w-full md:w-auto">
               <span className="idx">04</span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight max-w-xl">
@@ -90,7 +90,7 @@ const ProjectPlans = () => {
               </h2>
               <RevealTick />
             </div>
-            <p className="text-base sm:text-lg lg:text-xl max-w-xl md:max-w-xs text-center md:text-right text-ink-dim leading-tight">
+            <p className="max-w-md text-base text-ink-dim sm:text-lg md:text-right">
               Three ways to work together. Defined scope, defined timeline,
               deliverables you can ship.
             </p>
@@ -120,7 +120,7 @@ const ProjectPlans = () => {
           </div>
 
           {/* Footer Section */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-center text-ink-dim leading-tight">
+          <p className="mx-auto max-w-2xl text-center text-lg leading-snug text-ink-dim sm:text-xl">
             Not sure which one fits? Book the call anyway — I&apos;ll tell you
             what I&apos;d do, and the plan is yours either way.
           </p>
