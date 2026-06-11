@@ -13,32 +13,31 @@ const CaseStudiesHero = () => {
           <ShinnyTextCompDark />
         </FadeIn>
 
-        <h1 className="text-display text-[12vw] leading-[0.95] text-ink sm:text-[8vw] lg:text-[6vw]">
+        <h1 className="text-display text-[10vw] leading-[1.05] text-ink sm:text-[6.5vw] lg:text-[5vw]">
           <SplitReveal
             as="span"
             mode="words"
             immediate
             delay={0.15}
-            className="inline text-acid"
+            className="inline"
           >
-            Decisions,
+            Three products,
           </SplitReveal>{" "}
           <SplitReveal
             as="span"
             mode="words"
             immediate
             delay={0.3}
-            className="inline"
+            className="inline text-acid"
           >
-            not deliverables.
+            three outcomes.
           </SplitReveal>
         </h1>
 
         <FadeIn immediate delay={0.6} className="max-w-2xl">
           <p className="text-xl text-ink-dim sm:text-2xl">
-            Each case study shows the problem we started with, the calls I
-            made, and the numbers that followed. Judge the thinking, not just
-            the screens.
+            Pick any one and you&apos;ll get the same thing: the problem we
+            started with, the decisions I made, and the numbers that followed.
           </p>
         </FadeIn>
 

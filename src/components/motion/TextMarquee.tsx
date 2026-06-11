@@ -32,6 +32,8 @@ const TextMarquee = ({
 
     let pos = 0;
     let velocityBoost = 0;
+    let lastTime: number | null = null;
+    let rafId = 0;
     const trackWidth = () => tracks[0].offsetWidth;
 
     const st = ScrollTrigger.create({
@@ -40,8 +42,12 @@ const TextMarquee = ({
       },
     });
 
-    const tick = (_t: number, deltaMs: number) => {
-      const dt = deltaMs / 1000;
+    const tick = (now: number) => {
+      if (lastTime === null) lastTime = now;
+      // clamp dt so a backgrounded tab doesn't cause a huge jump on return
+      const dt = Math.min((now - lastTime) / 1000, 1 / 30);
+      lastTime = now;
+
       const speed = baseSpeed * direction + velocityBoost * direction * 40;
       pos -= speed * dt;
       velocityBoost *= 0.92;
@@ -53,11 +59,12 @@ const TextMarquee = ({
       tracks.forEach((track) => {
         track.style.transform = `translateX(${pos}px)`;
       });
+      rafId = requestAnimationFrame(tick);
     };
-    gsap.ticker.add(tick);
+    rafId = requestAnimationFrame(tick);
 
     return () => {
-      gsap.ticker.remove(tick);
+      cancelAnimationFrame(rafId);
       st.kill();
     };
   }, [baseSpeed, direction]);

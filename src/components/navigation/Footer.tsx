@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="flex flex-col gap-12 py-24">
           <div className="flex flex-col gap-6">
             <span className="label">Got a project in mind?</span>
-            <h2 className="text-display tracking-display text-[13vw] leading-[0.95] sm:text-[9vw] lg:text-[8vw]">
+            <h2 className="text-display tracking-display text-[11vw] leading-[1.05] sm:text-[7.5vw] lg:text-[6.5vw]">
               <SplitReveal as="span" mode="words" className="inline">
                 Let&apos;s make it easier to
               </SplitReveal>{" "}

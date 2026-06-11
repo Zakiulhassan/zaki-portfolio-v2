@@ -1,21 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const EASE = [0.76, 0, 0.24, 1] as const;
-const COUNT_MS = 1500;
+const COUNT_MS = 1600;
 const SESSION_KEY = "zaki-preloader-shown";
 
+const LETTERS = "Zaki".split("");
+
 /**
- * Splash-screen preloader: wordmark + climbing counter on a full coal panel
- * that wipes upward to reveal the hero. Runs once per browser session and
- * is skipped entirely under prefers-reduced-motion.
+ * Splash-screen preloader: a centered wordmark counts up to 100%, then two
+ * panels split apart horizontally to reveal the hero beneath. Runs once per
+ * browser session and is skipped entirely under prefers-reduced-motion.
  */
 const Preloader = () => {
   // "boot" renders a static cover for the first frame (avoids hero flash),
-  // "run" plays the counter, "done" unmounts — with the wipe only after "run".
-  const [phase, setPhase] = useState<"boot" | "run" | "done">("boot");
+  // "run" plays the counter, "exit" splits the panels, "done" unmounts.
+  const [phase, setPhase] = useState<"boot" | "run" | "exit" | "done">("boot");
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -38,62 +40,92 @@ const Preloader = () => {
       if (t < 1) {
         frame = requestAnimationFrame(tick);
       } else {
-        setTimeout(() => setPhase("done"), 350);
+        setTimeout(() => setPhase("exit"), 250);
       }
     };
     frame = requestAnimationFrame(tick);
 
-    return () => {
-      cancelAnimationFrame(frame);
-      document.documentElement.style.overflow = "";
-    };
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
-    if (phase === "done") document.documentElement.style.overflow = "";
+    if (phase !== "exit") return;
+    const timer = setTimeout(() => {
+      setPhase("done");
+      document.documentElement.style.overflow = "";
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [phase]);
 
-  const cover = (
-    <div className="flex h-full flex-col justify-between px-6 py-8 sm:px-12">
-      <p className="label">Portfolio — {new Date().getFullYear()}</p>
-
-      <div className="flex items-center justify-center">
-        <span className="text-display tracking-display text-[16vw] sm:text-[10vw]">
-          Zaki<span className="text-acid">.</span>
-        </span>
-      </div>
-
-      <div className="flex items-end justify-between">
-        <p className="label">Product Designer &amp; Developer</p>
-        <span className="font-mono text-5xl tabular-nums text-ink sm:text-7xl">
-          {progress}
-          <span className="text-acid">%</span>
-        </span>
-      </div>
-    </div>
-  );
-
-  if (phase === "boot") {
-    return <div className="fixed inset-0 z-[200] bg-coal text-ink">{cover}</div>;
-  }
+  if (phase === "done") return null;
 
   return (
-    <AnimatePresence>
-      {phase === "run" && (
-        <motion.div
-          className="fixed inset-0 z-[200] bg-coal text-ink"
-          exit={{ y: "-100%" }}
-          transition={{ duration: 0.9, ease: EASE }}
-        >
-          {cover}
-          <motion.span
-            className="absolute bottom-0 left-0 h-px w-full origin-left bg-acid"
-            style={{ scaleX: progress / 100 }}
-            aria-hidden
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div className="fixed inset-0 z-[200] overflow-hidden text-ink">
+          {/* Left panel */}
+          <motion.div
+            className="absolute inset-y-0 left-0 w-1/2 bg-coal"
+            animate={{ x: phase === "exit" ? "-100%" : 0 }}
+            transition={{ duration: 0.9, ease: EASE }}
+          >
+            <p className="absolute left-6 top-8 label sm:left-12 sm:top-10">
+              Portfolio — {new Date().getFullYear()}
+            </p>
+            <span className="absolute bottom-8 left-6 font-mono text-4xl tabular-nums text-ink sm:bottom-10 sm:left-12 sm:text-6xl">
+              {progress}
+              <span className="text-acid">%</span>
+            </span>
+          </motion.div>
+
+          {/* Right panel */}
+          <motion.div
+            className="absolute inset-y-0 right-0 w-1/2 bg-coal"
+            animate={{ x: phase === "exit" ? "100%" : 0 }}
+            transition={{ duration: 0.9, ease: EASE }}
+          >
+            <p className="absolute right-6 top-8 label text-right sm:right-12 sm:top-10">
+              Product Designer &amp; Developer
+            </p>
+            <div className="absolute bottom-8 right-6 flex flex-col items-end gap-2 sm:bottom-10 sm:right-12">
+              <span className="label">Loading</span>
+              <span className="block h-px w-32 bg-line700 sm:w-48">
+                <motion.span
+                  className="block h-full origin-left bg-acid"
+                  style={{ scaleX: progress / 100 }}
+                />
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Centered wordmark, letters stagger in then fade just before
+              the panels split. */}
+          <motion.div
+            className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
+            animate={{ opacity: phase === "exit" ? 0 : 1 }}
+            transition={{ duration: 0.35, ease: EASE }}
+          >
+            <span className="text-display tracking-display flex text-[16vw] sm:text-[9vw]">
+              {LETTERS.map((letter, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: "60%" }}
+                  animate={{ opacity: 1, y: "0%" }}
+                  transition={{ duration: 0.7, delay: 0.08 * i, ease: EASE }}
+                  className="inline-block"
+                >
+                  {letter}
+                </motion.span>
+              ))}
+              <motion.span
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.08 * LETTERS.length, ease: EASE }}
+                className="inline-block text-acid"
+              >
+                .
+              </motion.span>
+            </span>
+          </motion.div>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ export function FadeTextComp() {
   return (
     <div className="flex flex-col space-y-0 text-center">
       <FadeText
-        className="font-gloria font-light text-3xl text-center text-secondary leading-tight tracking-tight"
+        className="font-gloria font-light text-3xl text-center text-ink leading-tight tracking-tight"
         direction="up"
         framerProps={{
           show: { transition: { delay: 1.75 } },
@@ -16,7 +16,7 @@ export function FadeTextComp() {
         }
       />
       <FadeText
-        className="font-gloria text-3xl text-center text-secondary leading-tight tracking-tight"
+        className="font-gloria text-3xl text-center text-ink leading-tight tracking-tight"
         direction="right"
         framerProps={{
           show: { transition: { delay: 2 } },
@@ -28,7 +28,7 @@ export function FadeTextComp() {
         }
       />
       <FadeText
-        className="font-gloria text-3xl text-center text-secondary leading-tight tracking-tight"
+        className="font-gloria text-3xl text-center text-ink leading-tight tracking-tight"
         direction="down"
         framerProps={{
           show: { transition: { delay: 2.25 } },

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import FluidBackground from "../effects/FluidBackground";
 import { SplitReveal, FadeIn } from "../motion/SplitReveal";
 import TextMarquee from "../motion/TextMarquee";
@@ -46,9 +47,26 @@ const Hero = () => {
         </p>
       </FadeIn>
 
+      {/* Portrait, anchored to the right edge behind the headline */}
+      <FadeIn
+        immediate
+        delay={0.25}
+        y={24}
+        className="pointer-events-none absolute bottom-0 right-0 z-[5] hidden h-[78vh] w-[34vw] sm:block lg:w-[28vw]"
+      >
+        <Image
+          src="/profile-2a.png"
+          alt="Zaki ul Hassan"
+          fill
+          priority
+          sizes="34vw"
+          className="object-contain object-bottom"
+        />
+      </FadeIn>
+
       <Container className="relative z-10 flex h-full flex-col justify-between pb-10 pt-32">
-        <div className="flex flex-col gap-6">
-          <h1 className="text-display tracking-display text-[13vw] leading-[0.95] sm:text-[9.5vw] lg:text-[6.5vw]">
+        <div className="flex flex-col gap-6 sm:max-w-[68%] lg:max-w-[72%]">
+          <h1 className="text-display tracking-display text-[11vw] leading-[1.05] sm:text-[8vw] lg:text-[5.5vw]">
             <SplitReveal
               as="span"
               mode="words"
@@ -73,13 +91,13 @@ const Hero = () => {
             mode="words"
             immediate
             delay={0.42}
-            className="text-display tracking-display text-[13vw] leading-[0.95] sm:text-[9.5vw] lg:text-[6.5vw]"
+            className="text-display tracking-display text-[11vw] leading-[1.05] sm:text-[8vw] lg:text-[5.5vw]"
           >
             decision.
           </SplitReveal>
         </div>
 
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-10 sm:max-w-[68%] lg:max-w-[72%]">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <FadeIn immediate delay={0.5} className="max-w-md">
               <p className="text-lg text-ink-dim sm:text-xl">
