@@ -88,8 +88,12 @@ const fragmentShader = /* glsl */ `
 
     vec3 col = mix(base, mid, smoothstep(-0.4, 0.7, f));
     float vein = smoothstep(0.42, 0.72, f) * smoothstep(0.95, 0.6, f);
-    col += glow * vein * (0.16 + influence * 0.55);
+    col += glow * vein * (0.2 + influence * 0.55);
     col += glow * influence * 0.05;
+
+    // Slow breathing: the whole field gently swells and settles.
+    float breath = 0.9 + 0.1 * sin(uTime * 0.35);
+    col *= breath;
 
     // Vignette to keep edges dark.
     float vig = smoothstep(1.25, 0.35, length(uv - 0.5) * 1.6);
@@ -152,6 +156,10 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
     };
     window.addEventListener("resize", onResize);
 
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     const clock = new THREE.Clock();
     let rafId = 0;
     const animate = () => {
@@ -160,7 +168,12 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
       uniforms.uMouse.value.lerp(targetMouse, 0.05);
       renderer.render(scene, camera);
     };
-    animate();
+    if (reduced) {
+      // Single static frame — no motion for reduced-motion users.
+      renderer.render(scene, camera);
+    } else {
+      animate();
+    }
 
     return () => {
       cancelAnimationFrame(rafId);
@@ -176,7 +189,7 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none absolute inset-0 opacity-[0.12] ${className}`}
+      className={`pointer-events-none absolute inset-0 opacity-[0.45] ${className}`}
       aria-hidden
     />
   );

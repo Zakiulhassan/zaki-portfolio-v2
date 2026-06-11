@@ -1,8 +1,9 @@
 import React from "react";
 import Container from "../widgets/Container";
 import TextMarquee from "../motion/TextMarquee";
-import Image from "next/image";
 import { FadeIn } from "../motion/SplitReveal";
+import ParallaxImage from "../motion/ParallaxImage";
+import RevealTick from "../motion/RevealTick";
 
 const ProjectsHome = () => {
   return (
@@ -14,7 +15,7 @@ const ProjectsHome = () => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight">
               Selected Work
             </h2>
-            <span className="tick"></span>
+            <RevealTick />
           </FadeIn>
 
           <FadeIn className="grid gap-6 md:grid-cols-3" y={60}>
@@ -26,15 +27,16 @@ const ProjectsHome = () => {
               <div
                 key={i}
                 data-cursor="hover"
+                data-cursor-label="View"
                 className="group relative aspect-[4/3] overflow-hidden rounded border border-line700"
               >
-                <Image
+                <ParallaxImage
                   src={p.src}
                   alt={p.label}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="h-full w-full"
+                  sizes="(min-width: 768px) 33vw, 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-coal/80 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-coal/80 via-transparent to-transparent" />
                 <span className="absolute bottom-4 left-4 text-sm uppercase tracking-[0.3em] text-ink">
                   {p.label}
                 </span>

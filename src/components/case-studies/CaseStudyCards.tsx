@@ -1,25 +1,21 @@
-
 'use client';
 
-import React, { useState, ReactNode } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Container from '../widgets/Container';
 import Image from 'next/image';
 import { FollowerPointerCard } from '../UI/following-pointer';
 import Link from 'next/link';
-
-interface HoverImageWrapperProps {
-  imageSrc: string;  // Type for imageSrc prop
-  children: ReactNode; // Type for children prop, which can be any valid React node
-}
+import ParallaxImage from '../motion/ParallaxImage';
+import CountUp from '../motion/CountUp';
 
 // Animation variants
 const cardVariants = {
-  hidden: { 
+  hidden: {
     opacity: 0,
     y: 50
   },
-  visible: { 
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
@@ -39,7 +35,7 @@ const caseStudies = [
     title: "Cleanly - Website and Dashboard Design and Development",
     category: "Service Platform",
     description: "An on-demand cleaning service platform needed a booking flow customers and admins could both rely on.",
-    stat: { percentage: "200%", text: "Increase in customer onboarding efficiency." },
+    stat: { value: 200, suffix: "%", text: "Increase in customer onboarding efficiency." },
     imageSrc: "/cleanly-home.png",
     tag: ["UI/UX Design", "Full Stack Development", "React.JS", "Next.JS", "Python Django"],
     imageOnRight: false
@@ -52,7 +48,7 @@ const caseStudies = [
     title: "Furnium - A Furniture E-commerce Platform UI/UX Design",
     category: "E-commerce",
     description: "A minimalist furniture brand needed an online store that matched its product photography and tone.",
-    stat: { percentage: "150%", text: "Increase in user engagement after launch." },
+    stat: { value: 150, suffix: "%", text: "Increase in user engagement after launch." },
     imageSrc: "/furnium-website.png",
     tag: ["UI/UX Design", "User Research", "Responsive Design"],
     imageOnRight: true
@@ -65,7 +61,7 @@ const caseStudies = [
     title: "Rivo - An E-commerce Tech Store Platform UI/UX Design",
     category: "Tech Retail",
     description: "An electronics retailer needed a faster path from product discovery to checkout.",
-    stat: { percentage: "120%", text: "Increase in user engagement from personalized recommendations." },
+    stat: { value: 120, suffix: "%", text: "Increase in user engagement from personalized recommendations." },
     imageSrc: "/rivo-app.png",
     tag: ["UI/UX Design", "User Research"],
     imageOnRight: false
@@ -92,6 +88,17 @@ const TitleComponent = ({
   </div>
 );
 
+const CaseStudyImage = ({ src }: { src: string }) => (
+  <ParallaxImage
+    src={src}
+    alt="case-study-image"
+    data-cursor="hover"
+    data-cursor-label="Open"
+    sizes="(min-width: 768px) 50vw, 100vw"
+    className="min-h-[20rem] w-full flex-1 border border-line700"
+  />
+);
+
 const CaseStudyCards = () => {
   return (
     <section>
@@ -110,18 +117,7 @@ const CaseStudyCards = () => {
                 margin: "0px"
               }}
             >
-              {!study.imageOnRight && (
-                <HoverImageWrapper imageSrc={study.imageSrc}>
-                  <Image
-                    src={study.imageSrc}
-                    alt="case-study-image"
-                    width={800}
-                    height={250}
-                    priority
-                    className="transition-transform duration-700 ease-out"
-                  />
-                </HoverImageWrapper>
-              )}
+              {!study.imageOnRight && <CaseStudyImage src={study.imageSrc} />}
               <FollowerPointerCard
                 title={
                   <TitleComponent
@@ -146,7 +142,12 @@ const CaseStudyCards = () => {
                     }
                   }}
                 >
-                  <Link href={`/case-studies/${study.title1}`} passHref className="cursor-none flex flex-col gap-3 h-full">
+                  <Link
+                    href={`/case-studies/${study.title1}`}
+                    passHref
+                    data-cursor-label="View"
+                    className="cursor-none flex flex-col gap-3 h-full"
+                  >
                     <div className="flex items-center gap-3">
                       <span className="label green">{study.category}</span>
                       <span className="label">·</span>
@@ -174,7 +175,7 @@ const CaseStudyCards = () => {
 
                     <div className="mt-2 pt-4 border-t border-line700">
                       <p className="text-3xl font-bold tracking-heading text-acid">
-                        {study.stat.percentage}
+                        <CountUp value={study.stat.value} suffix={study.stat.suffix} />
                       </p>
                       <p className="text-sm leading-relaxed text-ink-dim">
                         {study.stat.text}
@@ -189,50 +190,13 @@ const CaseStudyCards = () => {
                   </Link>
                 </motion.div>
               </FollowerPointerCard>
-              {study.imageOnRight && (
-                <HoverImageWrapper imageSrc={study.imageSrc}>
-                  <Image
-                    src={study.imageSrc}
-                    alt="case-study-image"
-                    width={800}
-                    height={250}
-                    priority
-                    className='cursor-move'
-                  />
-                </HoverImageWrapper>
-              )}
+              {study.imageOnRight && <CaseStudyImage src={study.imageSrc} />}
             </motion.div>
           ))}
 
         </div>
       </Container>
     </section>
-  );
-};
-
-const HoverImageWrapper: React.FC<HoverImageWrapperProps> = ({ children }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div 
-      className="relative w-full min-h-[20rem] flex flex-1 items-center justify-center border border-line700 overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <motion.div
-        initial={false} // Prevent initial animation
-        animate={{
-          y: isHovered ? '-20%' : '0%'
-        }}
-        transition={{
-          duration: 0.7,
-          ease: "easeInOut"
-        }}
-        className="absolute top-0"
-      >
-        {children}
-      </motion.div>
-    </div>
   );
 };
 

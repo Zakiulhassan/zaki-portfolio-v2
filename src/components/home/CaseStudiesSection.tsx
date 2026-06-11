@@ -3,6 +3,7 @@ import Container from "../widgets/Container";
 import ShinyButton from "../UI/shiny-button";
 import CaseStudyCards from "../case-studies/CaseStudyCards";
 import { SplitReveal } from "../motion/SplitReveal";
+import RevealTick from "../motion/RevealTick";
 
 const CaseStudiesSection = () => {
   return (
@@ -18,7 +19,7 @@ const CaseStudiesSection = () => {
             >
               Case studies
             </SplitReveal>
-            <span className="tick"></span>
+            <RevealTick />
           </div>
 
           <CaseStudyCards />

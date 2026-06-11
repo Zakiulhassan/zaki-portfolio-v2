@@ -1,6 +1,7 @@
 import React from "react";
 import ProjectPlanCard from "../widgets/ProjectPlanCard";
 import Container from "../widgets/Container";
+import RevealTick from "../motion/RevealTick";
 
 const cardData = [
   {
@@ -88,7 +89,7 @@ const ProjectPlans = () => {
                 <span className="text-acid">pretty</span> interface. It needs
                 results!
               </h2>
-              <span className="tick"></span>
+              <RevealTick />
             </div>
             <p className="text-base sm:text-lg lg:text-xl max-w-xl md:max-w-xs text-center md:text-right text-ink-dim leading-tight">
               Pick the service that fits your needs. I&apos;ve got you covered.

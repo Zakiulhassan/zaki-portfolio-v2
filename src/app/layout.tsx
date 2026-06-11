@@ -4,6 +4,7 @@ import { Gloria_Hallelujah, JetBrains_Mono } from "next/font/google";
 import Footer from "@/components/navigation/Footer";
 import Header from "@/components/navigation/Header";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import PageTransition from "@/components/providers/PageTransition";
 import CursorTrail from "@/components/effects/CursorTrail";
 
 // Set up Gloria Hallelujah
@@ -38,7 +39,9 @@ export default function RootLayout({
         <SmoothScroll>
           <CursorTrail />
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </SmoothScroll>
       </body>

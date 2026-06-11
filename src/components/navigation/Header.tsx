@@ -6,6 +6,7 @@ import Container from "../widgets/Container";
 import { Menu, X } from "lucide-react";
 import { LuArrowUpRight } from "react-icons/lu";
 import Magnetic from "../motion/Magnetic";
+import HoverRoll from "../motion/HoverRoll";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,11 +61,11 @@ const Header = () => {
                   <Link
                     href={link.href}
                     data-cursor="hover"
-                    className={`link-sweep transition-colors duration-300 hover:text-acid ${
+                    className={`transition-colors duration-300 hover:text-acid ${
                       isActive(link.href) ? "text-acid" : "text-ink"
                     }`}
                   >
-                    {link.label}
+                    <HoverRoll>{link.label}</HoverRoll>
                   </Link>
                 </Magnetic>
               </li>

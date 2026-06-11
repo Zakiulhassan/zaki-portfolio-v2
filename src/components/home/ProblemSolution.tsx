@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Container from "../widgets/Container";
-import WordFadeIn from "../UI/word-fade-in";
+import { ScrubWords } from "../motion/SplitReveal";
+import RevealTick from "../motion/RevealTick";
 import { FadeTextComp } from "../widgets/FadeText";
 import CardList from "../widgets/CardList";
 import SuccessCardList from "../widgets/SuccessCardList";
@@ -82,9 +83,11 @@ const ProblemSolution = () => {
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight">
                       Is this you right now?
                     </h2>
-                    <span className="tick"></span>
+                    <RevealTick />
                   </div>
-                  <WordFadeIn words="Your brand needs more than just an update—it needs a transformation that drives results." />
+                  <ScrubWords className="mt-4 max-w-2xl text-3xl font-medium leading-snug tracking-heading text-ink sm:text-4xl">
+                    Your brand needs more than just an update—it needs a transformation that drives results.
+                  </ScrubWords>
                 </div>
 
                 {/* Right Animation Section */}

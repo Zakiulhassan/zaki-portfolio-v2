@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../widgets/Container'
 import { Testimonials } from '../widgets/Testimonials'
+import RevealTick from '../motion/RevealTick'
 
 const TestimonialsSection = () => {
   return (
@@ -12,7 +13,7 @@ const TestimonialsSection = () => {
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight">
                         <span className="text-acid">Testimonial</span> from peers &amp; coworkers
                     </h2>
-                    <span className="tick"></span>
+                    <RevealTick />
                 </div>
                 <p className='text-base leading-tight text-ink-dim mt-4'>A few kind words people have to say about collaborating and solving problems with me.</p>
             </div>
