@@ -39,7 +39,7 @@ const Hero = () => {
         immediate
         delay={1.05}
         y={12}
-        className="absolute right-4 top-20 z-10 text-right sm:right-8 lg:right-12 lg:top-24"
+        className="absolute right-4 top-20 z-10 hidden text-right sm:right-8 sm:block lg:right-12 lg:top-24"
       >
         <p className="label">
           Based in Pakistan
@@ -47,22 +47,23 @@ const Hero = () => {
         </p>
       </FadeIn>
 
-      {/* Portrait, anchored to the right edge behind the headline */}
-      <FadeIn
-        immediate
-        delay={0.25}
-        y={24}
-        className="pointer-events-none absolute bottom-0 right-0 z-[5] hidden h-[78vh] w-[34vw] sm:block lg:w-[28vw]"
-      >
-        <Image
-          src="/profile-2a.png"
-          alt="Zaki ul Hassan"
-          fill
-          priority
-          sizes="34vw"
-          className="object-contain object-bottom"
-        />
-      </FadeIn>
+      {/* Portrait card, vertically centered in the right column */}
+      <div className="pointer-events-none absolute right-4 top-1/2 z-[5] hidden w-[30vw] max-w-[420px] -translate-y-1/2 sm:right-8 sm:block lg:right-12 lg:w-[24vw]">
+        <FadeIn immediate delay={0.35} y={28}>
+          <div className="relative overflow-hidden rounded-2xl border border-line700 bg-coal-soft">
+            <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_100%,rgba(198,254,30,0.12),transparent_60%)]" />
+            <Image
+              src="/zaki-headshot.webp"
+              alt="Zaki ul Hassan"
+              width={878}
+              height={869}
+              priority
+              sizes="(min-width: 1024px) 24vw, 30vw"
+              className="relative w-full"
+            />
+          </div>
+        </FadeIn>
+      </div>
 
       <Container className="relative z-10 flex h-full flex-col justify-between pb-10 pt-32">
         <div className="flex flex-col gap-6 sm:max-w-[68%] lg:max-w-[72%]">
@@ -98,7 +99,7 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col gap-10 sm:max-w-[68%] lg:max-w-[72%]">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
             <FadeIn immediate delay={0.5} className="max-w-md">
               <p className="text-lg text-ink-dim sm:text-xl">
                 I&apos;m Zaki ul Hassan. Since 2018 I&apos;ve designed and
