@@ -9,13 +9,17 @@ const CaseStudiesSection = () => {
     <section className="bg-coal min-h-screen">
       <Container>
         <div className="flex flex-col gap-6 px-12 py-24">
-          <SplitReveal
-            as="h1"
-            mode="words"
-            className="text-display text-[10vw] leading-[0.95] text-ink sm:text-[7vw] lg:text-[5vw] mb-2"
-          >
-            Case Studies
-          </SplitReveal>
+          <div className="rail">
+            <span className="idx">03</span>
+            <SplitReveal
+              as="h2"
+              mode="words"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight"
+            >
+              Case studies
+            </SplitReveal>
+            <span className="tick"></span>
+          </div>
 
           <CaseStudyCards />
 

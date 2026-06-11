@@ -8,7 +8,7 @@ const TestimonialsSection = () => {
         <Container>
             <div className='mb-6'>
                 <div className="rail">
-                    <span className="idx">04</span>
+                    <span className="idx">05</span>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-heading leading-tight">
                         <span className="text-acid">Testimonial</span> from peers &amp; coworkers
                     </h2>

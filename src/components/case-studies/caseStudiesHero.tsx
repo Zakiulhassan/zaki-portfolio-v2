@@ -20,20 +20,31 @@ const CaseStudiesHero = () => {
           delay={0.15}
           className="text-display text-[12vw] leading-[0.95] text-ink sm:text-[8vw] lg:text-[6vw]"
         >
-          Real Results,
+          Real results,
         </SplitReveal>
-        <SplitReveal
-          as="h1"
-          mode="words"
-          immediate
-          delay={0.3}
-          className="text-display text-[12vw] leading-[0.95] text-outline-acid sm:text-[8vw] lg:text-[6vw]"
-        >
-          Real Impact.
-        </SplitReveal>
+        <h1 className="text-display text-[12vw] leading-[0.95] text-ink sm:text-[8vw] lg:text-[6vw]">
+          <SplitReveal
+            as="span"
+            mode="words"
+            immediate
+            delay={0.3}
+            className="inline"
+          >
+            real
+          </SplitReveal>{" "}
+          <SplitReveal
+            as="span"
+            mode="words"
+            immediate
+            delay={0.4}
+            className="inline text-acid"
+          >
+            impact.
+          </SplitReveal>
+        </h1>
 
         <FadeIn immediate delay={0.6} className="max-w-2xl">
-          <p className="font-serif-accent text-xl text-ink-dim sm:text-2xl">
+          <p className="text-xl text-ink-dim sm:text-2xl">
             Discover how I&apos;ve solved challenges and delivered results.
             Explore case studies to see the impact we can achieve together.
           </p>

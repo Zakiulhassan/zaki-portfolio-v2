@@ -37,11 +37,9 @@ const caseStudies = [
     authorImg: "/logo.png",
     title1: "cleanly",
     title: "Cleanly - Website and Dashboard Design and Development",
-    description: "Cleanly is a home and office cleaning service platform that offers on-demand, professional cleaning services. Their goal is to provide a seamless, user-friendly booking experience while ensuring high-quality cleaning services for both residential and commercial clients.",
-    stats: [
-      { percentage: "200%", text: "Increase in satisfaction resulting to customer onboarding efficiency." },
-      { percentage: "70%", text: "Visits suggests increased customization interest." }
-    ],
+    category: "Service Platform",
+    description: "An on-demand cleaning service platform needed a booking flow customers and admins could both rely on.",
+    stat: { percentage: "200%", text: "Increase in customer onboarding efficiency." },
     imageSrc: "/cleanly-home.png",
     tag: ["UI/UX Design", "Full Stack Development", "React.JS", "Next.JS", "Python Django"],
     imageOnRight: false
@@ -52,11 +50,9 @@ const caseStudies = [
     authorImg: "/logo.png",
     title1: "furnium",
     title: "Furnium - A Furniture E-commerce Platform UI/UX Design",
-    description: "Furnium is a contemporary furniture brand that focuses on sleek, minimalist designs. The goal was to create an e-commerce platform reflecting Furnium's modern aesthetic, ensuring a seamless and intuitive shopping experience for customers.",
-    stats: [
-      { percentage: "150%", text: "Increase in user engagement on the site, driven by intuitive design and high-quality visuals." },
-      { percentage: "95%", text: "Positive feedback from users on the seamless navigation and clean layout." }
-    ],
+    category: "E-commerce",
+    description: "A minimalist furniture brand needed an online store that matched its product photography and tone.",
+    stat: { percentage: "150%", text: "Increase in user engagement after launch." },
     imageSrc: "/furnium-website.png",
     tag: ["UI/UX Design", "User Research", "Responsive Design"],
     imageOnRight: true
@@ -67,11 +63,9 @@ const caseStudies = [
     authorImg: "/logo.png",
     title1: "rivo",
     title: "Rivo - An E-commerce Tech Store Platform UI/UX Design",
-    description: "Rivo is an innovative e-commerce platform aimed at providing a superior online shopping experience. The project involved creating a user interface that supported advanced features while delivering a seamless and intuitive user journey.",
-    stats: [
-      { percentage: "120%", text: "Increase in user engagement due to personalized shopping experiences." },
-      { percentage: "80%", text: "Improvement in repeat purchases as a result of tailored product recommendations." }
-    ],
+    category: "Tech Retail",
+    description: "An electronics retailer needed a faster path from product discovery to checkout.",
+    stat: { percentage: "120%", text: "Increase in user engagement from personalized recommendations." },
     imageSrc: "/rivo-app.png",
     tag: ["UI/UX Design", "User Research"],
     imageOnRight: false
@@ -103,28 +97,28 @@ const CaseStudyCards = () => {
     <section>
       <Container>
         <div className="flex flex-col gap-44 px-12 py-24">
-          {caseStudies.map((study) => (
+          {caseStudies.map((study, index) => (
             <motion.div
               key={study.id}
-              className="flex flex-col md:flex-row gap-6 justify-center items-center"
+              className="flex flex-col md:flex-row gap-6 justify-center items-stretch border border-line700 hover:border-acid transition-colors duration-base ease-brand p-6 md:p-8"
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ 
-                once: true, 
-                amount: 0.3, 
-                margin: "0px"  
+              viewport={{
+                once: true,
+                amount: 0.3,
+                margin: "0px"
               }}
             >
               {!study.imageOnRight && (
                 <HoverImageWrapper imageSrc={study.imageSrc}>
-                  <Image 
+                  <Image
                     src={study.imageSrc}
                     alt="case-study-image"
                     width={800}
                     height={250}
                     priority
-                    className="transition-transform duration-700 ease-out" 
+                    className="transition-transform duration-700 ease-out"
                   />
                 </HoverImageWrapper>
               )}
@@ -135,13 +129,14 @@ const CaseStudyCards = () => {
                     avatar={study.authorImg}
                   />
                 }
+                className="flex-1"
               >
-                <motion.div 
-                  className="rounded-xl flex flex-col gap-2 max-w-2xl"
+                <motion.div
+                  className="flex flex-col gap-3 max-w-2xl h-full"
                   variants={{
                     hidden: { opacity: 0, scale: 0.95 },
-                    visible: { 
-                      opacity: 1, 
+                    visible: {
+                      opacity: 1,
                       scale: 1,
                       transition: {
                         duration: 0.6,
@@ -151,52 +146,52 @@ const CaseStudyCards = () => {
                     }
                   }}
                 >
-                  <Link href={`/case-studies/${study.title1}`} passHref className='cursor-none'>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {study.tag.map((singleTag, idx) => (
-                    <motion.span
-                      key={idx}
-                      className="bg-foreground px-[10px] py-[4px] rounded-md text-white text-sm font-jakarta font-normal inline-flex items-center"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.4 + (idx * 0.1) }}
-                      viewport={{ once: false }}
-                    >
-                      {singleTag}
-                    </motion.span>
-                  ))}
-                </div>
-                <h1 className="text-2xl mb-2 font-bricolage font-medium leading-tight bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">
-                  {study.title}
-                </h1>
-                <p className="text-sm font-jakarta leading-tight text-secondary mb-4">
-                  {study.description}
-                </p>
-                <div className="flex flex-col md:flex-row justify-between gap-4 pt-4">
-                  {study.stats.map((stat, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      className="bg-foreground p-2 rounded-lg"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.6 + (idx * 0.1) }}
-                      viewport={{ once: false }}
-                    >
-                      <h3 className="text-2xl font-bricolage font-bold mb-2 leading-tight bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">
-                        {stat.percentage}
-                      </h3>
-                      <p className="text-sm font-jakarta leading-tight text-secondary">
-                        {stat.text}
+                  <Link href={`/case-studies/${study.title1}`} passHref className="cursor-none flex flex-col gap-3 h-full">
+                    <div className="flex items-center gap-3">
+                      <span className="label green">{study.category}</span>
+                      <span className="label">·</span>
+                      <span className="label">0{index + 1} / 0{caseStudies.length}</span>
+                    </div>
+
+                    <h3 className="text-xl md:text-2xl font-bold tracking-heading leading-tight text-ink">
+                      {study.title}
+                    </h3>
+
+                    <p className="text-sm leading-relaxed text-ink-dim">
+                      {study.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      {study.tag.map((singleTag, idx) => (
+                        <span
+                          key={idx}
+                          className="tag"
+                        >
+                          {singleTag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-2 pt-4 border-t border-line700">
+                      <p className="text-3xl font-bold tracking-heading text-acid">
+                        {study.stat.percentage}
                       </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </Link>
-              </motion.div>
+                      <p className="text-sm leading-relaxed text-ink-dim">
+                        {study.stat.text}
+                      </p>
+                    </div>
+
+                    <div className="mt-auto pt-4">
+                      <span className="btn-ghost">
+                        View case study <span className="arr">→</span>
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
               </FollowerPointerCard>
               {study.imageOnRight && (
                 <HoverImageWrapper imageSrc={study.imageSrc}>
-                  <Image 
+                  <Image
                     src={study.imageSrc}
                     alt="case-study-image"
                     width={800}
@@ -220,7 +215,7 @@ const HoverImageWrapper: React.FC<HoverImageWrapperProps> = ({ children }) => {
 
   return (
     <div 
-      className="relative w-full min-h-[20rem] flex flex-1 items-center justify-center rounded-2xl border-2 overflow-hidden"
+      className="relative w-full min-h-[20rem] flex flex-1 items-center justify-center border border-line700 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

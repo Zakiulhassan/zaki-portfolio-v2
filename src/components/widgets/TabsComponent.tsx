@@ -38,17 +38,17 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 
   return (
     <div className="flex flex-col items-center md:items-start ">
-      <div className="inline-flex rounded-xl bg-background p-2 relative">
+      <div className="inline-flex border border-line700 p-1 relative">
         {tabs.map((tab, index) => (
           <button
             key={index}
             ref={(el) => {
               tabRefs.current[index] = el;
             }}
-            className={`py-1 px-2 text-xs font-regular z-10 relative ${
+            className={`py-1.5 px-3 font-mono uppercase tracking-label text-[11.5px] z-10 relative transition-colors duration-base ease-brand ${
               index === activeTab && !isTransitioning
-                ? "text-primary font-medium" // White text only after the transition
-                : "text-muted-dark hover:text-muted" // Default color during transition
+                ? "text-coal" // dark text on signal fill once active
+                : "text-ink-dim hover:text-ink"
             }`}
             onClick={() => setActiveTab(index)}
           >
@@ -56,13 +56,13 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
           </button>
         ))}
         <div
-          className="absolute top-2 bottom-2 bg-gradient-to-r from-greenPri to-greenSec rounded-lg transition-all duration-300 ease-in-out"
+          className="absolute top-1 bottom-1 bg-acid"
           style={sliderStyle}
         />
       </div>
 
       <div className="mt-6">
-        <p className="font-normal text-2xl text-center md:text-start md:text-3xl lg:text-4xl leading-normal  md:leading-tight lg:leading-normal text-white">
+        <p className="font-normal text-xl text-center md:text-start md:text-2xl lg:text-3xl leading-normal md:leading-tight lg:leading-normal text-ink">
           {tabs[activeTab].content}
         </p>
       </div>

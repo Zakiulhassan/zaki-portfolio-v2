@@ -130,9 +130,9 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-coal text-ink">
         <div className="text-center">
-          <h1 className="text-2xl font-bricolage font-bold mb-4">Case study not found</h1>
-          <Link href="/case-studies" className="text-acid hover:text-greenSec">
-            ← Back to Case Studies
+          <h1 className="text-2xl font-bold tracking-heading mb-4">Case study not found</h1>
+          <Link href="/case-studies" className="btn-ghost">
+            <span className="arr">←</span> Back to case studies
           </Link>
         </div>
       </div>
@@ -144,23 +144,23 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <div className="mb-8">
-          <Link href="/case-studies" className="text-sm text-ink-dim hover:text-acid flex items-center gap-2">
-            ← Back to Case Studies
+          <Link href="/case-studies" className="btn-ghost">
+            <span className="arr">←</span> Back to case studies
           </Link>
         </div>
 
         {/* Title Section */}
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           initial="initial"
           animate="animate"
           className="mb-8"
         >
-          <div className="text-muted mb-2 capitalize">{caseStudy.title1}</div>
-          <h1 className="text-4xl font-medium mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">{caseStudy.title}</h1>
+          <div className="label green mb-2">{caseStudy.title1}</div>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-heading mb-4 text-ink">{caseStudy.title}</h1>
           <div className="flex flex-wrap gap-2">
             {caseStudy.tag.map((tag, index) => (
-              <span key={index} className="bg-foreground px-3 py-1 rounded-md text-white text-sm">
+              <span key={index} className="tag">
                 {tag}
               </span>
             ))}
@@ -168,13 +168,13 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
         </motion.div>
 
         {/* Hero Image */}
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           initial="initial"
           animate="animate"
           className="mb-12"
         >
-          <div className="rounded-xl overflow-hidden">
+          <div className="border border-line700 overflow-hidden">
             <Image
               src={caseStudy.HeroImage}
               alt="Project Preview"
@@ -187,86 +187,86 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
         </motion.div>
 
         {/* Project Info Grid */}
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           initial="initial"
           animate="animate"
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-16 border-y border-line700 py-8"
         >
           <div>
-            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">MY ROLE</h3>
+            <h3 className="label green mb-4">My role</h3>
             <ul className="space-y-2">
               {caseStudy.role?.map((position, index) => (
-                <li key={index} className="text-secondary font-jakarta">{position}</li>
+                <li key={index} className="text-ink-dim text-sm">{position}</li>
               ))}
             </ul>
           </div>
           <div>
-            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">DELIVERABLES</h3>
+            <h3 className="label green mb-4">Deliverables</h3>
             <ul className="space-y-2">
               {caseStudy.deliverables?.map((deliverable, index) => (
-                <li key={index} className="text-secondary font-jakarta">{deliverable}</li>
+                <li key={index} className="text-ink-dim text-sm">{deliverable}</li>
               ))}
             </ul>
           </div>
           <div>
-            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">TEAM</h3>
+            <h3 className="label green mb-4">Team</h3>
             <ul className="space-y-2">
               {caseStudy.team?.map((member, index) => (
-                <li key={index} className="text-secondary font-jakarta">{member}</li>
+                <li key={index} className="text-ink-dim text-sm">{member}</li>
               ))}
             </ul>
           </div>
           <div>
-            <h3 className="font-bricolage font-bold mb-4 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">YEAR</h3>
-            <p className="text-secondary font-jakarta">{caseStudy.year}</p>
+            <h3 className="label green mb-4">Year</h3>
+            <p className="text-ink-dim text-sm">{caseStudy.year}</p>
           </div>
         </motion.div>
 
         {/* Project Description */}
-        <motion.section 
+        <motion.section
           variants={fadeInUp}
           initial="initial"
           animate="animate"
           className="mb-16"
         >
-          <h2 className="text-2xl font-bricolage font-bold mb-6 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">PROJECT OVERVIEW</h2>
-          <p className="text-secondary font-jakarta mb-6">{caseStudy.description}</p>
-          <p className="text-secondary font-jakarta mb-6">{caseStudy.detailedDescription}</p>
+          <h2 className="label green mb-4">Project overview</h2>
+          <p className="text-ink-dim mb-6 leading-relaxed">{caseStudy.description}</p>
+          <p className="text-ink-dim mb-6 leading-relaxed">{caseStudy.detailedDescription}</p>
         </motion.section>
 
         {/* Challenge & Solution */}
-        <motion.section 
+        <motion.section
           variants={fadeInUp}
           initial="initial"
           animate="animate"
           className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           <div>
-            <h2 className="text-2xl font-bricolage font-bold mb-6 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">THE CHALLENGE</h2>
-            <p className="text-secondary font-jakarta">{caseStudy.challenge}</p>
+            <h2 className="label green mb-4">The challenge</h2>
+            <p className="text-ink-dim leading-relaxed">{caseStudy.challenge}</p>
           </div>
           <div>
-            <h2 className="text-2xl font-bricolage font-bold mb-6 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">THE SOLUTION</h2>
-            <p className="text-secondary font-jakarta">{caseStudy.solution}</p>
+            <h2 className="label green mb-4">The solution</h2>
+            <p className="text-ink-dim leading-relaxed">{caseStudy.solution}</p>
           </div>
         </motion.section>
 
         {/* Results */}
-        <motion.section 
+        <motion.section
           variants={fadeInUp}
           initial="initial"
           animate="animate"
           className="mb-16"
         >
-          <h2 className="text-2xl font-bricolage bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent font-bold mb-6">RESULTS</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <h2 className="label green mb-4">Results</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {caseStudy.stats.map((stat, index) => (
-              <div key={index} className="bg-foreground p-6 rounded-xl">
-                <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-greenPri to-greenSec bg-clip-text text-transparent">
+              <div key={index} className="border border-line700 p-6">
+                <div className="text-4xl font-bold tracking-heading mb-2 text-acid">
                   {stat.percentage}
                 </div>
-                <div className="text-secondary font-jakarta">{stat.text}</div>
+                <div className="text-ink-dim text-sm leading-relaxed">{stat.text}</div>
               </div>
             ))}
           </div>
@@ -275,9 +275,9 @@ const CaseStudyDetail: React.FC<PageProps> = ({ params }) => {
         {/* Back to Case Studies Button */}
         <Link
           href="/case-studies"
-          className="inline-block text-sm text-ink-dim hover:text-acid font-jakarta"
+          className="btn-ghost"
         >
-          ← Back to Case Studies
+          <span className="arr">←</span> Back to case studies
         </Link>
       </div>
     </div>
