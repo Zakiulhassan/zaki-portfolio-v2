@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../widgets/Container";
 import TextMarquee from "../motion/TextMarquee";
 import { FadeIn } from "../motion/SplitReveal";
-import ParallaxImage from "../motion/ParallaxImage";
+import FluidImage from "../motion/FluidImage";
 import RevealTick from "../motion/RevealTick";
 
 const ProjectsHome = () => {
@@ -30,7 +30,7 @@ const ProjectsHome = () => {
                 data-cursor-label="View"
                 className="group relative aspect-[4/3] overflow-hidden rounded border border-line700"
               >
-                <ParallaxImage
+                <FluidImage
                   src={p.src}
                   alt={p.label}
                   className="h-full w-full"

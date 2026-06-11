@@ -51,7 +51,7 @@ const fragmentShader = /* glsl */ `
   float fbm(vec2 p) {
     float v = 0.0;
     float a = 0.5;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
       v += a * snoise(p);
       p = p * 2.05 + vec2(13.7, 7.1);
       a *= 0.5;
@@ -66,10 +66,10 @@ const fragmentShader = /* glsl */ `
 
     float t = uTime * 0.06;
 
-    // Pointer disturbance: a soft swirl around the mouse.
+    // Pointer disturbance: a wider, stronger swirl around the mouse.
     vec2 m = uMouse * aspect;
     float md = length(p - m);
-    float influence = smoothstep(0.55, 0.0, md);
+    float influence = smoothstep(0.75, 0.0, md);
 
     // Domain-warped fbm for the fluid look.
     vec2 q = vec2(fbm(p * 1.4 + t), fbm(p * 1.4 - t * 0.7 + 4.2));
@@ -77,22 +77,22 @@ const fragmentShader = /* glsl */ `
       fbm(p * 1.4 + q * 1.6 + vec2(1.7, 9.2) + t * 0.5),
       fbm(p * 1.4 + q * 1.6 + vec2(8.3, 2.8) - t * 0.4)
     );
-    r += influence * 0.6 * normalize(p - m + 0.0001);
+    r += influence * 0.9 * normalize(p - m + 0.0001);
 
     float f = fbm(p * 1.4 + r * 1.8);
 
     // Palette: near-black base, charcoal mids, acid green veins.
     vec3 base = vec3(0.039, 0.039, 0.042);
-    vec3 mid  = vec3(0.075, 0.082, 0.070);
+    vec3 mid  = vec3(0.11, 0.12, 0.10);
     vec3 glow = vec3(0.776, 0.996, 0.118);
 
     vec3 col = mix(base, mid, smoothstep(-0.4, 0.7, f));
-    float vein = smoothstep(0.42, 0.72, f) * smoothstep(0.95, 0.6, f);
-    col += glow * vein * (0.2 + influence * 0.55);
-    col += glow * influence * 0.05;
+    float vein = smoothstep(0.38, 0.7, f) * smoothstep(0.97, 0.55, f);
+    col += glow * vein * (0.45 + influence * 0.85);
+    col += glow * influence * 0.12;
 
     // Slow breathing: the whole field gently swells and settles.
-    float breath = 0.9 + 0.1 * sin(uTime * 0.35);
+    float breath = 0.92 + 0.12 * sin(uTime * 0.35);
     col *= breath;
 
     // Vignette to keep edges dark.
@@ -113,8 +113,9 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
     const renderer = new THREE.WebGLRenderer({
       antialias: false,
       powerPreference: "high-performance",
+      failIfMajorPerformanceCaveat: false,
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
@@ -168,6 +169,19 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
       uniforms.uMouse.value.lerp(targetMouse, 0.05);
       renderer.render(scene, camera);
     };
+
+    // Recover gracefully if the GPU drops the context under load instead of
+    // leaving a frozen/blank canvas behind.
+    const onContextLost = (e: Event) => {
+      e.preventDefault();
+      cancelAnimationFrame(rafId);
+    };
+    const onContextRestored = () => {
+      if (!reduced) animate();
+    };
+    renderer.domElement.addEventListener("webglcontextlost", onContextLost, false);
+    renderer.domElement.addEventListener("webglcontextrestored", onContextRestored, false);
+
     if (reduced) {
       // Single static frame — no motion for reduced-motion users.
       renderer.render(scene, camera);
@@ -179,6 +193,8 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("resize", onResize);
+      renderer.domElement.removeEventListener("webglcontextlost", onContextLost);
+      renderer.domElement.removeEventListener("webglcontextrestored", onContextRestored);
       mesh.geometry.dispose();
       material.dispose();
       renderer.dispose();
@@ -189,7 +205,7 @@ const FluidBackground = ({ className = "" }: { className?: string }) => {
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none absolute inset-0 opacity-[0.45] ${className}`}
+      className={`pointer-events-none absolute inset-0 opacity-[0.7] ${className}`}
       aria-hidden
     />
   );

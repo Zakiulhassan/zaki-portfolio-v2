@@ -6,6 +6,7 @@ import Header from "@/components/navigation/Header";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import PageTransition from "@/components/providers/PageTransition";
 import CursorTrail from "@/components/effects/CursorTrail";
+import FluidCardLayer from "@/components/effects/FluidCardLayer";
 
 // Set up Gloria Hallelujah
 const gloriaHallelujah = Gloria_Hallelujah({
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className="grain antialiased bg-background font-aeonik">
         <SmoothScroll>
           <CursorTrail />
+          <FluidCardLayer />
           <Header />
           <main className="flex-grow">
             <PageTransition>{children}</PageTransition>

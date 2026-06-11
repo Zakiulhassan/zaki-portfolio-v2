@@ -19,13 +19,20 @@ const Magnetic = ({
   className?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
+  // Cache the bounding rect once on enter — calling getBoundingClientRect on
+  // every mousemove forces a synchronous layout and is the main cause of
+  // hover jank on fixed-position elements (header/footer).
+  const onMouseEnter = () => {
+    rectRef.current = ref.current?.getBoundingClientRect() ?? null;
+  };
+
   const onMouseMove = (e: React.MouseEvent) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
+    const rect = rectRef.current;
+    if (!rect) return;
     const targetX = (e.clientX - rect.left - rect.width / 2) * strength;
     const targetY = (e.clientY - rect.top - rect.height / 2) * strength;
     animate(x, targetX, { type: "tween", ease: EASE, duration: 0.3 });
@@ -33,6 +40,7 @@ const Magnetic = ({
   };
 
   const onMouseLeave = () => {
+    rectRef.current = null;
     animate(x, 0, { type: "tween", ease: EASE, duration: 0.3 });
     animate(y, 0, { type: "tween", ease: EASE, duration: 0.3 });
   };
@@ -40,6 +48,7 @@ const Magnetic = ({
   return (
     <motion.div
       ref={ref}
+      onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       style={{ x, y }}

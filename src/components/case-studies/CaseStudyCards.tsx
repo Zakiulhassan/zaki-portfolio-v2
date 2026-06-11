@@ -6,7 +6,7 @@ import Container from '../widgets/Container';
 import Image from 'next/image';
 import { FollowerPointerCard } from '../UI/following-pointer';
 import Link from 'next/link';
-import ParallaxImage from '../motion/ParallaxImage';
+import FluidImage from '../motion/FluidImage';
 import CountUp from '../motion/CountUp';
 
 // Animation variants
@@ -89,7 +89,7 @@ const TitleComponent = ({
 );
 
 const CaseStudyImage = ({ src }: { src: string }) => (
-  <ParallaxImage
+  <FluidImage
     src={src}
     alt="case-study-image"
     data-cursor="hover"

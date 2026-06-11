@@ -131,9 +131,9 @@ p {
   /* Oversized editorial display type */
   .text-display {
     font-family: var(--font-aeonik);
-    font-weight: 800;
-    letter-spacing: -0.035em;
-    line-height: 0.98;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.04;
   }
 
   .text-outline {
@@ -303,8 +303,8 @@ button:focus-visible {
   pointer-events: none;
   background-image: url("/noise-1.png");
   background-repeat: repeat;
-  opacity: 0.05;
-  animation: grain-shift 0.9s steps(4) infinite;
+  opacity: 0.02;
+  animation: grain-shift 8s steps(4) infinite;
 }
 
 @keyframes grain-shift {
