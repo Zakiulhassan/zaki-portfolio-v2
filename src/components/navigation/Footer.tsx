@@ -31,8 +31,9 @@ const Footer = () => {
             </h2>
             <FadeIn delay={0.15} className="max-w-xl">
               <p className="text-base text-ink-dim sm:text-lg">
-                Have a product or website that needs more clarity? I&apos;m
-                always open to talking it through.
+                Send me what you&apos;re working on. Within 24 hours you&apos;ll
+                have my honest read on what&apos;s holding it back — not a
+                sales pitch.
               </p>
             </FadeIn>
 

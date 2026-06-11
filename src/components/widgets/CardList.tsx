@@ -10,9 +10,9 @@ const CardList: React.FC = () => {
   const [cards, setCards] = useState<HTMLElement[]>([]);
 
   const alerts = [
-    "Your digital presence lacks cohesion, preventing your brand from reaching its full potential.",
-    "You're juggling too many tasks, leaving little time to focus on impactful design and user experience.",
-    "Tight resources are slowing down your progress on crucial projects like product launches or website updates."
+    "Your product does more than your interface shows — every demo needs you in the room to explain it.",
+    "Traffic arrives, but nobody converts. Visitors can't tell what you do within one screen.",
+    "No design system, inconsistent components, messy handoffs — every release ships slower than the last."
   ];
 
   useEffect(() => {

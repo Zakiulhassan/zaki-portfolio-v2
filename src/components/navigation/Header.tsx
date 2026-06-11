@@ -26,8 +26,8 @@ const Header = () => {
   }, [pathname]);
 
   const navLinks = [
-    { href: "/case-studies", label: "Case Studies" },
-    { href: "/about-me", label: "Who am I?" },
+    { href: "/case-studies", label: "Work" },
+    { href: "/about-me", label: "About" },
   ];
 
   const isActive = (path: string) => pathname === path;

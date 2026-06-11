@@ -10,9 +10,9 @@ const SuccessCardList: React.FC = () => {
   const [cards, setCards] = useState<HTMLElement[]>([]);
 
   const alerts = [
-    "A cohesive digital identity that connects with your audience and boosts your brand’s visibility.",
-    "A dedicated UX/UI designer and developer to take care of your design needs, so you can concentrate on growing your business.",
-    "A reliable design partner to accelerate your project timelines, delivering top-notch solutions that evolve with your brand’s goals."
+    "An interface where the next step is always obvious — no walkthrough required.",
+    "A site that explains your offer in one scroll and gives visitors a reason to act.",
+    "A component system your developers actually use, so shipping gets faster over time."
   ];
 
   useEffect(() => {

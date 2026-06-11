@@ -11,14 +11,13 @@ const TestimonialsSection = () => {
                 <div className="rail">
                     <span className="idx">05</span>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight">
-                        <span className="text-acid">Testimonial</span> from peers &amp; coworkers
+                        What it&apos;s like to <span className="text-acid">work</span> with me
                     </h2>
                     <RevealTick />
                 </div>
-                <p className='text-base leading-tight text-ink-dim mt-4'>A few kind words people have to say about collaborating and solving problems with me.</p>
+                <p className='text-base leading-tight text-ink-dim mt-4'>From the people who briefed me, reviewed the work, and shipped it.</p>
             </div>
         <Testimonials/>
-        <p className='text-lg text-center text-ink-dim leading-tight tracking-tight my-6'>Want to hear more? <span className="text-acid">Explore the full range</span> of testimonials!</p>
         </Container>
     </section>
   )

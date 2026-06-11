@@ -13,16 +13,16 @@ const CaseStudiesHero = () => {
           <ShinnyTextCompDark />
         </FadeIn>
 
-        <SplitReveal
-          as="h1"
-          mode="words"
-          immediate
-          delay={0.15}
-          className="text-display text-[12vw] leading-[0.95] text-ink sm:text-[8vw] lg:text-[6vw]"
-        >
-          Real results,
-        </SplitReveal>
         <h1 className="text-display text-[12vw] leading-[0.95] text-ink sm:text-[8vw] lg:text-[6vw]">
+          <SplitReveal
+            as="span"
+            mode="words"
+            immediate
+            delay={0.15}
+            className="inline text-acid"
+          >
+            Decisions,
+          </SplitReveal>{" "}
           <SplitReveal
             as="span"
             mode="words"
@@ -30,29 +30,21 @@ const CaseStudiesHero = () => {
             delay={0.3}
             className="inline"
           >
-            real
-          </SplitReveal>{" "}
-          <SplitReveal
-            as="span"
-            mode="words"
-            immediate
-            delay={0.4}
-            className="inline text-acid"
-          >
-            impact.
+            not deliverables.
           </SplitReveal>
         </h1>
 
         <FadeIn immediate delay={0.6} className="max-w-2xl">
           <p className="text-xl text-ink-dim sm:text-2xl">
-            Discover how I&apos;ve solved challenges and delivered results.
-            Explore case studies to see the impact we can achieve together.
+            Each case study shows the problem we started with, the calls I
+            made, and the numbers that followed. Judge the thinking, not just
+            the screens.
           </p>
         </FadeIn>
 
         <FadeIn immediate delay={0.8}>
           <ShinyButtonSM className="outline-gray-400 outline-2 text-sm sm:text-lg">
-            Get Started Now
+            Start Your Project
           </ShinyButtonSM>
         </FadeIn>
       </div>

@@ -5,18 +5,18 @@ import RevealTick from "../motion/RevealTick";
 
 const cardData = [
   {
-    title: "UX Design: Crafting User-Centric Experiences.",
+    title: "UX/UI Design — for products that work but feel hard to use.",
     description:
-      "Create intuitive, visually compelling designs that captivate users and drive engagement, focusing on seamless and meaningful interactions.",
+      "Research, flows, and interface design that remove the friction between your users and the value you already built.",
     buttonText: "Book a strategy call",
-    buttonLink: "#",
+    buttonLink: "/book-a-call",
     durationText: "2-3 Weeks",
     listItems: [
-      "User Research & Personas.",
-      "Wireframing & Prototyping.",
-      "Information Architecture.",
-      "Visual Design.",
-      "Usability Testing.",
+      "User research & personas.",
+      "Wireframes & prototypes.",
+      "Information architecture.",
+      "Interface design.",
+      "Usability testing.",
     ],
     colorHeading: "#fff",
     colorText: "#E4E7DC",
@@ -28,18 +28,18 @@ const cardData = [
     beamColorTo: "#A8DB12",
   },
   {
-    title: "UX Development: Bringing Designs to Life.",
+    title: "Design + Development — one person from Figma to production.",
     description:
-      "Transform designs into responsive, optimized digital products, ensuring seamless user experiences across all devices.",
+      "I design it, then I build it in React and Next.js. Nothing gets lost in handoff, because there isn't one.",
     buttonText: "Book a strategy call",
-    buttonLink: "#",
+    buttonLink: "/book-a-call",
     durationText: "4-6 Weeks",
     listItems: [
-      "Responsive Web Development.",
-      "Performance Optimization.",
-      "Interactive Prototyping.",
-      "Accessibility Compliance.",
-      "Cross-Browser Compatibility.",
+      "Responsive web development.",
+      "Performance optimization.",
+      "Interactive prototyping.",
+      "Accessibility compliance.",
+      "Cross-browser support.",
     ],
     colorHeading: "#fff",
     colorText: "#E4E7DC",
@@ -51,18 +51,18 @@ const cardData = [
     beamColorTo: "#A8DB12",
   },
   {
-    title: "Product Launch: From Vision to Reality.",
+    title: "Product Launch — from first wireframe to live product.",
     description:
-      "Deliver end-to-end digital solutions by merging intuitive design with flawless development for a cohesive user experience.",
+      "The full build for something new: brand, interface, frontend, backend, and the launch itself.",
     buttonText: "Book a strategy call",
-    buttonLink: "#",
+    buttonLink: "/book-a-call",
     durationText: "4-6 Weeks",
     listItems: [
-      "UI/UX Design & Branding.",
-      "Full-Stack Development .",
-      "API & Third-Party Integration.",
-      "Scalability & Performance Optimization.",
-      "Launch & Post-Launch Support.",
+      "UI/UX design & branding.",
+      "Full-stack development.",
+      "API & third-party integration.",
+      "Scalability & performance.",
+      "Launch & post-launch support.",
     ],
     colorHeading: "#fff",
     colorText: "#E4E7DC",
@@ -85,14 +85,14 @@ const ProjectPlans = () => {
             <div className="rail w-full md:w-auto">
               <span className="idx">04</span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight max-w-xl">
-                Your project deserves more than just a{" "}
-                <span className="text-acid">pretty</span> interface. It needs
-                results!
+                Hire me for the part that&apos;s{" "}
+                <span className="text-acid">blocking</span> you.
               </h2>
               <RevealTick />
             </div>
             <p className="text-base sm:text-lg lg:text-xl max-w-xl md:max-w-xs text-center md:text-right text-ink-dim leading-tight">
-              Pick the service that fits your needs. I&apos;ve got you covered.
+              Three ways to work together. Defined scope, defined timeline,
+              deliverables you can ship.
             </p>
           </div>
 
@@ -121,7 +121,8 @@ const ProjectPlans = () => {
 
           {/* Footer Section */}
           <p className="text-lg sm:text-xl lg:text-2xl text-center text-ink-dim leading-tight">
-            Ready to see what great design can do for your business?
+            Not sure which one fits? Book the call anyway — I&apos;ll tell you
+            what I&apos;d do, and the plan is yours either way.
           </p>
         </div>
       </Container>

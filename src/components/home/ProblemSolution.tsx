@@ -81,12 +81,12 @@ const ProblemSolution = () => {
                   <div className="rail mb-4">
                     <span className="idx">02</span>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight">
-                      Is this you right now?
+                      Why good products lose users
                     </h2>
                     <RevealTick />
                   </div>
                   <ScrubWords className="mt-4 max-w-2xl text-3xl font-medium leading-snug tracking-heading text-ink sm:text-4xl">
-                    Your brand needs more than just an update—it needs a transformation that drives results.
+                    Visitors decide whether to trust you in seconds — before your features, before your pricing. Most products lose them right there.
                   </ScrubWords>
                 </div>
 
@@ -112,7 +112,7 @@ const ProblemSolution = () => {
               variants={fadeDownVariant}
             >
               <h3 className="font-gloria text-lg md:text-xl font-light text-muted leading-tight tracking-tight">
-                Your Problem
+                What it looks like
               </h3>
               <div className="flex flex-wrap gap-4">
                 <CardList />
@@ -125,7 +125,7 @@ const ProblemSolution = () => {
               variants={fadeDownVariant}
             >
               <h3 className="font-gloria text-lg md:text-xl font-light text-muted leading-tight tracking-tight">
-                Your Solution
+                What I change
               </h3>
               <div className="flex flex-wrap gap-4">
                 <SuccessCardList />

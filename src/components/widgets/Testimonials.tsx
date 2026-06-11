@@ -2,6 +2,7 @@ import Marquee from "@/components/UI/marquee";
 import Image from "next/image";
 import { PiQuotesFill } from "react-icons/pi";
 
+// TODO(zaki): replace with real client quotes, names, roles, and photos.
 const reviews = [
   {
     name: "Jack",
@@ -13,30 +14,6 @@ const reviews = [
     name: "Jill",
     username: "@jill",
     body: "Working with Zaki was a breeze. The final product exceeded our expectations!",
-    img: "/reviews/user-4.jpg",
-  },
-  {
-    name: "John",
-    username: "@john",
-    body: "Great! Zaki transformed our website, boosting conversions with his user-centric design approach.",
-    img: "/reviews/user-4.jpg",
-  },
-  {
-    name: "Jane",
-    username: "@jane",
-    body: "I Love it! Working with Zaki was a breeze. The final product exceeded our expectations!",
-    img: "/reviews/user-4.jpg",
-  },
-  {
-    name: "Jenny",
-    username: "@jenny",
-    body: "Seamless and Efficient! Zaki transformed our website, boosting conversions with his user-centric design approach.",
-    img: "/reviews/user-4.jpg",
-  },
-  {
-    name: "James",
-    username: "@james",
-    body: "Professional and skillfull! Working with Zaki was a breeze. The final product exceeded our expectations!",
     img: "/reviews/user-4.jpg",
   },
 ];

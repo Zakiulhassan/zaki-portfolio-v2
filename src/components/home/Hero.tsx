@@ -32,7 +32,7 @@ const Hero = () => {
         y={12}
         className="absolute left-4 top-20 z-10 sm:left-8 lg:left-12 lg:top-24"
       >
-        <p className="label">Product Designer — UX/UI</p>
+        <p className="label">Product Designer &amp; Developer</p>
       </FadeIn>
       <FadeIn
         immediate
@@ -48,44 +48,45 @@ const Hero = () => {
 
       <Container className="relative z-10 flex h-full flex-col justify-between pb-10 pt-32">
         <div className="flex flex-col gap-6">
-          <SplitReveal
-            as="h1"
-            mode="words"
-            immediate
-            delay={0.2}
-            className="text-display tracking-display text-[14vw] leading-[0.9] sm:text-[10vw] lg:text-[7vw]"
-          >
-            Design that makes
-          </SplitReveal>
-          <h1 className="text-display tracking-display text-[14vw] leading-[0.9] sm:text-[10vw] lg:text-[7vw]">
+          <h1 className="text-display tracking-display text-[13vw] leading-[0.95] sm:text-[9.5vw] lg:text-[6.5vw]">
             <SplitReveal
               as="span"
               mode="words"
               immediate
-              delay={0.35}
-              className="inline"
+              delay={0.2}
+              className="inline text-acid"
             >
-              products easier to
+              Trust
             </SplitReveal>{" "}
             <SplitReveal
               as="span"
               mode="words"
               immediate
-              delay={0.45}
-              className="inline text-acid"
+              delay={0.3}
+              className="inline"
             >
-              trust.
+              is a design
             </SplitReveal>
           </h1>
+          <SplitReveal
+            as="h1"
+            mode="words"
+            immediate
+            delay={0.42}
+            className="text-display tracking-display text-[13vw] leading-[0.95] sm:text-[9.5vw] lg:text-[6.5vw]"
+          >
+            decision.
+          </SplitReveal>
         </div>
 
         <div className="flex flex-col gap-10">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <FadeIn immediate delay={0.5} className="max-w-md">
               <p className="text-lg text-ink-dim sm:text-xl">
-                I help agencies, startups, and product teams turn complex
-                digital experiences into clear, polished, high-quality
-                interfaces that feel credible from the first interaction.
+                I&apos;m Zaki ul Hassan. Since 2018 I&apos;ve designed and
+                built products for startups, agencies, and product teams —
+                interfaces clear enough to use without thinking, credible
+                enough to buy from.
               </p>
             </FadeIn>
             <FadeIn
@@ -97,7 +98,7 @@ const Hero = () => {
                 View Selected Work
               </Link>
               <Link href="/book-a-call" data-cursor="hover" className="btn btn-secondary">
-                Let&apos;s Talk Design
+                Book a Strategy Call
               </Link>
             </FadeIn>
           </div>
@@ -107,7 +108,7 @@ const Hero = () => {
             <FadeIn immediate delay={1.0} y={12}>
               <p className="label flex items-center gap-2">
                 <span className="inline-block h-1.5 w-1.5 bg-acid" aria-hidden />
-                Available for work ©2026
+                Available for new projects ©2026
               </p>
             </FadeIn>
             <FadeIn immediate delay={1.2} y={12}>

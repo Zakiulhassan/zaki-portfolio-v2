@@ -41,10 +41,10 @@ const caseStudies: CaseStudy[] = [
     authorImg: "/logo.png",
     title1: "cleanly",
     title: "Cleanly - Website and Dashboard Design and Development",
-    description: "Cleanly is a home and office cleaning service platform that offers on-demand, professional cleaning services. Their goal is to provide a seamless, user-friendly booking experience while ensuring high-quality cleaning services for both residential and commercial clients.",
+    description: "Cleanly is an on-demand cleaning service for homes and offices. Bookings are the entire business — if scheduling feels uncertain, customers call a competitor.",
     stats: [
-      { percentage: "200%", text: "Increase in satisfaction resulting to customer onboarding efficiency." },
-      { percentage: "70%", text: "Visits suggests increased customization interest." }
+      { percentage: "200%", text: "Faster customer onboarding after the booking flow redesign." },
+      { percentage: "70%", text: "Of visits engaged with service customization options." }
     ],
     imageSrc: "/cleanly-home.png",
     HeroImage: "/case-studies/cleanly-hero.png",
@@ -55,9 +55,9 @@ const caseStudies: CaseStudy[] = [
     deliverables: ["Website Design", "Dashboard Development", "User Flow Optimization"],
     team: ["UI/UX Designer", "Frontend Developer", "Backend Developer"],
     year: "2023 - Present",
-    detailedDescription: `As the lead designer and developer for Cleanly, I spearheaded the creation of an intuitive booking platform that revolutionized how users schedule and manage cleaning services. The project focused on streamlining the user journey while ensuring robust functionality for both customers and service providers.`,
-    challenge: `The main challenge was creating a seamless booking experience that could handle complex scheduling requirements while maintaining simplicity for users. We needed to balance feature-rich functionality with an intuitive interface that wouldn't overwhelm users.`,
-    solution: `We implemented a step-by-step booking process with real-time availability checking and integrated a sophisticated scheduling system. The dashboard was designed to provide clear visibility of upcoming services, cleaning history, and easy management of recurring bookings.`
+    detailedDescription: `I led both design and development: the customer-facing booking flow, the admin dashboard, and the code that runs them. One person owning both sides meant the design never had to be "translated" — what I drew is what shipped.`,
+    challenge: `Scheduling a cleaning sounds simple until you model it: recurring visits, variable home sizes, add-on services, provider availability. The existing flow exposed all of that complexity to the customer at once, and people abandoned it.`,
+    solution: `I split booking into one decision per step, with real-time availability so customers never pick a slot that bounces. Admins got a dashboard organized around the question they actually ask — "what's happening today?" — with recurring bookings manageable in two clicks instead of a phone call.`
   },
   {
     id: 2,
@@ -65,10 +65,10 @@ const caseStudies: CaseStudy[] = [
     authorImg: "/logo.png",
     title1: "furnium",
     title: "Furnium - A Furniture E-commerce Platform UI/UX Design",
-    description: "Furnium is a contemporary furniture brand that focuses on sleek, minimalist designs. The goal was to create an e-commerce platform reflecting Furnium's modern aesthetic, ensuring a seamless and intuitive shopping experience for customers.",
+    description: "Furnium sells minimalist furniture — a product people judge entirely by how it looks. The store had to get out of the photography's way and still close the sale.",
     stats: [
-      { percentage: "150%", text: "Increase in user engagement on the site, driven by intuitive design and high-quality visuals." },
-      { percentage: "95%", text: "Positive feedback from users on the seamless navigation and clean layout." }
+      { percentage: "150%", text: "Increase in user engagement after launch." },
+      { percentage: "95%", text: "Of tested users rated navigation positively." }
     ],
     imageSrc: "/furnium-website.png",
     HeroImage: "/case-studies/furnium-hero.png",
@@ -79,9 +79,9 @@ const caseStudies: CaseStudy[] = [
     deliverables: ["E-commerce Platform Design", "User Research Report", "Design System"],
     team: ["UI/UX Designer", "User Researcher", "Product Manager"],
     year: "2023",
-    detailedDescription: `Leading the design of Furnium's e-commerce platform involved creating an experience that matched their premium brand while ensuring intuitive navigation and seamless purchasing flows.`,
-    challenge: `The challenge was balancing aesthetic appeal with functional e-commerce requirements, ensuring the platform could effectively showcase furniture while maintaining fast load times and easy navigation.`,
-    solution: `We developed a minimal yet effective design system that prioritized product imagery while maintaining clear navigation and purchase paths. The implementation included advanced filtering and search capabilities.`
+    detailedDescription: `I led UX and research: interviews with furniture buyers, then an interface built around how they actually shop — by room, by look, by price ceiling — rather than by catalog taxonomy.`,
+    challenge: `Premium furniture buyers browse like gallery visitors but buy like accountants. The design had to hold both modes: full-bleed imagery that sells the look, and specs, dimensions, and delivery costs one tap away when the decision gets serious.`,
+    solution: `A design system where photography owns the layout and UI stays in the margins. Filtering works the way buyers think — room, style, budget — and every product page answers the three questions that kill furniture purchases: will it fit, what's it made of, when does it arrive.`
   },
   {
     id: 3,
@@ -89,10 +89,10 @@ const caseStudies: CaseStudy[] = [
     authorImg: "/logo.png",
     title1: "rivo",
     title: "Rivo - An E-commerce Tech Store Platform UI/UX Design",
-    description: "Rivo is an innovative e-commerce platform aimed at providing a superior online shopping experience. The project involved creating a user interface that supported advanced features while delivering a seamless and intuitive user journey.",
+    description: "Rivo is an online electronics store. Tech shoppers compare obsessively before they buy — the interface had to make comparison the fastest path to checkout, not a detour away from it.",
     stats: [
-      { percentage: "120%", text: "Increase in user engagement due to personalized shopping experiences." },
-      { percentage: "80%", text: "Improvement in repeat purchases as a result of tailored product recommendations." }
+      { percentage: "120%", text: "Increase in engagement from personalized recommendations." },
+      { percentage: "80%", text: "Improvement in repeat purchases." }
     ],
     imageSrc: "/rivo-app.png",
     HeroImage: "/case-studies/rivo-hero.png",
@@ -103,9 +103,9 @@ const caseStudies: CaseStudy[] = [
     deliverables: ["Platform Design", "User Testing Reports", "Interactive Prototypes"],
     team: ["UI Designer", "UX Researcher", "Product Owner"],
     year: "2023",
-    detailedDescription: `For Rivo, we focused on creating a tech-forward e-commerce experience that caters to both tech-savvy users and those new to online tech shopping.`,
-    challenge: `The main challenge was creating an interface that could handle complex product specifications and comparisons while maintaining an approachable and non-intimidating shopping experience.`,
-    solution: `We implemented an advanced yet user-friendly product comparison system and created intuitive category navigation that helps users find exactly what they're looking for without feeling overwhelmed.`
+    detailedDescription: `I handled UI design and UX research. Testing showed two distinct audiences in the same store: spec-readers who want every number, and gift-buyers who want to be told what's good. The interface serves both without making either feel lost.`,
+    challenge: `A graphics card has forty specifications; a buyer cares about five — and which five depends on who's asking. Dumping spec tables on every screen drove casual buyers away, while hiding them made enthusiasts distrust the store.`,
+    solution: `Progressive disclosure: every product leads with the handful of specs that drive the decision for its category, with the full sheet one tap deeper. Side-by-side comparison lives inside the purchase flow, and recommendations are framed by use case — "for 4K gaming" — not by SKU similarity.`
   }
 ];
 

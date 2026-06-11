@@ -26,8 +26,9 @@ const BookACall = () => {
 
           <FadeIn delay={0.2} className="max-w-2xl">
             <p className="text-2xl text-ink-dim sm:text-3xl">
-              Tell me about your project — I&apos;ll get back to you within 24
-              hours to schedule a free 30-minute strategy call.
+              Bring me the problem — a flow users abandon, a site that
+              doesn&apos;t convert, a product that needs to launch. Free
+              30-minute call, a reply within 24 hours.
             </p>
           </FadeIn>
 

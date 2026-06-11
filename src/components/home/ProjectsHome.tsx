@@ -10,12 +10,18 @@ const ProjectsHome = () => {
     <section className="relative bg-coal pt-24 pb-12">
       <Container>
         <div className="flex flex-col gap-12">
-          <FadeIn className="rail">
-            <span className="idx">01</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight">
-              Selected Work
-            </h2>
-            <RevealTick />
+          <FadeIn className="flex flex-col gap-4">
+            <div className="rail">
+              <span className="idx">01</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-heading leading-tight">
+                Selected Work
+              </h2>
+              <RevealTick />
+            </div>
+            <p className="max-w-xl text-base text-ink-dim sm:text-lg">
+              Three shipped products, three measurable outcomes. The full case
+              studies show the decisions behind each one.
+            </p>
           </FadeIn>
 
           <FadeIn className="grid gap-6 md:grid-cols-3" y={60}>

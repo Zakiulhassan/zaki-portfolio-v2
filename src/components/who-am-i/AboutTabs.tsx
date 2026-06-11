@@ -2,11 +2,11 @@ import React from 'react'
 import Tabs from '../widgets/TabsComponent';
 
 const tabsData = [
-    { label: 'For Anyone', content: "Hi! I am Zaki, an engineer who’s all about crafting stunning, user-friendly solutions that make a real difference." },
-    { label: 'Recruiters', content: "A UX/UI designer and Full Stack developer with a passion for creating user-centered designs. I’m not actively job-hunting, but hey, I’m always open to a chat over coffee!" },
-    { label: 'Creative Leads', content: "Design is my craft, but collaboration is my superpower. I thrive on teamwork, turning complex challenges into creative solutions." },
-    { label: 'Developers', content: "I’m {design + code} and while (I’m === full-time engineer) I can {speak ‘code’ fluently}. I’ve built (this.site) from scratch and optimized (that.feature) for performance." },
-    { label: 'Entrepreneurs', content: "Your big idea needs great design. From start to finish, I’m available to partner with you to create something standout & scalable." },
+    { label: 'For Anyone', content: "I'm Zaki. I design digital products, then I build them — which keeps me honest about what actually ships." },
+    { label: 'Recruiters', content: "Product designer and full-stack developer. I've worked across SaaS, e-commerce, and service platforms since 2018, currently at Techanzy Limited. Not job-hunting, but always open to a good conversation." },
+    { label: 'Creative Leads', content: "I slot into existing teams without drama. Give me the problem and the constraints — you'll get options, the rationale behind each, and production-ready files." },
+    { label: 'Developers', content: "I'm {design && code}. I built this.site from scratch — I write the React I ask you to ship, so my handoffs compile." },
+    { label: 'Entrepreneurs', content: "You get one first impression with early users and investors. I design and build products that survive it." },
   ];
 
 const AboutTabs = () => {
