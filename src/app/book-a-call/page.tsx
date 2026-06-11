@@ -25,7 +25,7 @@ const BookACall = () => {
           </div>
 
           <FadeIn delay={0.2} className="max-w-2xl">
-            <p className="font-serif-accent text-2xl text-ink-dim sm:text-3xl">
+            <p className="text-2xl text-ink-dim sm:text-3xl">
               Tell me about your project — I&apos;ll get back to you within 24
               hours to schedule a free 30-minute strategy call.
             </p>
@@ -46,13 +46,13 @@ const BookACall = () => {
             <Link
               href="mailto:zakihassan555@gmail.com"
               data-cursor="hover"
-              className="link-sweep flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 uppercase tracking-widest text-ink transition-colors hover:border-acid hover:text-acid"
+              className="btn btn-secondary"
             >
               <LuMail /> Email Me <LuArrowUpRight />
             </Link>
           </FadeIn>
 
-          <FadeIn delay={0.5} className="overflow-hidden rounded-2xl border border-white/10">
+          <FadeIn delay={0.5} className="overflow-hidden border border-line700">
             <iframe
               src="https://calendly.com/zakiulhassan/30min"
               width="100%"

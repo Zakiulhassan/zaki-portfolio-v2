@@ -50,7 +50,7 @@ const ProjectPlanCard: React.FC<ProjectPlanCardProps> = ({
         }}>{description}</p>
           <a
             href={buttonLink}
-            className="text-primary px-[12px] py-2 rounded text-lg font-bricolage font-medium uppercase transition-colors duration-base ease-brand" style={{
+            className="btn btn-primary text-base font-bricolage uppercase" style={{
               background: `linear-gradient(to right, ${btnColorFrom}, ${btnColorTo})`,
             }}
           >

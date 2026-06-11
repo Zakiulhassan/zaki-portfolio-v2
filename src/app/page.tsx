@@ -16,7 +16,7 @@ export default function Home() {
       {/* Scrolling Content */}
       <section className="relative z-20">
         <div className="h-screen"></div>
-        <div className="rounded-t-[2.5rem] overflow-hidden bg-coal shadow-[0_-40px_80px_rgba(0,0,0,0.6)]">
+        <div className="overflow-hidden bg-coal border-t border-line700">
           <ProjectsHome/>
           <ProblemSolution />
           <CaseStudiesSection />

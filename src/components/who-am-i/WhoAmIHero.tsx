@@ -30,7 +30,7 @@ const WhoAmIHero = () => {
       >
         <motion.div
           variants={fadeUpVariant}
-          className="flex flex-col md:flex-row w-full bg-coal-soft border border-white/5 rounded-2xl relative mt-8"
+          className="flex flex-col md:flex-row w-full bg-coal-soft border border-line700 rounded relative mt-8"
         >
           <div className="order-2 md:order-1 w-full md:w-1/3 flex justify-center md:justify-start">
             <Image

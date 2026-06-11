@@ -20,11 +20,11 @@ const cardData = [
     colorHeading: "#fff",
     colorText: "#E4E7DC",
     btnColorFrom: "#C6FE1E",
-    btnColorTo: "#2BFD86",
+    btnColorTo: "#C6FE1E",
     bgColorFrom: "#242524",
     bgColorTo: "#242524",
     beamColorFrom: "#C6FE1E",
-    beamColorTo: "#2BFD86",
+    beamColorTo: "#A8DB12",
   },
   {
     title: "UX Development: Bringing Designs to Life.",
@@ -43,11 +43,11 @@ const cardData = [
     colorHeading: "#fff",
     colorText: "#E4E7DC",
     btnColorFrom: "#C6FE1E",
-    btnColorTo: "#2BFD86",
+    btnColorTo: "#C6FE1E",
     bgColorFrom: "#242524",
     bgColorTo: "#242524",
     beamColorFrom: "#C6FE1E",
-    beamColorTo: "#2BFD86",
+    beamColorTo: "#A8DB12",
   },
   {
     title: "Product Launch: From Vision to Reality.",
@@ -63,14 +63,14 @@ const cardData = [
       "Scalability & Performance Optimization.",
       "Launch & Post-Launch Support.",
     ],
-    colorHeading: "#10110F",
-    colorText: "#10110F",
-    btnColorFrom: "#fff",
-    btnColorTo: "#fff",
-    bgColorFrom: "#C6FE1E",
-    bgColorTo: "#2BFD86",
-    beamColorFrom: "#ffffff",
-    beamColorTo: "#ffffff",
+    colorHeading: "#fff",
+    colorText: "#E4E7DC",
+    btnColorFrom: "#C6FE1E",
+    btnColorTo: "#C6FE1E",
+    bgColorFrom: "#242524",
+    bgColorTo: "#242524",
+    beamColorFrom: "#C6FE1E",
+    beamColorTo: "#A8DB12",
   },
 ];
 
@@ -119,10 +119,8 @@ const ProjectPlans = () => {
           </div>
 
           {/* Footer Section */}
-          <p className="font-gloria text-lg sm:text-xl lg:text-2xl text-center text-secondary leading-tight tracking-tight">
-            Ready to see what{" "}
-            <span className="hover:text-greenPri">great design</span> can do for
-            your business?
+          <p className="text-lg sm:text-xl lg:text-2xl text-center text-ink-dim leading-tight">
+            Ready to see what great design can do for your business?
           </p>
         </div>
       </Container>
