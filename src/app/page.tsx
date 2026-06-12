@@ -1,45 +1,29 @@
 import Hero from "@/components/home/Hero";
-import ProjectPlans from "@/components/home/ProjectPlans";
-import ProblemSolution from "@/components/home/ProblemSolution";
-import CaseStudiesSection from "@/components/home/CaseStudiesSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import ProjectsHome from "@/components/home/ProjectsHome";
-import TextMarquee from "@/components/motion/TextMarquee";
-
-const VALUES = ["Clarity", "Trust", "Hierarchy", "Proof"];
+import Positioning from "@/components/home/Positioning";
+import WorkIndex from "@/components/home/WorkIndex";
+import Beliefs from "@/components/home/Beliefs";
+import ProcessFragments from "@/components/home/ProcessFragments";
+import CapabilityIndex from "@/components/home/CapabilityIndex";
+import ProofSignals from "@/components/home/ProofSignals";
 
 export default function Home() {
   return (
     <section className="relative bg-coal">
-      {/* Hero Section */}
+      {/* Scene 01 — opening world, pinned behind the scroll */}
       <section className="fixed inset-0 z-10 h-screen w-full">
         <Hero />
       </section>
 
-      {/* Scrolling Content */}
+      {/* Scenes 02–07 slide over the opening scene */}
       <section className="relative z-20">
         <div className="h-screen"></div>
-        <div className="overflow-hidden bg-coal border-t border-line700">
-          <ProjectsHome/>
-          <ProblemSolution />
-          <CaseStudiesSection />
-          <ProjectPlans />
-          <TestimonialsSection />
-
-          {/* Outlined value strip before the footer CTA */}
-          <div className="border-y border-line700">
-            <TextMarquee baseSpeed={50} className="py-8">
-              {VALUES.map((value, i) => (
-                <span
-                  key={i}
-                  className="mx-8 flex items-center gap-8 text-display text-5xl uppercase sm:text-7xl"
-                >
-                  <span className="text-outline">{value}</span>
-                  <span className="text-acid text-3xl sm:text-4xl">—</span>
-                </span>
-              ))}
-            </TextMarquee>
-          </div>
+        <div className="overflow-hidden border-t border-line700 bg-coal">
+          <Positioning />
+          <WorkIndex />
+          <Beliefs />
+          <ProcessFragments />
+          <CapabilityIndex />
+          <ProofSignals />
         </div>
       </section>
     </section>
