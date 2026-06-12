@@ -5,6 +5,7 @@ import Beliefs from "@/components/home/Beliefs";
 import ProcessFragments from "@/components/home/ProcessFragments";
 import CapabilityIndex from "@/components/home/CapabilityIndex";
 import ProofSignals from "@/components/home/ProofSignals";
+import ScrollSceneTransition from "@/components/motion/ScrollSceneTransition";
 
 export default function Home() {
   return (
@@ -19,11 +20,21 @@ export default function Home() {
         <div className="h-screen"></div>
         <div className="overflow-hidden border-t border-line700 bg-coal">
           <Positioning />
-          <WorkIndex />
-          <Beliefs />
-          <ProcessFragments />
-          <CapabilityIndex />
-          <ProofSignals />
+          <ScrollSceneTransition>
+            <WorkIndex />
+          </ScrollSceneTransition>
+          <ScrollSceneTransition>
+            <Beliefs />
+          </ScrollSceneTransition>
+          <ScrollSceneTransition>
+            <ProcessFragments />
+          </ScrollSceneTransition>
+          <ScrollSceneTransition>
+            <CapabilityIndex />
+          </ScrollSceneTransition>
+          <ScrollSceneTransition>
+            <ProofSignals />
+          </ScrollSceneTransition>
         </div>
       </section>
     </section>

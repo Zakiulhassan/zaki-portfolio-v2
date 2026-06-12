@@ -3,6 +3,7 @@
 import {
   Children,
   ElementType,
+  Fragment,
   ReactNode,
   useEffect,
   useRef,
@@ -11,6 +12,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 interface SplitRevealProps {
   children: string;
@@ -28,6 +33,8 @@ interface SplitRevealProps {
 /**
  * Masked text reveal: each word/char rises from behind an overflow-hidden
  * clip, the signature editorial reveal used across modern designer portfolios.
+ * The full string is exposed to assistive tech via visually-hidden text;
+ * the animated fragments are decorative and aria-hidden.
  */
 export const SplitReveal = ({
   children,
@@ -47,6 +54,10 @@ export const SplitReveal = ({
     const targets = el.querySelectorAll<HTMLElement>("[data-split-unit]");
 
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion()) {
+        gsap.set(targets, { yPercent: 0, rotate: 0 });
+        return;
+      }
       gsap.fromTo(
         targets,
         { yPercent: 110, rotate: 3 },
@@ -76,7 +87,8 @@ export const SplitReveal = ({
   const words = children.split(" ");
 
   return (
-    <Tag ref={ref} className={className} aria-label={children}>
+    <Tag ref={ref} className={className}>
+      <span className="sr-only">{children}</span>
       {words.map((word, wi) => (
         <span
           key={wi}
@@ -105,6 +117,12 @@ export const SplitReveal = ({
   );
 };
 
+/**
+ * Named alias for the brief's component system: SplitReveal is the
+ * masked-text-reveal primitive.
+ */
+export const MaskedTextReveal = SplitReveal;
+
 interface LineRevealProps {
   children: ReactNode;
   className?: string;
@@ -129,6 +147,10 @@ export const LineReveal = ({
     const targets = el.querySelectorAll<HTMLElement>("[data-line]");
 
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion()) {
+        gsap.set(targets, { yPercent: 0 });
+        return;
+      }
       gsap.fromTo(
         targets,
         { yPercent: 110 },
@@ -186,6 +208,10 @@ export const FadeIn = ({
     if (!el) return;
 
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion()) {
+        gsap.set(el, { opacity: 1, y: 0 });
+        return;
+      }
       gsap.fromTo(
         el,
         { opacity: 0, y },
@@ -232,6 +258,10 @@ export const ScrubWords = ({ children, className = "" }: ScrubWordsProps) => {
     const targets = el.querySelectorAll<HTMLElement>("[data-word]");
 
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion()) {
+        gsap.set(targets, { opacity: 1 });
+        return;
+      }
       gsap.fromTo(
         targets,
         { opacity: 0.15 },
@@ -253,12 +283,16 @@ export const ScrubWords = ({ children, className = "" }: ScrubWordsProps) => {
   }, [children]);
 
   return (
-    <p ref={ref} className={className} aria-label={children}>
+    <p ref={ref} className={className}>
+      <span className="sr-only">{children}</span>
       {children.split(" ").map((word, i) => (
-        <span key={i} data-word aria-hidden className="inline-block">
-          {word}
-          {" "}
-        </span>
+        // Space lives outside the inline-block span — a trailing space
+        // inside one is trimmed at its line end and words run together.
+        <Fragment key={i}>
+          <span data-word aria-hidden className="inline-block">
+            {word}
+          </span>{" "}
+        </Fragment>
       ))}
     </p>
   );

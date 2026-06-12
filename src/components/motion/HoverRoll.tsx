@@ -16,7 +16,8 @@ const HoverRoll = ({
   className?: string;
 }) => {
   return (
-    <span className={`hover-roll ${className}`} aria-label={children}>
+    <span className={`hover-roll ${className}`}>
+      <span className="sr-only">{children}</span>
       {children.split("").map((char, i) => (
         <span
           key={i}
