@@ -26,11 +26,11 @@ const CountUp = ({
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !inView) return;
-    if (reduced) {
-      el.textContent = `${prefix}${value}${suffix}`;
-      return;
-    }
+    if (!el) return;
+    if (reduced) return;
+    // Hold at 0 until in view, then count up to the value already in the markup.
+    el.textContent = `${prefix}0${suffix}`;
+    if (!inView) return;
     const controls = animate(0, value, {
       duration,
       ease: [0.22, 1, 0.36, 1],
@@ -43,7 +43,7 @@ const CountUp = ({
 
   return (
     <span ref={ref} className={className}>
-      {prefix}0{suffix}
+      {prefix}{value}{suffix}
     </span>
   );
 };

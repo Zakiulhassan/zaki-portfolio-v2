@@ -1,24 +1,32 @@
 import React from "react";
 import Container from "../widgets/Container";
 import { FadeIn } from "../motion/SplitReveal";
+import CountUp from "../motion/CountUp";
 
-// TODO(zaki): replace with real client quotes, names, and roles.
-const QUOTES = [
+const RESULTS = [
   {
-    body: "Zaki transformed our website, boosting conversions with his user-centric design approach.",
-    name: "Daniel Reed",
-    role: "Founder, Novastudio",
+    value: 200,
+    suffix: "%",
+    text: "Faster booking flow completion for Cleanly's customers and admins.",
+    project: "Cleanly, 2024",
   },
   {
-    body: "Working with Zaki was a breeze. The final product exceeded our expectations.",
-    name: "Sarah Nguyen",
-    role: "Product Manager, NovaSync",
+    value: 150,
+    suffix: "%",
+    text: "More engagement after Furnium's storefront redesign shipped.",
+    project: "Furnium, 2024",
+  },
+  {
+    value: 120,
+    suffix: "%",
+    text: "Lift in checkout completion from Rivo's redesigned product flow.",
+    project: "Rivo, 2023",
   },
 ];
 
 /**
- * Scene 07 — proof signals. Two editorial pull-quotes set in the serif,
- * with precise mono attributions. No cards, no carousel, no avatars.
+ * Scene 07 — proof signals. Results pulled from shipped case studies,
+ * set as an editorial index with no cards, no avatars, no quotes.
  */
 const ProofSignals = () => {
   return (
@@ -29,19 +37,18 @@ const ProofSignals = () => {
             07 <span className="text-acid">/</span> Proof
           </p>
 
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-12">
-            {QUOTES.map((q, i) => (
-              <FadeIn key={q.name} delay={i * 0.12} y={28}>
-                <figure className={`flex max-w-xl flex-col gap-8 ${i === 1 ? "lg:mt-24" : ""}`}>
-                  <blockquote className="font-serif text-[clamp(1.5rem,2.6vw,2.4rem)] italic leading-[1.25] text-ink">
-                    &ldquo;{q.body}&rdquo;
-                  </blockquote>
-                  <figcaption className="flex items-baseline gap-4">
-                    <span className="h-px w-10 bg-line700" aria-hidden />
-                    <span className="label !text-ink">{q.name}</span>
-                    <span className="label">{q.role}</span>
-                  </figcaption>
-                </figure>
+          <div className="grid grid-cols-1 gap-16 sm:grid-cols-3 sm:gap-10">
+            {RESULTS.map((r, i) => (
+              <FadeIn key={r.project} delay={i * 0.1} y={28}>
+                <div className="flex flex-col gap-4 border-t border-line700 pt-8">
+                  <p className="text-display tracking-display text-[clamp(2.4rem,5vw,4rem)] leading-none text-ink">
+                    <CountUp value={r.value} suffix={r.suffix} />
+                  </p>
+                  <p className="max-w-xs text-base leading-relaxed text-ink-dim">
+                    {r.text}
+                  </p>
+                  <span className="label !text-ink-dim/70">{r.project}</span>
+                </div>
               </FadeIn>
             ))}
           </div>

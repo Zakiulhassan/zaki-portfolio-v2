@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { SplitReveal, FadeIn } from "../motion/SplitReveal";
 import Container from "../widgets/Container";
+import WebGLDesignArtifact from "../effects/WebGLDesignArtifact";
 
 /**
  * Opening scene: a single centered portrait flanked by editorial type.
@@ -39,6 +40,9 @@ const Hero = () => {
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-[40%] h-[64vmin] w-[64vmin] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink/[0.05]"
       />
+
+      {/* WebGL design artifact: cursor-reactive UI fragments orbiting the portrait */}
+      <WebGLDesignArtifact targetRef={sectionRef} />
 
       {/* Serif greeting, split around the figure */}
       <div className="absolute inset-x-0 top-[15vh] z-[1] flex items-baseline justify-center gap-[18vw] lg:top-[17vh]">

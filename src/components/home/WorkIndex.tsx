@@ -21,6 +21,8 @@ const PROJECTS = [
     slug: "cleanly",
     title: "Cleanly",
     line: "A booking flow customers and admins both rely on.",
+    problem: "Bookings, reschedules and admin dispatch lived in three disconnected tools.",
+    decision: "One shared booking model, surfaced differently for customers and admins.",
     role: "Design & build",
     year: "2024",
     tags: ["Service platform", "UX/UI", "Next.js"],
@@ -31,6 +33,8 @@ const PROJECTS = [
     slug: "furnium",
     title: "Furnium",
     line: "A store as quiet and considered as the furniture it sells.",
+    problem: "The catalogue felt louder than the products it was selling.",
+    decision: "Stripped the UI back until the photography carried the story.",
     role: "Product design",
     year: "2024",
     tags: ["E-commerce", "Research", "UI system"],
@@ -41,6 +45,8 @@ const PROJECTS = [
     slug: "rivo",
     title: "Rivo",
     line: "Discovery to checkout with fewer steps in between.",
+    problem: "Shoppers were dropping off between comparison and checkout.",
+    decision: "Collapsed the funnel into one scrollable, filterable flow.",
     role: "Product design",
     year: "2023",
     tags: ["Tech retail", "UX/UI", "Mobile"],
@@ -109,6 +115,16 @@ const WorkIndex = () => {
                       <LuArrowUpRight className="h-[0.55em] w-[0.55em] text-ink-dim opacity-0 transition-opacity duration-base group-hover:opacity-100" />
                     </span>
                     <span className="max-w-md text-base text-ink-dim">{p.line}</span>
+                    <div className="grid max-w-lg grid-cols-1 gap-x-8 gap-y-2 pt-2 sm:grid-cols-2">
+                      <p className="text-sm leading-relaxed text-ink-dim">
+                        <span className="label !text-ink-dim/70">Problem </span>
+                        {p.problem}
+                      </p>
+                      <p className="text-sm leading-relaxed text-ink-dim">
+                        <span className="label !text-ink-dim/70">Decision </span>
+                        {p.decision}
+                      </p>
+                    </div>
                   </div>
                   <div className="col-start-2 flex flex-wrap items-baseline gap-x-6 gap-y-1 sm:col-start-3 sm:flex-col sm:items-end sm:text-right">
                     <span className="label">{p.role}</span>
