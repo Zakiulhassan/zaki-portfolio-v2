@@ -8,17 +8,10 @@ import { SplitReveal, FadeIn } from "../motion/SplitReveal";
 import Container from "../widgets/Container";
 import WebGLDesignArtifact from "../effects/WebGLDesignArtifact";
 
-const CAPABILITIES = [
-  "Brand Design",
-  "Product UX",
-  "Website Design",
-  "Design Systems",
-  "Frontend Implementation",
-];
+const CAPABILITIES = ["Brand Design", "Product UX", "Design Systems"];
 
-const HEADLINE_LEFT = "I design brand systems and product experiences";
-const HEADLINE_RIGHT =
-  "for teams that need clarity, structure, and stronger digital presence.";
+const HEADLINE_LEFT = "I design brand systems";
+const HEADLINE_RIGHT = "and product experiences.";
 const HEADLINE = `${HEADLINE_LEFT} ${HEADLINE_RIGHT}`;
 
 /**
@@ -71,7 +64,7 @@ const Hero = () => {
             immediate
             delay={0.3}
             stagger={0.025}
-            className="block max-w-[18ch] text-display tracking-display text-[clamp(1.7rem,3.4vw,2.6rem)] leading-[1.12] sm:text-left"
+            className="block max-w-[12ch] text-display tracking-display text-[clamp(2rem,4vw,3.4rem)] leading-[1.1] sm:text-left"
           >
             {HEADLINE_LEFT}
           </SplitReveal>
@@ -81,7 +74,7 @@ const Hero = () => {
             immediate
             delay={0.42}
             stagger={0.025}
-            className="block max-w-[20ch] text-display tracking-display text-[clamp(1.7rem,3.4vw,2.6rem)] leading-[1.12] text-ink-dim sm:text-right"
+            className="block max-w-[13ch] text-display tracking-display text-[clamp(2rem,4vw,3.4rem)] leading-[1.1] text-ink-dim sm:text-right"
           >
             {HEADLINE_RIGHT}
           </SplitReveal>
@@ -119,7 +112,6 @@ const Hero = () => {
           className="absolute left-container top-[46%] hidden sm:block lg:left-container-lg"
         >
           <div className="flex flex-col gap-2.5">
-            <span className="label">Portfolio — 2026</span>
             <span className="label flex items-center gap-2">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-acid" aria-hidden />
               Available for selected projects
@@ -159,39 +151,29 @@ const Hero = () => {
           </Link>
         </FadeIn>
 
-        {/* Supporting copy — bottom left */}
-        <FadeIn
-          immediate
-          delay={0.84}
-          y={14}
-          className="pointer-events-auto absolute bottom-[6vh] left-container hidden max-w-sm sm:block md:left-container-md lg:left-container-lg"
-        >
-          <p className="text-base leading-relaxed text-ink-dim sm:text-lg">
-            I help startups, SaaS teams, AI products, and service businesses
-            turn scattered ideas into clear brands, usable interfaces, and
-            websites that are easier to understand, trust, and act on.
-          </p>
-        </FadeIn>
-
-        {/* CTAs + scroll cue — bottom right */}
+        {/* Scroll cue — bottom left */}
         <FadeIn
           immediate
           delay={0.96}
           y={14}
-          className="pointer-events-auto absolute bottom-[6vh] right-container hidden flex-col items-end gap-6 sm:flex md:right-container-md lg:right-container-lg"
+          className="absolute bottom-[6vh] left-container hidden sm:block md:left-container-md lg:left-container-lg"
         >
-          <div className="flex flex-wrap items-center justify-end gap-4">
-            <Link href="/case-studies" data-cursor="hover" className="btn btn-primary">
-              View selected work <span className="arr">→</span>
-            </Link>
-            <Link href="/about-me" data-cursor="hover" className="btn btn-secondary">
-              See how I think
-            </Link>
-          </div>
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-start gap-3">
             <span className="label">Scroll to explore</span>
             <span className="scroll-cue-line" aria-hidden />
           </div>
+        </FadeIn>
+
+        {/* CTA — bottom right */}
+        <FadeIn
+          immediate
+          delay={0.84}
+          y={14}
+          className="pointer-events-auto absolute bottom-[6vh] right-container hidden sm:block md:right-container-md lg:right-container-lg"
+        >
+          <Link href="/case-studies" data-cursor="hover" className="btn btn-primary">
+            View selected work <span className="arr">→</span>
+          </Link>
         </FadeIn>
       </Container>
     </section>
