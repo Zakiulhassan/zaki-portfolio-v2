@@ -1,138 +1,154 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import FluidBackground from "../effects/FluidBackground";
-import FluidImage from "../motion/FluidImage";
+import React, { useRef } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { SplitReveal, FadeIn } from "../motion/SplitReveal";
-import TextMarquee from "../motion/TextMarquee";
 import Container from "../widgets/Container";
 
-const SKILLS = [
-  "UX Design",
-  "Brand Identity",
-  "Product Strategy",
-  "Full-Stack Development",
-  "Interaction Design",
-  "Design Systems",
-];
-
+/**
+ * Opening scene: a single centered portrait flanked by editorial type.
+ * Serif greeting sits behind the figure, the name and discipline anchor
+ * the lower corners in front of it — calm, spare, one visual anchor.
+ */
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 48]);
+
   return (
-    <section className="relative flex min-h-screen w-full flex-col overflow-hidden bg-coal text-ink">
-      <div className="pointer-events-none absolute inset-0">
-        <FluidBackground />
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen w-full overflow-hidden bg-coal text-ink"
+    >
+      {/* Quiet background: faint radial light + 1px arc linework */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[38%] h-[110vmin] w-[110vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(244,244,239,0.06),transparent_72%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[40%] h-[88vmin] w-[88vmin] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink/[0.06]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[40%] h-[64vmin] w-[64vmin] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink/[0.05]"
+      />
+
+      {/* Serif greeting, split around the figure */}
+      <div className="absolute inset-x-0 top-[15vh] z-[1] flex items-baseline justify-center gap-[18vw] lg:top-[17vh]">
+        <SplitReveal
+          as="span"
+          mode="words"
+          immediate
+          delay={0.3}
+          className="font-serif italic text-[13vw] leading-none sm:text-[10vw] lg:text-[8.5vw]"
+        >
+          Hey,
+        </SplitReveal>
+        <SplitReveal
+          as="span"
+          mode="words"
+          immediate
+          delay={0.45}
+          className="font-serif italic text-[13vw] leading-none sm:text-[10vw] lg:text-[8.5vw]"
+        >
+          there
+        </SplitReveal>
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-coal/20 via-coal/35 to-coal" />
+      {/* Centered portrait, anchored to the bottom edge */}
+      <div className="absolute bottom-0 left-1/2 z-[2] aspect-[934/1791] h-[56vh] -translate-x-1/2 sm:h-[64vh] lg:h-[76vh]">
+        <FadeIn immediate delay={0.15} y={32} className="h-full w-full">
+          <motion.div style={{ y: portraitY }} className="relative h-full w-full">
+            <Image
+              src="/zaki-portrait.webp"
+              alt="Zaki ul Hassan, seated portrait"
+              fill
+              priority
+              sizes="(min-width: 1024px) 40vh, 60vw"
+              className="object-contain object-bottom"
+            />
+          </motion.div>
+        </FadeIn>
+      </div>
 
-      <Container className="relative z-10 flex flex-1 flex-col items-center pb-12 pt-28 sm:pt-32">
-        {/* Top label */}
-        <FadeIn immediate delay={0.1} y={12}>
-          <p className="label flex items-center gap-2">
-            <span className="inline-block h-1.5 w-1.5 bg-acid" aria-hidden />
-            Available for new projects &mdash; 2026
+      {/* Ground the figure into the section edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-24 bg-gradient-to-b from-transparent to-coal"
+      />
+
+      <Container className="pointer-events-none relative z-[3] min-h-screen">
+        {/* Availability capsule — left */}
+        <FadeIn
+          immediate
+          delay={0.8}
+          y={14}
+          className="absolute inset-x-0 top-[26vh] flex justify-center lg:inset-x-auto lg:left-container-lg lg:top-[47%] lg:justify-start"
+        >
+          <p className="pointer-events-auto flex items-center gap-2.5 rounded-full border border-line700 bg-coal-soft/60 px-4 py-2.5 backdrop-blur-sm">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-acid" aria-hidden />
+            <span className="label">Available for new opportunities</span>
           </p>
         </FadeIn>
 
-        {/* Centered headline */}
-        <h1 className="mt-6 text-center text-display tracking-display text-[12vw] leading-[1.05] sm:text-[7vw] lg:text-[5vw]">
+        {/* Specialization — right */}
+        <FadeIn
+          immediate
+          delay={0.95}
+          y={14}
+          className="absolute right-container-md top-[47%] hidden max-w-[230px] text-right md:block lg:right-container-lg"
+        >
+          <p className="text-sm leading-relaxed text-ink-dim">
+            Specialized in brand identity, product design, and front-end
+            development.
+          </p>
+        </FadeIn>
+
+        {/* Name — bottom left, in front of the figure */}
+        <div className="absolute bottom-[6vh] left-container md:left-container-md lg:left-container-lg">
           <SplitReveal
-            as="span"
+            as="p"
             mode="words"
             immediate
-            delay={0.2}
-            className="inline"
+            delay={0.55}
+            className="text-display tracking-display text-[12vw] uppercase leading-[0.95] lg:text-[7vw]"
           >
-            Trust is a
-          </SplitReveal>{" "}
-          <SplitReveal
-            as="span"
-            mode="words"
-            immediate
-            delay={0.32}
-            className="inline font-gloria font-normal lowercase tracking-normal text-acid"
-          >
-            design decision.
+            I am
           </SplitReveal>
-        </h1>
-
-        {/* Image row: info left / portrait center / subtext right */}
-        <div className="mt-10 grid w-full flex-1 grid-cols-1 items-center gap-10 sm:mt-14 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
-          {/* Left info */}
-          <FadeIn
+          <SplitReveal
+            as="p"
+            mode="words"
             immediate
-            delay={0.5}
-            className="order-2 flex flex-col items-center gap-5 text-center lg:order-1 lg:items-start lg:text-left"
+            delay={0.65}
+            className="text-display tracking-display text-[12vw] uppercase leading-[0.95] lg:text-[7vw]"
           >
-            <p className="label">Product Designer &amp; Developer</p>
-            <p className="max-w-xs text-base text-ink-dim sm:text-lg">
-              Based in Pakistan, working globally — Since 2018 I&apos;ve
-              designed and built products for startups, agencies, and
-              product teams.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-              <Link href="/case-studies" data-cursor="hover" className="btn btn-primary">
-                View Selected Work
-              </Link>
-              <Link href="/book-a-call" data-cursor="hover" className="btn btn-secondary">
-                Book a Strategy Call
-              </Link>
-            </div>
-          </FadeIn>
-
-          {/* Center portrait */}
-          <FadeIn immediate delay={0.3} y={28} className="order-1 mx-auto lg:order-2">
-            <div className="relative w-[64vw] max-w-[360px] sm:w-[40vw] lg:w-[22vw]">
-              <div className="absolute -inset-6 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(198,254,30,0.18),transparent)]" />
-              <FluidImage
-                src="/zaki-headshot.webp"
-                alt="Zaki ul Hassan"
-                priority
-                sizes="(min-width: 1024px) 22vw, 50vw"
-                className="aspect-square rounded-2xl border border-line700 bg-coal-soft"
-              />
-            </div>
-          </FadeIn>
-
-          {/* Right subtext */}
-          <FadeIn
-            immediate
-            delay={0.5}
-            className="order-3 flex flex-col items-center gap-3 text-center lg:items-end lg:text-right"
-          >
-            <p className="max-w-xs text-base text-ink-dim sm:text-lg">
-              Interfaces clear enough to use without thinking, credible
-              enough to buy from — that&apos;s the standard for every
-              project I take on.
-            </p>
-            <p className="label">
-              Based in Pakistan
-              <span className="hidden sm:inline"> / Working globally</span>
-            </p>
-          </FadeIn>
+            Zaki
+          </SplitReveal>
         </div>
 
-        {/* Scroll cue */}
-        <FadeIn immediate delay={1.1} y={12} className="mt-10 sm:mt-14">
-          <div className="flex flex-col items-center gap-3">
-            <span className="label">Scroll</span>
-            <span className="scroll-cue-line" aria-hidden />
-          </div>
-        </FadeIn>
+        {/* Discipline — bottom right */}
+        <div className="absolute bottom-[6vh] right-container text-right md:right-container-md lg:right-container-lg">
+          {["Brand &", "Product", "Designer"].map((line, i) => (
+            <SplitReveal
+              key={line}
+              as="p"
+              mode="words"
+              immediate
+              delay={0.75 + i * 0.08}
+              className="text-display tracking-display text-[5.5vw] uppercase leading-[1.02] lg:text-[2.8vw]"
+            >
+              {line}
+            </SplitReveal>
+          ))}
+        </div>
       </Container>
-
-      <TextMarquee baseSpeed={45} className="relative z-10 border-t border-line700 py-4">
-        {SKILLS.map((skill, i) => (
-          <span
-            key={i}
-            className="mx-6 flex items-center gap-6 text-sm uppercase tracking-[0.3em] text-ink-dim"
-          >
-            {skill}
-            <span className="text-acid">/</span>
-          </span>
-        ))}
-      </TextMarquee>
     </section>
   );
 };

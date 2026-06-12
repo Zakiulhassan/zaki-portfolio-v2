@@ -32,6 +32,7 @@ const config = {
       fontFamily: {
         aeonik: ['var(--font-aeonik)'],
         gloria: ['var(--font-gloria)'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
       },
       letterSpacing: {
@@ -122,7 +123,12 @@ const config = {
         '96px': '96px',
         '48px': '48px',
         '24px': '24px',
-        '12px': '12px'
+        '12px': '12px',
+        container: '1rem',
+        'container-sm': '1.5rem',
+        'container-md': '2rem',
+        'container-lg': '48px',
+        'container-xl': '96px'
       },
       padding: {
         container: '1rem',

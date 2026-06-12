@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Gloria_Hallelujah, JetBrains_Mono } from "next/font/google";
+import { Gloria_Hallelujah, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import Footer from "@/components/navigation/Footer";
 import Header from "@/components/navigation/Header";
 import SmoothScroll from "@/components/providers/SmoothScroll";
@@ -24,6 +24,15 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
 });
 
+// Editorial serif for hero greetings and expressive accents
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: '--font-serif',
+});
+
 
 export const metadata: Metadata = {
   title: "Zaki ul Hassan | UX Designer & Development",
@@ -36,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}>
       <body className="grain antialiased bg-background font-aeonik">
         <SmoothScroll>
           <Preloader />

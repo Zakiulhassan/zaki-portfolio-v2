@@ -61,8 +61,8 @@ const Header = () => {
                   <Link
                     href={link.href}
                     data-cursor="hover"
-                    className={`transition-colors duration-300 hover:text-acid ${
-                      isActive(link.href) ? "text-acid" : "text-ink"
+                    className={`transition-colors duration-300 hover:text-ink ${
+                      isActive(link.href) ? "text-ink" : "text-ink-dim"
                     }`}
                   >
                     <HoverRoll>{link.label}</HoverRoll>
@@ -81,8 +81,9 @@ const Header = () => {
                       "noopener noreferrer"
                     )
                   }
-                  className="flex items-center gap-2 rounded-full border border-acid/40 px-5 py-2 text-acid transition-colors duration-300 hover:bg-acid hover:text-coal"
+                  className="flex items-center gap-2 rounded-full border border-line700 px-5 py-2 text-ink transition-colors duration-300 hover:bg-ink hover:text-coal"
                 >
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-acid" aria-hidden />
                   Book a call <LuArrowUpRight />
                 </button>
               </Magnetic>
@@ -112,7 +113,7 @@ const Header = () => {
                 <Link
                   href={link.href}
                   className={`block py-2 transition-colors ${
-                    isActive(link.href) ? "text-acid" : "text-ink"
+                    isActive(link.href) ? "text-ink" : "text-ink-dim"
                   }`}
                 >
                   {link.label}
@@ -122,8 +123,9 @@ const Header = () => {
             <li>
               <Link
                 href="/book-a-call"
-                className="inline-flex items-center gap-2 rounded-full border border-acid/40 px-5 py-2 text-acid"
+                className="inline-flex items-center gap-2 rounded-full border border-line700 px-5 py-2 text-ink"
               >
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-acid" aria-hidden />
                 Book a call <LuArrowUpRight />
               </Link>
             </li>
