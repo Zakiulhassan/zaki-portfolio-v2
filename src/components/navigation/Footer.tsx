@@ -39,6 +39,7 @@ const Footer = () => {
   return (
     <footer
       ref={ref}
+      id="contact"
       className="relative z-30 overflow-hidden border-t border-line700 bg-coal-soft text-ink"
     >
       <motion.div style={{ y }}>
@@ -48,17 +49,22 @@ const Footer = () => {
             <span className="label">
               08 <span className="text-acid">/</span> Contact
             </span>
-            <h2 className="text-display tracking-display text-[11vw] leading-[1.05] sm:text-[7.5vw] lg:text-[6.5vw]">
-              <SplitReveal as="span" mode="words" className="inline">
-                Let&apos;s make it easier to
-              </SplitReveal>{" "}
-              <SplitReveal
-                as="span"
-                mode="words"
-                className="inline font-serif font-normal italic tracking-normal"
-              >
-                trust.
-              </SplitReveal>
+            <h2
+              aria-label="Let's make it easier to trust."
+              className="text-display tracking-display text-[11vw] leading-[1.05] sm:text-[7.5vw] lg:text-[6.5vw]"
+            >
+              <span aria-hidden="true">
+                <SplitReveal as="span" mode="words" className="inline">
+                  Let&apos;s make it easier to
+                </SplitReveal>{" "}
+                <SplitReveal
+                  as="span"
+                  mode="words"
+                  className="inline font-serif font-normal italic tracking-normal"
+                >
+                  trust.
+                </SplitReveal>
+              </span>
             </h2>
             <FadeIn delay={0.15} className="max-w-xl">
               <p className="text-base text-ink-dim sm:text-lg">
@@ -98,6 +104,7 @@ const Footer = () => {
                       href={social.href}
                       target="_blank"
                       data-cursor="hover"
+                      aria-label={social.label}
                       className="flex items-center gap-1 text-ink transition-colors hover:text-acid"
                     >
                       <HoverRoll>{social.label}</HoverRoll>

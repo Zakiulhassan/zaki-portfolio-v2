@@ -18,7 +18,7 @@ const FRAGMENTS = [
  */
 const ProcessFragments = () => {
   return (
-    <section className="border-t border-line700 bg-coal">
+    <section id="process" className="border-t border-line700 bg-coal">
       <Container>
         <div className="flex flex-col gap-16 py-28 sm:py-36">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">

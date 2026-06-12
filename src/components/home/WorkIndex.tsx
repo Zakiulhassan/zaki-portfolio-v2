@@ -131,6 +131,7 @@ const WorkIndex = () => {
       <CursorProjectPreview
         items={PROJECTS.map((p) => ({ key: p.slug, src: p.preview }))}
         active={active}
+        label="View Case"
         finePointer={finePointer}
         x={x}
         y={y}

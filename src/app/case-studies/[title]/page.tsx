@@ -219,10 +219,15 @@ const CaseStudyDetail = ({ params }: PageProps) => {
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div>
                 <SectionLabel index="01" name="Case study" />
-                <h1 className="mt-5 text-display tracking-display text-[clamp(3rem,9vw,7rem)] leading-[0.95]">
-                  <SplitReveal as="span" mode="words" immediate className="inline">
-                    {study.title}
-                  </SplitReveal>
+                <h1
+                  aria-label={study.title}
+                  className="mt-5 text-display tracking-display text-[clamp(3rem,9vw,7rem)] leading-[0.95]"
+                >
+                  <span aria-hidden="true">
+                    <SplitReveal as="span" mode="words" immediate className="inline">
+                      {study.title}
+                    </SplitReveal>
+                  </span>
                 </h1>
               </div>
               <FadeIn delay={0.2} className="max-w-sm text-base leading-relaxed text-ink-dim md:text-right">

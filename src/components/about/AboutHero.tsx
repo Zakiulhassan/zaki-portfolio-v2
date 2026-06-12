@@ -16,19 +16,24 @@ const AboutHero = () => {
             01 <span className="text-acid">/</span> About
           </p>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-            <h1 className="text-display tracking-display text-[clamp(2.6rem,7vw,5.5rem)] leading-[1.05]">
-              <SplitReveal as="span" mode="words" immediate className="inline">
-                I design digital products,
-              </SplitReveal>{" "}
-              <SplitReveal
-                as="span"
-                mode="words"
-                immediate
-                delay={0.12}
-                className="inline font-serif font-normal italic tracking-normal"
-              >
-                then I build them.
-              </SplitReveal>
+            <h1
+              aria-label="I design digital products, then I build them."
+              className="text-display tracking-display text-[clamp(2.6rem,7vw,5.5rem)] leading-[1.05]"
+            >
+              <span aria-hidden="true">
+                <SplitReveal as="span" mode="words" immediate className="inline">
+                  I design digital products,
+                </SplitReveal>{" "}
+                <SplitReveal
+                  as="span"
+                  mode="words"
+                  immediate
+                  delay={0.12}
+                  className="inline font-serif font-normal italic tracking-normal"
+                >
+                  then I build them.
+                </SplitReveal>
+              </span>
             </h1>
             <FadeIn delay={0.3} className="overflow-hidden border border-line700">
               <Image

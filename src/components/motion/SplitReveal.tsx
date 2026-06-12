@@ -87,12 +87,11 @@ export const SplitReveal = ({
   const words = children.split(" ");
 
   return (
-    <Tag ref={ref} className={className}>
-      <span className="sr-only">{children}</span>
+    <Tag ref={ref} className={className} aria-label={children}>
       {words.map((word, wi) => (
         <span
           key={wi}
-          aria-hidden
+          aria-hidden="true"
           className="inline-block overflow-hidden pb-[0.08em] -mb-[0.08em] align-bottom"
         >
           {mode === "chars" ? (
@@ -283,13 +282,12 @@ export const ScrubWords = ({ children, className = "" }: ScrubWordsProps) => {
   }, [children]);
 
   return (
-    <p ref={ref} className={className}>
-      <span className="sr-only">{children}</span>
+    <p ref={ref} className={className} aria-label={children}>
       {children.split(" ").map((word, i) => (
         // Space lives outside the inline-block span — a trailing space
         // inside one is trimmed at its line end and words run together.
         <Fragment key={i}>
-          <span data-word aria-hidden className="inline-block">
+          <span data-word aria-hidden="true" className="inline-block">
             {word}
           </span>{" "}
         </Fragment>

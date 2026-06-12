@@ -28,6 +28,8 @@ const Header = () => {
   const navLinks = [
     { href: "/case-studies", label: "Work" },
     { href: "/about-me", label: "About" },
+    { href: "/#process", label: "Process" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   const isActive = (path: string) => pathname === path;
@@ -61,6 +63,7 @@ const Header = () => {
                   <Link
                     href={link.href}
                     data-cursor="hover"
+                    aria-label={link.label}
                     className={`transition-colors duration-300 hover:text-ink ${
                       isActive(link.href) ? "text-ink" : "text-ink-dim"
                     }`}

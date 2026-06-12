@@ -60,7 +60,9 @@ const Preloader = () => {
   if (phase === "done") return null;
 
   return (
-    <div className="fixed inset-0 z-[200] overflow-hidden text-ink">
+    // Decorative splash: hidden from AT/crawlers so the staggered wordmark
+    // letters never read as "Z a k i".
+    <div aria-hidden="true" className="fixed inset-0 z-[200] overflow-hidden text-ink">
           {/* Left panel */}
           <motion.div
             className="absolute inset-y-0 left-0 w-1/2 bg-coal"

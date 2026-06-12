@@ -5,6 +5,7 @@ import Footer from "@/components/navigation/Footer";
 import Header from "@/components/navigation/Header";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import PageTransition from "@/components/providers/PageTransition";
+import ReducedMotionProvider from "@/components/providers/ReducedMotionProvider";
 import CursorTrail from "@/components/effects/CursorTrail";
 import FluidCardLayer from "@/components/effects/FluidCardLayer";
 import Preloader from "@/components/effects/Preloader";
@@ -47,16 +48,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}>
       <body className="grain antialiased bg-background font-aeonik">
-        <SmoothScroll>
-          <Preloader />
-          <CursorTrail />
-          <FluidCardLayer />
-          <Header />
-          <main className="flex-grow">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-        </SmoothScroll>
+        <ReducedMotionProvider>
+          <SmoothScroll>
+            <Preloader />
+            <CursorTrail />
+            <FluidCardLayer />
+            <Header />
+            <main className="flex-grow">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+          </SmoothScroll>
+        </ReducedMotionProvider>
       </body>
     </html>
   );

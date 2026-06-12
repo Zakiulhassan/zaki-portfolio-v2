@@ -6,8 +6,8 @@ import { FadeIn } from "../motion/SplitReveal";
 const BELIEFS = [
   {
     idx: "01",
-    title: "Trust is a design decision.",
-    line: "People decide whether they believe you before they read you.",
+    title: "Confusing products lose customers.",
+    line: "Every unclear screen, label, or step is a measurable cost — in drop-off, support tickets, or a sale that doesn't happen.",
   },
   {
     idx: "02",

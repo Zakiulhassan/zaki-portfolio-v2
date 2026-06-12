@@ -13,25 +13,30 @@ const CaseStudiesHero = () => {
           <ShinnyTextCompDark />
         </FadeIn>
 
-        <h1 className="text-display text-[10vw] leading-[1.05] text-ink sm:text-[6.5vw] lg:text-[5vw]">
-          <SplitReveal
-            as="span"
-            mode="words"
-            immediate
-            delay={0.15}
-            className="inline"
-          >
-            Three products,
-          </SplitReveal>{" "}
-          <SplitReveal
-            as="span"
-            mode="words"
-            immediate
-            delay={0.3}
-            className="inline text-acid"
-          >
-            three outcomes.
-          </SplitReveal>
+        <h1
+          aria-label="Three products, three outcomes."
+          className="text-display text-[10vw] leading-[1.05] text-ink sm:text-[6.5vw] lg:text-[5vw]"
+        >
+          <span aria-hidden="true">
+            <SplitReveal
+              as="span"
+              mode="words"
+              immediate
+              delay={0.15}
+              className="inline"
+            >
+              Three products,
+            </SplitReveal>{" "}
+            <SplitReveal
+              as="span"
+              mode="words"
+              immediate
+              delay={0.3}
+              className="inline text-acid"
+            >
+              three outcomes.
+            </SplitReveal>
+          </span>
         </h1>
 
         <FadeIn immediate delay={0.6} className="max-w-2xl">

@@ -386,15 +386,18 @@ button:focus-visible {
   vertical-align: top;
 }
 
+/* The rolling duplicate is a pseudo-element so each letter exists only
+   once in the DOM text (keeps crawler / screen-reader output clean). */
 .hover-roll .hr-a,
-.hover-roll .hr-b {
+.hover-roll .hr-letter::after {
   display: inline-block;
   transition: transform 0.4s var(--ease-out);
   transition-delay: calc(var(--hr-i) * 30ms);
   will-change: transform;
 }
 
-.hover-roll .hr-b {
+.hover-roll .hr-letter::after {
+  content: attr(data-char);
   position: absolute;
   left: 0;
   top: 100%;
@@ -403,14 +406,11 @@ button:focus-visible {
 .hover-roll:hover .hr-a,
 .group:hover .hover-roll .hr-a,
 a:hover > .hover-roll .hr-a,
-button:hover > .hover-roll .hr-a {
-  transform: translateY(-100%);
-}
-
-.hover-roll:hover .hr-b,
-.group:hover .hover-roll .hr-b,
-a:hover > .hover-roll .hr-b,
-button:hover > .hover-roll .hr-b {
+button:hover > .hover-roll .hr-a,
+.hover-roll:hover .hr-letter::after,
+.group:hover .hover-roll .hr-letter::after,
+a:hover > .hover-roll .hr-letter::after,
+button:hover > .hover-roll .hr-letter::after {
   transform: translateY(-100%);
 }
 

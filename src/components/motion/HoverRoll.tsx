@@ -5,8 +5,10 @@ const NBSP = " ";
 /**
  * Letter-stagger roll hover: each letter slides up out of an overflow-hidden
  * clip while a duplicate rises from below, staggered 30ms per letter.
- * Pure CSS transitions (see `.hover-roll` in globals.css) — trigger is the
- * component itself or any ancestor with the `group` class.
+ * The duplicate is a CSS pseudo-element (content: attr(data-char)) so the
+ * label exists exactly once in the DOM text — crawlers read "Work", not
+ * "W W o o r r k k". The whole span is aria-hidden; the host link carries
+ * the accessible name via aria-label.
  */
 const HoverRoll = ({
   children,
@@ -16,17 +18,15 @@ const HoverRoll = ({
   className?: string;
 }) => {
   return (
-    <span className={`hover-roll ${className}`}>
-      <span className="sr-only">{children}</span>
+    <span className={`hover-roll ${className}`} aria-hidden="true">
       {children.split("").map((char, i) => (
         <span
           key={i}
-          aria-hidden
           className="hr-letter"
+          data-char={char === " " ? NBSP : char}
           style={{ "--hr-i": i } as CSSProperties}
         >
           <span className="hr-a">{char === " " ? NBSP : char}</span>
-          <span className="hr-b">{char === " " ? NBSP : char}</span>
         </span>
       ))}
     </span>
