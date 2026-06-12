@@ -32,14 +32,23 @@ const ProcessFragments = () => {
 
           <div className="-mx-4 flex snap-x gap-5 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:grid-cols-5 md:gap-5 md:overflow-visible md:px-0 md:pb-0">
             {FRAGMENTS.map((f, i) => (
-              <FadeIn key={f.idx} delay={i * 0.07} y={32} className="w-[62vw] shrink-0 snap-start sm:w-[40vw] md:w-auto">
-                <figure className="group flex flex-col gap-3">
+              <FadeIn
+                key={f.idx}
+                delay={i * 0.07}
+                y={32}
+                className={`w-[62vw] shrink-0 snap-start sm:w-[40vw] md:w-auto ${
+                  i % 2 === 1 ? "md:mt-16" : ""
+                } ${i === 2 ? "md:-mt-8" : ""}`}
+              >
+                <figure className="group flex flex-col gap-3 transition-transform duration-slow ease-brand hover:-translate-y-2">
                   <div className="overflow-hidden border border-line700">
                     <ParallaxImage
                       src={f.src}
                       alt={f.caption}
                       sizes="(min-width: 768px) 20vw, 60vw"
-                      className="aspect-[3/4] w-full grayscale transition-[filter] duration-slow ease-brand group-hover:grayscale-0"
+                      className={`w-full grayscale transition-[filter] duration-slow ease-brand group-hover:grayscale-0 ${
+                        i % 2 === 1 ? "aspect-[3/5]" : "aspect-[3/4]"
+                      }`}
                     />
                   </div>
                   <figcaption className="label">
