@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import FluidBackground from "../effects/FluidBackground";
+import FluidImage from "../motion/FluidImage";
 import { SplitReveal, FadeIn } from "../motion/SplitReveal";
 import TextMarquee from "../motion/TextMarquee";
 import Container from "../widgets/Container";
@@ -19,138 +19,120 @@ const SKILLS = [
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-coal text-ink">
+    <section className="relative flex min-h-screen w-full flex-col overflow-hidden bg-coal text-ink">
       <div className="pointer-events-none absolute inset-0">
         <FluidBackground />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-coal/20 via-coal/35 to-coal" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-coal/20 via-coal/35 to-coal" />
 
-      {/* Corner-anchored mono metadata */}
-      <FadeIn
-        immediate
-        delay={0.9}
-        y={12}
-        className="absolute left-4 top-20 z-10 sm:left-8 lg:left-12 lg:top-24"
-      >
-        <p className="label">Product Designer &amp; Developer</p>
-      </FadeIn>
-      <FadeIn
-        immediate
-        delay={1.05}
-        y={12}
-        className="absolute right-4 top-20 z-10 hidden text-right sm:right-8 sm:block lg:right-12 lg:top-24"
-      >
-        <p className="label">
-          Based in Pakistan
-          <span className="hidden sm:inline"> / Working globally</span>
-        </p>
-      </FadeIn>
-
-      {/* Portrait card, vertically centered in the right column */}
-      <div className="pointer-events-none absolute right-4 top-1/2 z-[5] hidden w-[30vw] max-w-[420px] -translate-y-1/2 sm:right-8 sm:block lg:right-12 lg:w-[24vw]">
-        <FadeIn immediate delay={0.35} y={28}>
-          <div className="relative overflow-hidden rounded-2xl border border-line700 bg-coal-soft">
-            <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_100%,rgba(198,254,30,0.12),transparent_60%)]" />
-            <Image
-              src="/zaki-headshot.webp"
-              alt="Zaki ul Hassan"
-              width={878}
-              height={869}
-              priority
-              sizes="(min-width: 1024px) 24vw, 30vw"
-              className="relative w-full"
-            />
-          </div>
+      <Container className="relative z-10 flex flex-1 flex-col items-center pb-12 pt-28 sm:pt-32">
+        {/* Top label */}
+        <FadeIn immediate delay={0.1} y={12}>
+          <p className="label flex items-center gap-2">
+            <span className="inline-block h-1.5 w-1.5 bg-acid" aria-hidden />
+            Available for new projects &mdash; 2026
+          </p>
         </FadeIn>
-      </div>
 
-      <Container className="relative z-10 flex h-full flex-col justify-between pb-10 pt-32">
-        <div className="flex flex-col gap-6 sm:max-w-[68%] lg:max-w-[72%]">
-          <h1 className="text-display tracking-display text-[11vw] leading-[1.05] sm:text-[8vw] lg:text-[5.5vw]">
-            <SplitReveal
-              as="span"
-              mode="words"
-              immediate
-              delay={0.2}
-              className="inline text-acid"
-            >
-              Trust
-            </SplitReveal>{" "}
-            <SplitReveal
-              as="span"
-              mode="words"
-              immediate
-              delay={0.3}
-              className="inline"
-            >
-              is a design
-            </SplitReveal>
-          </h1>
+        {/* Centered headline */}
+        <h1 className="mt-6 text-center text-display tracking-display text-[12vw] leading-[1.05] sm:text-[7vw] lg:text-[5vw]">
           <SplitReveal
-            as="h1"
+            as="span"
             mode="words"
             immediate
-            delay={0.42}
-            className="text-display tracking-display text-[11vw] leading-[1.05] sm:text-[8vw] lg:text-[5.5vw]"
+            delay={0.2}
+            className="inline"
           >
-            decision.
+            Trust is a
+          </SplitReveal>{" "}
+          <SplitReveal
+            as="span"
+            mode="words"
+            immediate
+            delay={0.32}
+            className="inline font-gloria font-normal lowercase tracking-normal text-acid"
+          >
+            design decision.
           </SplitReveal>
-        </div>
+        </h1>
 
-        <div className="flex flex-col gap-10 sm:max-w-[68%] lg:max-w-[72%]">
-          <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-            <FadeIn immediate delay={0.5} className="max-w-md">
-              <p className="text-lg text-ink-dim sm:text-xl">
-                I&apos;m Zaki ul Hassan. Since 2018 I&apos;ve designed and
-                built products for startups, agencies, and product teams —
-                interfaces clear enough to use without thinking, credible
-                enough to buy from.
-              </p>
-            </FadeIn>
-            <FadeIn
-              immediate
-              delay={0.65}
-              className="flex shrink-0 flex-wrap items-center gap-4"
-            >
+        {/* Image row: info left / portrait center / subtext right */}
+        <div className="mt-10 grid w-full flex-1 grid-cols-1 items-center gap-10 sm:mt-14 lg:grid-cols-[1fr_auto_1fr] lg:gap-12">
+          {/* Left info */}
+          <FadeIn
+            immediate
+            delay={0.5}
+            className="order-2 flex flex-col items-center gap-5 text-center lg:order-1 lg:items-start lg:text-left"
+          >
+            <p className="label">Product Designer &amp; Developer</p>
+            <p className="max-w-xs text-base text-ink-dim sm:text-lg">
+              Based in Pakistan, working globally — Since 2018 I&apos;ve
+              designed and built products for startups, agencies, and
+              product teams.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
               <Link href="/case-studies" data-cursor="hover" className="btn btn-primary">
                 View Selected Work
               </Link>
               <Link href="/book-a-call" data-cursor="hover" className="btn btn-secondary">
                 Book a Strategy Call
               </Link>
-            </FadeIn>
-          </div>
+            </div>
+          </FadeIn>
 
-          {/* Bottom mono metadata row: availability + scroll cue */}
-          <div className="flex items-end justify-between">
-            <FadeIn immediate delay={1.0} y={12}>
-              <p className="label flex items-center gap-2">
-                <span className="inline-block h-1.5 w-1.5 bg-acid" aria-hidden />
-                Available for new projects ©2026
-              </p>
-            </FadeIn>
-            <FadeIn immediate delay={1.2} y={12}>
-              <div className="flex flex-col items-center gap-3">
-                <span className="label">Scroll</span>
-                <span className="scroll-cue-line" aria-hidden />
-              </div>
-            </FadeIn>
-          </div>
+          {/* Center portrait */}
+          <FadeIn immediate delay={0.3} y={28} className="order-1 mx-auto lg:order-2">
+            <div className="relative w-[64vw] max-w-[360px] sm:w-[40vw] lg:w-[22vw]">
+              <div className="absolute -inset-6 -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(198,254,30,0.18),transparent)]" />
+              <FluidImage
+                src="/zaki-headshot.webp"
+                alt="Zaki ul Hassan"
+                priority
+                sizes="(min-width: 1024px) 22vw, 50vw"
+                className="aspect-square rounded-2xl border border-line700 bg-coal-soft"
+              />
+            </div>
+          </FadeIn>
 
-          <TextMarquee baseSpeed={45} className="border-t border-line700 py-4">
-            {SKILLS.map((skill, i) => (
-              <span
-                key={i}
-                className="mx-6 flex items-center gap-6 text-sm uppercase tracking-[0.3em] text-ink-dim"
-              >
-                {skill}
-                <span className="text-acid">/</span>
-              </span>
-            ))}
-          </TextMarquee>
+          {/* Right subtext */}
+          <FadeIn
+            immediate
+            delay={0.5}
+            className="order-3 flex flex-col items-center gap-3 text-center lg:items-end lg:text-right"
+          >
+            <p className="max-w-xs text-base text-ink-dim sm:text-lg">
+              Interfaces clear enough to use without thinking, credible
+              enough to buy from — that&apos;s the standard for every
+              project I take on.
+            </p>
+            <p className="label">
+              Based in Pakistan
+              <span className="hidden sm:inline"> / Working globally</span>
+            </p>
+          </FadeIn>
         </div>
+
+        {/* Scroll cue */}
+        <FadeIn immediate delay={1.1} y={12} className="mt-10 sm:mt-14">
+          <div className="flex flex-col items-center gap-3">
+            <span className="label">Scroll</span>
+            <span className="scroll-cue-line" aria-hidden />
+          </div>
+        </FadeIn>
       </Container>
+
+      <TextMarquee baseSpeed={45} className="relative z-10 border-t border-line700 py-4">
+        {SKILLS.map((skill, i) => (
+          <span
+            key={i}
+            className="mx-6 flex items-center gap-6 text-sm uppercase tracking-[0.3em] text-ink-dim"
+          >
+            {skill}
+            <span className="text-acid">/</span>
+          </span>
+        ))}
+      </TextMarquee>
     </section>
   );
 };
