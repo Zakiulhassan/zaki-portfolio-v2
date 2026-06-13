@@ -51,7 +51,7 @@ export function FigmaHero() {
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-                className="block text-[clamp(56px,13vw,190px)]"
+                className="block text-[clamp(40px,9vw,140px)]"
               >
                 ZAKI&nbsp;UL
               </motion.span>
@@ -61,7 +61,7 @@ export function FigmaHero() {
           {/* Center portrait */}
           <motion.div
             style={{ y: imgY }}
-            className="relative z-10 mx-auto -mt-[4vw] aspect-[3/4] w-[56%] max-w-[320px] md:-mt-[3vw] md:w-[26%]"
+            className="relative z-10 mx-auto -mt-[3vw] aspect-[3/4] w-[50%] max-w-[280px] md:-mt-[2vw] md:w-[22%]"
           >
             <motion.div
               initial={{ scaleY: 1 }}
@@ -91,14 +91,14 @@ export function FigmaHero() {
           <motion.div
             aria-hidden="true"
             style={{ y: textY }}
-            className="relative z-20 -mt-[7vw] select-none text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion md:-mt-[8vw]"
+            className="relative z-20 -mt-[5vw] select-none text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion md:-mt-[6vw]"
           >
             <span className="block overflow-hidden">
               <motion.span
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.1, delay: 0.45, ease: EASE }}
-                className="block text-[clamp(56px,13vw,190px)]"
+                className="block text-[clamp(40px,9vw,140px)]"
                 style={{ color: "var(--text)" }}
               >
                 HASSAN<span className="font-serif italic text-[var(--muted)]">.</span>
@@ -180,13 +180,7 @@ export function FigmaStatement() {
     <section className="relative border-t border-[var(--border-c)] py-20 md:py-28">
       <div className="mx-auto max-w-[1440px] px-6 md:px-16">
         <div className="grid grid-cols-12 gap-y-10 gap-x-6 md:gap-x-10">
-          <Reveal className="col-span-12 md:col-span-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              <span style={{ color: "var(--signal)" }}>●</span>&nbsp;&nbsp;/ 002 — Statement
-            </span>
-          </Reveal>
-
-          <div className="col-span-12 md:col-span-9">
+          <div className="col-span-12">
             <RevealLines
               text="Senior Product Designer for SaaS, AI, and digital products."
               className="text-[clamp(28px,4vw,52px)] leading-[1.12] tracking-[-0.02em] text-[var(--text)]"

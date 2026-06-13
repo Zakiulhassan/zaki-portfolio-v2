@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 
 const EASE = [0.6, 0.01, 0.05, 1] as const;
@@ -54,31 +55,59 @@ const steps = [
 ];
 
 export function FigmaProcess() {
+  const railRef = useRef<HTMLUListElement>(null);
+  const { scrollYProgress } = useScroll({ target: railRef, offset: ["start center", "end center"] });
+  const barHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const [active, setActive] = useState(0);
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    const idx = Math.min(steps.length - 1, Math.max(0, Math.floor(v * steps.length)));
+    setActive(idx);
+  });
+
   return (
     <section className="relative overflow-hidden border-y border-[var(--border-c)]" style={{ background: "var(--surface)" }}>
       <div className="mx-auto max-w-[1440px] px-6 py-32 md:px-16 md:py-56">
         <div className="grid grid-cols-12 gap-6">
           {/* Sticky left label */}
           <div className="col-span-12 md:col-span-4 md:sticky md:top-32 md:self-start">
-            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              <span style={{ color: "var(--signal)" }}>06</span>
-              <span className="h-px w-10 bg-[var(--border-c)]" />
-              <span>Archive — Process</span>
-            </div>
-            <h2 className="h-section mt-12 text-[var(--text)]">
+            <h2 className="h-section text-[var(--text)]">
               The work <span className="font-serif italic text-[var(--muted)]">between.</span>
             </h2>
             <p className="mt-10 max-w-xs text-[15px] leading-[1.5] text-[var(--muted)] md:text-[16px]">
               The useful part of design is often hidden — structure, decisions, systems, and handoff.
             </p>
-            <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              05 panels · scroll
-            </p>
+
+            {/* Scroll-driven progress readout */}
+            <div className="mt-16 hidden md:block">
+              <div className="flex items-baseline gap-4">
+                <motion.span
+                  key={active}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                  className="text-[clamp(28px,3vw,48px)] tracking-tight text-[var(--text)]"
+                >
+                  {steps[active].t}
+                  <span className="font-serif italic text-[var(--muted)]">.</span>
+                </motion.span>
+              </div>
+              <div className="relative mt-6 h-32 w-px bg-[var(--border-c)]">
+                <motion.div
+                  className="absolute left-0 top-0 w-px"
+                  style={{ background: "var(--signal)", height: barHeight }}
+                />
+              </div>
+              <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
+                <span style={{ color: "var(--signal)" }}>{steps[active].n}</span> / {String(steps.length).padStart(2, "0")} —{" "}
+                {steps[active].meta}
+              </p>
+            </div>
           </div>
 
           {/* Overlapping archive panels */}
           <div className="col-span-12 md:col-span-8 md:col-start-5">
-            <ul className="space-y-24 md:space-y-32">
+            <ul ref={railRef} className="space-y-24 md:space-y-32">
               {steps.map((s, i) => (
                 <motion.li
                   key={s.n}

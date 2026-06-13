@@ -28,8 +28,6 @@ export default function CaseStudiesPage() {
   return (
     <div className="relative" style={{ background: "var(--bg)", color: "var(--text)" }}>
       <FigmaPageHeader
-        num="02"
-        kicker="Work"
         title="Product, UX/UI, and"
         italic="website design work."
         subtitle="Selected projects showing user flows, interface design, visual systems, responsive layouts, and development-ready handoff."

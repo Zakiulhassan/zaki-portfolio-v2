@@ -18,12 +18,9 @@ export function FigmaFinalCTA() {
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
       <div className="relative mx-auto max-w-[1440px] px-6 text-center md:px-10">
-        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--muted)]">
-          / Final Note
-        </span>
         <h2
           aria-label="Need help with a product, website, or interface?"
-          className="h-section mx-auto mt-8 max-w-5xl text-[var(--text)]"
+          className="h-section mx-auto max-w-5xl text-[var(--text)]"
         >
           <span aria-hidden="true">
             <RevealLines text={"Need help with a product,"} />

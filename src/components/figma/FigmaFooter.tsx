@@ -36,10 +36,7 @@ export function FigmaFooter() {
       <div className="relative mx-auto w-full max-w-[1440px] flex-1 px-6 py-16 md:px-16 md:py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-7">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              <span style={{ color: "var(--signal)" }}>09</span>&nbsp;&nbsp;/ Get in touch
-            </p>
-            <h2 aria-label="Have a project in mind?" className="h-section mt-6 text-[var(--text)]">
+            <h2 aria-label="Have a project in mind?" className="h-section text-[var(--text)]">
               <span aria-hidden="true">
                 <RevealLines text={"Have a project"} />
                 <span className="block font-serif italic text-[var(--muted)]">
@@ -50,10 +47,10 @@ export function FigmaFooter() {
             <Reveal delay={0.2} className="mt-8 flex flex-wrap items-center gap-4">
               <MagneticButton to="/book-a-call">Book a Call</MagneticButton>
               <a
-                href="mailto:hello@zakiulhassan.design"
+                href="mailto:zakihassan555@gmail.com"
                 className="link-underline text-[15px] text-[var(--text)] md:text-[16px]"
               >
-                hello@zakiulhassan.design
+                zakihassan555@gmail.com
               </a>
             </Reveal>
           </div>
@@ -98,7 +95,7 @@ export function FigmaFooter() {
           <p>© {new Date().getFullYear()} Zaki ul Hassan — All rights reserved</p>
           <p className="flex items-center gap-2">
             <span className="h-1.5 w-1.5" style={{ background: "var(--signal)" }} />
-            Designed &amp; built with care · Karachi, PK
+            Designed &amp; built with care · Lahore, PK
           </p>
         </div>
       </div>

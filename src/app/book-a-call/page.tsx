@@ -24,8 +24,6 @@ export default function BookACallPage() {
   return (
     <div className="relative" style={{ background: "var(--bg)", color: "var(--text)" }}>
       <FigmaPageHeader
-        num="05"
-        kicker="Contact · Book a Call"
         title="Tell me what"
         italic="you're building."
         subtitle="Share the product, website, or interface you need help with. I'll review the details and suggest the best way forward."
@@ -102,7 +100,7 @@ export default function BookACallPage() {
                       zakihassan555@gmail.com
                     </a>
                   </li>
-                  <li className="text-[var(--muted)]">Karachi · GMT+5</li>
+                  <li className="text-[var(--muted)]">Lahore · GMT+5</li>
                 </ul>
               </div>
 

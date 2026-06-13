@@ -4,11 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { MagneticButton } from "./MagneticButton";
 import { Reveal, RevealLines, MaskReveal } from "./Reveal";
-import { SectionLabel } from "./SectionLabel";
 
 const stats = [
   ["Experience", "5+ years"],
-  ["Based in", "Karachi, PK"],
+  ["Based in", "Lahore, PK"],
   ["Working with", "Global teams"],
   ["Status", "Available"],
 ];
@@ -40,9 +39,7 @@ export function FigmaAboutPreview() {
       </div>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-6 md:px-16">
-        <SectionLabel num="08">About</SectionLabel>
-
-        <div className="mt-10 grid grid-cols-12 items-center gap-8 md:mt-16 md:gap-12">
+        <div className="grid grid-cols-12 items-center gap-8 md:gap-12">
           {/* Portrait */}
           <Reveal className="col-span-12 md:col-span-4">
             <MaskReveal className="aspect-[3/4] w-full border border-[var(--border-c)]">
@@ -55,7 +52,7 @@ export function FigmaAboutPreview() {
               />
             </MaskReveal>
             <div className="mt-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              <span>Karachi · PK</span>
+              <span>Lahore · PK</span>
               <span style={{ color: "var(--signal)" }}>● Available</span>
             </div>
           </Reveal>

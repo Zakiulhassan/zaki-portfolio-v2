@@ -41,12 +41,7 @@ export function FigmaServices() {
       <div className="mx-auto max-w-[1440px] px-6 py-32 md:px-16 md:py-56">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <div>
-            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              <span style={{ color: "var(--signal)" }}>05</span>
-              <span className="h-px w-10 bg-[var(--border-c)]" />
-              <span>Capabilities</span>
-            </div>
-            <h2 className="h-section mt-10 max-w-3xl text-[var(--text)]">
+            <h2 className="h-section max-w-3xl text-[var(--text)]">
               Hire me <span className="font-serif italic text-[var(--muted)]">for.</span>
             </h2>
           </div>

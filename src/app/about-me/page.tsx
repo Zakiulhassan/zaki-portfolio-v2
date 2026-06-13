@@ -31,8 +31,6 @@ export default function AboutMePage() {
   return (
     <div className="relative" style={{ background: "var(--bg)", color: "var(--text)" }}>
       <FigmaPageHeader
-        num="04"
-        kicker="About"
         title="I design digital products"
         italic="that are clear, usable, and ready to build."
         subtitle="I'm Zaki ul Hassan, a product and UX/UI designer with 5+ years of experience across websites, dashboards, apps, and SaaS products."

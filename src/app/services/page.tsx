@@ -45,8 +45,6 @@ export default function ServicesPage() {
   return (
     <div className="relative" style={{ background: "var(--bg)", color: "var(--text)" }}>
       <FigmaPageHeader
-        num="03"
-        kicker="Services"
         title="Design support"
         italic="for digital products."
         subtitle="I help teams improve product flows, interfaces, websites, and design systems."

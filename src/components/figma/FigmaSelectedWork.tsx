@@ -146,12 +146,7 @@ export function FigmaSelectedWork() {
       <div className="mx-auto max-w-[1440px] px-6 pb-40 md:px-16 md:pb-56">
         <div className="flex flex-wrap items-end justify-between gap-8 pb-16">
           <div>
-            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              <span style={{ color: "var(--signal)" }}>03</span>
-              <span className="h-px w-10 bg-[var(--border-c)]" />
-              <span>Selected Work</span>
-            </div>
-            <h2 className="h-section mt-10 text-[var(--text)]">
+            <h2 className="h-section text-[var(--text)]">
               Selected <span className="font-serif italic text-[var(--muted)]">work.</span>
             </h2>
           </div>

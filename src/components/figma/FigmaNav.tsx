@@ -142,7 +142,7 @@ export function FigmaNav() {
                 ))}
               </ul>
               <div className="space-y-3 font-mono text-[11px] uppercase tracking-widest text-[var(--muted)]">
-                <div>hello@zakiulhassan.design</div>
+                <div>zakihassan555@gmail.com</div>
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--signal)" }} />
                   Available for selected work
