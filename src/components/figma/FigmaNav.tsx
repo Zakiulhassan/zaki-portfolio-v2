@@ -19,16 +19,29 @@ export function FigmaNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => setOpen(false), [pathname]);
 
   useEffect(() => {
+    let lastY = window.scrollY;
     const onScroll = () => {
       const h = document.documentElement;
       setScrolled(h.scrollTop > 16);
       const max = h.scrollHeight - h.clientHeight;
       setProgress(max > 0 ? (h.scrollTop / max) * 100 : 0);
+
+      const y = h.scrollTop;
+      const delta = y - lastY;
+      if (y < 80) {
+        setHidden(false);
+      } else if (delta > 4) {
+        setHidden(true);
+      } else if (delta < -4) {
+        setHidden(false);
+      }
+      lastY = y;
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -40,22 +53,16 @@ export function FigmaNav() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-[backdrop-filter,background-color,border-color] duration-500 ${
+        className={`header-scroll fixed top-0 left-0 right-0 z-50 transition-[backdrop-filter,background-color,border-color,transform] duration-500 ${
           scrolled
             ? "backdrop-blur-md bg-[rgba(13,13,11,0.7)] border-b border-[var(--border-c)]"
             : "bg-transparent border-b border-transparent"
-        }`}
+        } ${hidden && !open ? "header-hidden" : ""}`}
       >
         <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-5 md:px-10">
           <Link href="/" aria-label="Zaki ul Hassan — home" className="group flex items-center gap-3">
             <span className="grid h-9 w-9 place-items-center rounded-full border border-[var(--border-c)] font-mono text-[11px] tracking-widest text-[var(--text)] transition-colors group-hover:border-[var(--signal)] group-hover:text-[var(--signal)]">
               ZH
-            </span>
-            <span className="hidden flex-col leading-tight md:flex">
-              <span className="text-[13px] text-[var(--text)]">Zaki ul Hassan</span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
-                Senior Product Designer
-              </span>
             </span>
           </Link>
 
@@ -82,16 +89,6 @@ export function FigmaNav() {
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
-            <span className="flex items-center gap-2 font-mono text-[11px] text-[var(--muted)]">
-              <span className="relative flex h-1.5 w-1.5">
-                <span
-                  className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
-                  style={{ background: "var(--signal)" }}
-                />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full" style={{ background: "var(--signal)" }} />
-              </span>
-              AVAILABLE
-            </span>
             <Link
               href="/book-a-call"
               className="rounded-full border border-[var(--border-c)] px-4 py-2 text-[12px] text-[var(--text)] transition-colors hover:border-[var(--signal)] hover:text-[var(--signal)]"

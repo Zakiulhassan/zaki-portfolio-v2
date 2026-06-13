@@ -143,6 +143,13 @@ p {
     font-weight: 400;
   }
 
+  /* Shared section headline size — keep all section H2s on one scale */
+  .h-section {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+
   /* Oversized editorial display type */
   .text-display {
     font-family: var(--font-aeonik);

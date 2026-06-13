@@ -148,7 +148,7 @@ const CursorTrail = () => {
       />
       <div
         ref={dotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[100] hidden h-2 w-2 rounded-full bg-acid opacity-0 transition-[transform,background,border] duration-300 ease-brand md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[100] hidden h-2 w-2 bg-acid opacity-0 transition-[transform,background,border] duration-300 ease-brand md:block"
         aria-hidden
       />
       <div

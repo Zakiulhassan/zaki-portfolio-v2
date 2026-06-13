@@ -1,4 +1,4 @@
-import { FigmaHero } from "@/components/figma/FigmaHero";
+import { FigmaHero, FigmaStatement } from "@/components/figma/FigmaHero";
 import { FigmaWhatIDo } from "@/components/figma/FigmaWhatIDo";
 import { FigmaSelectedWork } from "@/components/figma/FigmaSelectedWork";
 import { FigmaProblems } from "@/components/figma/FigmaProblems";
@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <div className="relative" style={{ background: "var(--bg)", color: "var(--text)" }}>
       <FigmaHero />
+      <FigmaStatement />
       <FigmaWhatIDo />
       <FigmaSelectedWork />
       <FigmaProblems />

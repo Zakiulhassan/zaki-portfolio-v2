@@ -23,7 +23,7 @@ export function FigmaFinalCTA() {
         </span>
         <h2
           aria-label="Need help with a product, website, or interface?"
-          className="mx-auto mt-8 max-w-5xl text-[clamp(44px,8vw,128px)] tracking-tight text-[var(--text)]"
+          className="h-section mx-auto mt-8 max-w-5xl text-[var(--text)]"
         >
           <span aria-hidden="true">
             <RevealLines text={"Need help with a product,"} />

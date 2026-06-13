@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const EASE = [0.6, 0.01, 0.05, 1] as const;
 
@@ -57,83 +58,89 @@ function Tile({
   const [hover, setHover] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   return (
-    <Link
-      href="/case-studies"
-      data-cursor="hover"
-      onMouseMove={(e) => {
-        const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
-        setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
-      }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      className={`group relative block ${className}`}
-    >
-      <div
-        className={`relative ${ratio} w-full overflow-hidden border border-[var(--border-c)]`}
-        style={{ background: "var(--surface)" }}
+    <Reveal className={className} delay={(index % 4) * 0.08} y={32}>
+      <Link
+        href={`/case-studies/${project.slug}`}
+        data-cursor="hover"
+        onMouseMove={(e) => {
+          const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+          setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
+        }}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        className="group block"
       >
-        <motion.div
-          className="absolute inset-0"
-          animate={{ scale: hover ? 1.05 : 1 }}
-          transition={{ duration: 1.2, ease: EASE }}
+        <div
+          className={`relative ${ratio} w-full overflow-hidden border border-[var(--border-c)]`}
+          style={{ background: "var(--surface)" }}
         >
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(min-width: 768px) 60vw, 100vw"
-            className="object-cover"
-          />
-        </motion.div>
-
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(13,13,11,0.65)]" />
-
-        {/* Top metadata */}
-        <div className="absolute left-5 right-5 top-5 flex items-start justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text)]">
-          <span>
-            0{index + 1} / {project.tag}
-          </span>
-          <span>{project.year}</span>
-        </div>
-
-        {/* View disc */}
-        <motion.div
-          className="pointer-events-none absolute z-20 grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-center font-mono text-[10px] uppercase leading-tight tracking-[0.22em]"
-          style={{ left: pos.x, top: pos.y, background: "var(--signal)", color: "var(--bg)" }}
-          animate={{ scale: hover ? 1 : 0, opacity: hover ? 1 : 0 }}
-          transition={{ duration: 0.4, ease: EASE }}
-        >
-          View
-          <br />
-          Case
-        </motion.div>
-
-        {/* Bottom title overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-          <h3
-            className={
-              size === "lg"
-                ? "text-[clamp(40px,5vw,84px)] tracking-tight text-[var(--text)]"
-                : size === "wide"
-                ? "text-[clamp(36px,4.2vw,72px)] tracking-tight text-[var(--text)]"
-                : "text-[clamp(28px,3vw,48px)] tracking-tight text-[var(--text)]"
-            }
+          <motion.div
+            className="absolute inset-0"
+            animate={{ scale: hover ? 1.05 : 1 }}
+            transition={{ duration: 1.2, ease: EASE }}
           >
-            {project.title}
-          </h3>
-          <p className="mt-2 max-w-md font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-            {project.cat} · {project.role}
-          </p>
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(min-width: 768px) 60vw, 100vw"
+              className="object-cover"
+            />
+          </motion.div>
+
+          {/* Top metadata */}
+          <div className="absolute left-5 right-5 top-5 flex items-start justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text)] [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]">
+            <span>
+              0{index + 1} / {project.tag}
+            </span>
+            <span>{project.year}</span>
+          </div>
+
+          {/* View disc */}
+          <motion.div
+            className="pointer-events-none absolute z-20 grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-center font-mono text-[10px] uppercase leading-tight tracking-[0.22em]"
+            style={{ left: pos.x, top: pos.y, background: "var(--signal)", color: "var(--bg)" }}
+            animate={{ scale: hover ? 1 : 0, opacity: hover ? 1 : 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
+          >
+            View
+            <br />
+            Case
+          </motion.div>
+
+          <motion.span
+            className="absolute bottom-0 left-0 h-px"
+            style={{ background: "var(--signal)" }}
+            animate={{ width: hover ? "100%" : "0%" }}
+            transition={{ duration: 0.7, ease: EASE }}
+          />
         </div>
 
-        <motion.span
-          className="absolute bottom-0 left-0 h-px"
-          style={{ background: "var(--signal)" }}
-          animate={{ width: hover ? "100%" : "0%" }}
-          transition={{ duration: 0.7, ease: EASE }}
-        />
-      </div>
-    </Link>
+        {/* Caption — below the image, never over it */}
+        <div className="mt-4 flex items-start justify-between gap-4">
+          <div>
+            <h3
+              className={
+                size === "lg"
+                  ? "text-[clamp(28px,3.4vw,56px)] tracking-tight text-[var(--text)]"
+                  : size === "wide"
+                  ? "text-[clamp(26px,3vw,48px)] tracking-tight text-[var(--text)]"
+                  : "text-[clamp(22px,2.4vw,36px)] tracking-tight text-[var(--text)]"
+              }
+            >
+              {project.title}
+            </h3>
+            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
+              {project.cat} · {project.role}
+            </p>
+          </div>
+          <ArrowUpRight
+            size={20}
+            className="mt-2 shrink-0 text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--signal)]"
+          />
+        </div>
+      </Link>
+    </Reveal>
   );
 }
 
@@ -177,7 +184,7 @@ export function FigmaSelectedWork() {
               <span className="h-px w-10 bg-[var(--border-c)]" />
               <span>Selected Work</span>
             </div>
-            <h2 className="mt-10 text-[clamp(56px,9vw,144px)] tracking-[-0.035em] text-[var(--text)]">
+            <h2 className="h-section mt-10 text-[var(--text)]">
               Selected <span className="font-serif italic text-[var(--muted)]">work.</span>
             </h2>
           </div>

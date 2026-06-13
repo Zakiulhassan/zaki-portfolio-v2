@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { MagneticButton } from "./MagneticButton";
+import { Reveal, RevealLines } from "./Reveal";
 
 const EASE = [0.6, 0.01, 0.05, 1] as const;
 
@@ -56,22 +57,8 @@ export function FigmaHero() {
       </svg>
 
       <div className="relative mx-auto max-w-[1440px] px-6 md:px-16">
-        {/* Top metadata row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]"
-        >
-          <span>
-            <span style={{ color: "var(--signal)" }}>●</span>&nbsp;&nbsp;Portfolio · 2026
-          </span>
-          <span className="hidden md:inline">Karachi · GMT+5</span>
-          <span className="hidden md:inline">001 / Hero</span>
-        </motion.div>
-
         {/* Composition: portrait center, name wraps top + bottom */}
-        <div className="relative mt-12 md:mt-16">
+        <div className="relative mt-4 md:mt-8">
           <motion.h1
             aria-label="Zaki ul Hassan"
             style={{ y: textY }}
@@ -115,15 +102,14 @@ export function FigmaHero() {
                 sizes="(min-width: 768px) 34vw, 68vw"
                 className="object-cover object-top grayscale-[20%] contrast-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
             </motion.div>
           </motion.div>
 
-          {/* Bottom half of name */}
+          {/* Bottom half of name — overlaps the portrait with an exclusion blend */}
           <motion.div
             aria-hidden="true"
             style={{ y: textY }}
-            className="relative z-20 -mt-[8vw] select-none text-center leading-[0.85] tracking-[-0.04em] mix-blend-difference"
+            className="relative z-20 -mt-[11vw] select-none text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion md:-mt-[13vw]"
           >
             <span className="block overflow-hidden">
               <motion.span
@@ -183,37 +169,6 @@ export function FigmaHero() {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Statement + CTAs */}
-        <div className="relative mt-16 grid grid-cols-12 gap-6 md:mt-24">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.1 }}
-            className="col-span-12 md:col-span-5"
-          >
-            <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-              / 002 — Statement
-            </span>
-            <p className="mt-4 text-[18px] leading-[1.4] text-[var(--text)] md:text-[22px]">
-              Senior Product Designer for SaaS, AI, and digital products. I design interfaces,
-              websites, and design systems that make complex products easier to{" "}
-              <span className="font-serif italic text-[var(--muted)]">use, present, and build.</span>
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.25 }}
-            className="col-span-12 flex flex-wrap items-end gap-4 md:col-span-5 md:col-start-8 md:justify-end"
-          >
-            <MagneticButton to="/case-studies">View Work</MagneticButton>
-            <MagneticButton to="/book-a-call" variant="ghost">
-              Book a Call
-            </MagneticButton>
-          </motion.div>
-        </div>
       </div>
 
       {/* Bottom edge — scroll cue */}
@@ -233,6 +188,45 @@ export function FigmaHero() {
         />
         <span>↓</span>
       </motion.div>
+    </section>
+  );
+}
+
+/* Statement + CTAs — the second, fully composed section beneath the hero */
+export function FigmaStatement() {
+  return (
+    <section className="relative border-t border-[var(--border-c)] py-20 md:py-28">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-16">
+        <div className="grid grid-cols-12 gap-y-10 gap-x-6 md:gap-x-10">
+          <Reveal className="col-span-12 md:col-span-3">
+            <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
+              <span style={{ color: "var(--signal)" }}>●</span>&nbsp;&nbsp;/ 002 — Statement
+            </span>
+          </Reveal>
+
+          <div className="col-span-12 md:col-span-9">
+            <RevealLines
+              text="Senior Product Designer for SaaS, AI, and digital products."
+              className="text-[clamp(28px,4vw,52px)] leading-[1.12] tracking-[-0.02em] text-[var(--text)]"
+            />
+
+            <Reveal delay={0.15} className="mt-6 max-w-2xl">
+              <p className="text-[17px] leading-[1.6] text-[var(--muted)] md:text-[19px]">
+                I design interfaces, websites, and design systems that make complex products
+                easier to{" "}
+                <span className="font-serif italic text-[var(--text)]">use, present, and build.</span>
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.3} className="mt-10 flex flex-wrap items-center gap-4">
+              <MagneticButton to="/case-studies">View Work</MagneticButton>
+              <MagneticButton to="/book-a-call" variant="ghost">
+                Book a Call
+              </MagneticButton>
+            </Reveal>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

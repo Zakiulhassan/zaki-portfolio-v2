@@ -8,7 +8,7 @@ const EASE = [0.6, 0.01, 0.05, 1] as const;
 export function FigmaWhatIDo() {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-[1440px] px-6 pt-40 pb-48 md:px-16 md:pt-56 md:pb-64">
+      <div className="mx-auto max-w-[1440px] px-6 pt-28 pb-32 md:px-16 md:pt-40 md:pb-40">
         <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
           <span style={{ color: "var(--signal)" }}>02</span>
           <span className="h-px w-10 bg-[var(--border-c)]" />
@@ -66,7 +66,7 @@ export function FigmaWhatIDo() {
         <div className="relative grid grid-cols-12 gap-6">
           <h2
             aria-label="Design for products that need to be clearer."
-            className="col-span-12 mt-20 text-[clamp(56px,11vw,180px)] leading-[0.9] tracking-[-0.035em] md:col-span-12 md:mt-32"
+            className="h-section col-span-12 mt-20 md:col-span-8 md:mt-32"
           >
             <span aria-hidden="true">
               <RevealLines text={"Design for products"} />
@@ -77,7 +77,7 @@ export function FigmaWhatIDo() {
             </span>
           </h2>
 
-          <Reveal className="col-span-12 mt-24 md:col-span-4 md:col-start-8 md:mt-32">
+          <Reveal className="col-span-12 mt-10 md:col-span-4 md:col-start-9 md:row-start-1 md:mt-32 md:self-end">
             <p className="text-[16px] leading-[1.5] text-[var(--muted)] md:text-[18px]">
               I help teams improve product flows, interfaces, websites, and design systems — from
               early structure to polished handoff.

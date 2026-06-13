@@ -65,7 +65,7 @@ export function FigmaProcess() {
               <span className="h-px w-10 bg-[var(--border-c)]" />
               <span>Archive — Process</span>
             </div>
-            <h2 className="mt-12 text-[clamp(48px,7vw,112px)] leading-[0.95] tracking-[-0.035em] text-[var(--text)]">
+            <h2 className="h-section mt-12 text-[var(--text)]">
               The work <span className="font-serif italic text-[var(--muted)]">between.</span>
             </h2>
             <p className="mt-10 max-w-xs text-[15px] leading-[1.5] text-[var(--muted)] md:text-[16px]">

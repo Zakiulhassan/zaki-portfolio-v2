@@ -46,7 +46,7 @@ export function FigmaServices() {
               <span className="h-px w-10 bg-[var(--border-c)]" />
               <span>Capabilities</span>
             </div>
-            <h2 className="mt-10 max-w-3xl text-[clamp(48px,7vw,112px)] leading-[0.95] tracking-[-0.035em] text-[var(--text)]">
+            <h2 className="h-section mt-10 max-w-3xl text-[var(--text)]">
               Hire me <span className="font-serif italic text-[var(--muted)]">for.</span>
             </h2>
           </div>
@@ -93,7 +93,8 @@ export function FigmaServices() {
               <li
                 key={s.title}
                 onMouseEnter={() => setActive(i)}
-                className="group relative grid cursor-default grid-cols-12 items-start gap-4 border-t border-[var(--border-c)] py-10 md:py-12"
+                className="group relative grid cursor-default grid-cols-12 items-start gap-4 border-t border-[var(--border-c)] px-4 py-10 transition-colors duration-500 md:px-6 md:py-12"
+                style={{ background: active === i ? "var(--elevated)" : "transparent" }}
               >
                 <motion.span
                   className="absolute -left-3 top-12 h-1.5 w-1.5 rounded-full"
@@ -109,7 +110,7 @@ export function FigmaServices() {
                   <motion.h3
                     animate={{ x: active === i ? 8 : 0 }}
                     transition={{ duration: 0.5, ease: EASE }}
-                    className="text-[clamp(36px,5vw,80px)] leading-[0.95] tracking-[-0.03em]"
+                    className="text-[clamp(28px,4vw,56px)] leading-[1] tracking-[-0.02em]"
                     style={{ color: active === i ? "var(--text)" : "var(--muted)" }}
                   >
                     {s.title}

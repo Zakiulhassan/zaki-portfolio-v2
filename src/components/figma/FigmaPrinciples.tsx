@@ -24,7 +24,7 @@ export function FigmaPrinciples() {
               <span className="h-px w-10 bg-[var(--border-c)]" />
               <span>Principles</span>
             </div>
-            <h2 className="mt-10 text-[clamp(48px,7vw,112px)] leading-[0.95] tracking-[-0.035em] text-[var(--text)]">
+            <h2 className="h-section mt-10 text-[var(--text)]">
               I design <span className="font-serif italic text-[var(--muted)]">by.</span>
             </h2>
           </div>
@@ -48,7 +48,7 @@ export function FigmaPrinciples() {
               <motion.span
                 animate={{ x: active === i ? 16 : 0 }}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="col-span-10 text-[clamp(36px,6vw,96px)] leading-[0.95] tracking-[-0.03em] md:col-span-7"
+                className="col-span-10 text-[clamp(28px,4.4vw,64px)] leading-[1.05] tracking-[-0.02em] md:col-span-7"
                 style={{ color: active === i ? "var(--text)" : "var(--muted)" }}
               >
                 {t}
