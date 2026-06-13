@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import HoverRoll from "../motion/HoverRoll";
 
 const EASE = [0.6, 0.01, 0.05, 1] as const;
 
@@ -66,7 +67,7 @@ export function FigmaNav() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-10 md:flex">
             {links.map((l) => {
               const active = isActive(l.to);
               return (
@@ -74,14 +75,16 @@ export function FigmaNav() {
                   key={l.to}
                   href={l.to}
                   aria-label={l.label}
-                  className={`group relative flex items-center gap-2 text-[13px] transition-colors ${
+                  className={`group relative text-[13px] transition-colors ${
                     active ? "text-[var(--text)]" : "text-[var(--muted)] hover:text-[var(--text)]"
                   }`}
                 >
-                  <span className="font-mono text-[10px] text-[var(--muted)]">{l.num}</span>
-                  <span className="link-underline">{l.label}</span>
+                  <HoverRoll>{l.label}</HoverRoll>
                   {active && (
-                    <span className="ml-1 inline-block h-1 w-1 rounded-full" style={{ background: "var(--signal)" }} />
+                    <span
+                      className="absolute -bottom-2 left-0 h-px w-full"
+                      style={{ background: "var(--signal)" }}
+                    />
                   )}
                 </Link>
               );
