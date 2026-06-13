@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Gloria_Hallelujah, JetBrains_Mono, Instrument_Serif } from "next/font/google";
-import Footer from "@/components/navigation/Footer";
-import Header from "@/components/navigation/Header";
+import { FigmaNav } from "@/components/figma/FigmaNav";
+import { FigmaFooter } from "@/components/figma/FigmaFooter";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import PageTransition from "@/components/providers/PageTransition";
 import ReducedMotionProvider from "@/components/providers/ReducedMotionProvider";
@@ -47,17 +47,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`font-aeonik ${gloriaHallelujah.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}>
-      <body className="grain antialiased bg-background font-aeonik">
+      <body className="grain antialiased font-aeonik" style={{ background: "var(--bg)", color: "var(--text)" }}>
         <ReducedMotionProvider>
           <SmoothScroll>
             <Preloader />
             <CursorTrail />
             <FluidCardLayer />
-            <Header />
+            <FigmaNav />
             <main className="flex-grow">
               <PageTransition>{children}</PageTransition>
             </main>
-            <Footer />
+            <FigmaFooter />
           </SmoothScroll>
         </ReducedMotionProvider>
       </body>

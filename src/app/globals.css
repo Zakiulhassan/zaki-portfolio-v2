@@ -57,6 +57,15 @@
     --warm-shadow: #7A332A;
     --cream: #E8E0D0;
 
+    /* Editorial Signal System — section tokens (used by figma-ported scenes) */
+    --bg: #0D0D0B;
+    --surface: #151512;
+    --elevated: #1E1E1A;
+    --text: #F1EEE6;
+    --muted: #9B978D;
+    --border-c: #2E2E28;
+    --signal: #C6FE1E;
+
     /* Motion */
     --ease-out: cubic-bezier(.22, 1, .36, 1);
     --d-fast: 150ms;
@@ -375,6 +384,27 @@ button:focus-visible {
   transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
 }
 .link-sweep:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Inline underline used by figma-ported nav/footer links */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.6, 0.01, 0.05, 1);
+}
+.link-underline:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
