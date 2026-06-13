@@ -66,6 +66,10 @@ const config = {
         line700: '#2A2A2A',
         line600: '#3A3A38',
         paper: '#F4F4EF',
+        'surface-deep': '#151512',
+        'surface-elevated': '#1E1E1A',
+        'warm-shadow': '#7A332A',
+        cream: '#E8E0D0',
         signal: {
           DEFAULT: '#C6FE1E',
           600: '#A8DB12',

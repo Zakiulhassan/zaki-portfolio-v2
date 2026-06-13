@@ -51,6 +51,12 @@
     --coal-soft: #181818;
     --acid: #C6FE1E;
 
+    /* Editorial Signal System — extended surfaces */
+    --surface-deep: #151512;
+    --surface-elevated: #1E1E1A;
+    --warm-shadow: #7A332A;
+    --cream: #E8E0D0;
+
     /* Motion */
     --ease-out: cubic-bezier(.22, 1, .36, 1);
     --d-fast: 150ms;
