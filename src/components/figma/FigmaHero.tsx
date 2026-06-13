@@ -3,27 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { MagneticButton } from "./MagneticButton";
 import { Reveal, RevealLines } from "./Reveal";
 
 const EASE = [0.6, 0.01, 0.05, 1] as const;
-
-// WebGL liquid hover effect — client-only, lazy so three.js stays out of
-// the initial bundle. Falls back to the static portrait while it loads.
-const LiquidImage = dynamic(() => import("../effects/LiquidImage"), {
-  ssr: false,
-  loading: () => (
-    <Image
-      src="/zaki-portrait.webp"
-      alt="Zaki ul Hassan"
-      fill
-      priority
-      sizes="(min-width: 768px) 34vw, 68vw"
-      className="object-cover object-top grayscale-[20%] contrast-110"
-    />
-  ),
-});
 
 export function FigmaHero() {
   const ref = useRef<HTMLElement>(null);
@@ -93,10 +76,13 @@ export function FigmaHero() {
               transition={{ duration: 2.2, delay: 0.5, ease: EASE }}
               className="relative h-full w-full overflow-hidden"
             >
-              <LiquidImage
+              <Image
                 src="/zaki-portrait.webp"
                 alt="Zaki ul Hassan"
+                fill
+                priority
                 sizes="(min-width: 768px) 34vw, 68vw"
+                className="object-cover object-top grayscale-[20%] contrast-110"
               />
             </motion.div>
           </motion.div>
