@@ -40,28 +40,13 @@ export function FigmaHero() {
 
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 md:px-16">
         {/* Composition: portrait center, name wraps top + bottom */}
-        <div className="relative flex flex-1 flex-col justify-center">
-          <motion.h1
-            aria-label="Zaki ul Hassan"
-            style={{ y: textY }}
-            className="relative z-0 select-none text-center leading-[0.85] tracking-[-0.04em]"
-          >
-            <span aria-hidden="true" className="block overflow-hidden">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-                className="block text-[clamp(40px,9vw,140px)]"
-              >
-                ZAKI&nbsp;UL
-              </motion.span>
-            </span>
-          </motion.h1>
-
-          {/* Center portrait */}
+        <div className="relative flex flex-1 items-center justify-center">
+          {/* Center portrait — the only element that occupies layout height,
+              so the section always stays inside the viewport. The name wraps
+              the portrait via absolute positioning (top + bottom). */}
           <motion.div
             style={{ y: imgY }}
-            className="relative z-10 mx-auto -mt-[3vw] aspect-[3/4] h-[42vh] max-h-[440px] md:-mt-[2vw] md:h-[50vh] md:max-h-[520px]"
+            className="relative z-10 aspect-[3/4] w-[72%] max-w-[420px] md:w-[34%] md:max-w-[460px]"
           >
             <motion.div
               initial={{ scaleY: 1 }}
@@ -85,25 +70,43 @@ export function FigmaHero() {
                 className="object-cover object-top grayscale-[20%] contrast-110"
               />
             </motion.div>
-          </motion.div>
 
-          {/* Bottom half of name — overlaps the portrait with an exclusion blend */}
-          <motion.div
-            aria-hidden="true"
-            style={{ y: textY }}
-            className="relative z-20 -mt-[5vw] select-none text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion md:-mt-[6vw]"
-          >
-            <span className="block overflow-hidden">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.1, delay: 0.45, ease: EASE }}
-                className="block text-[clamp(40px,9vw,140px)]"
-                style={{ color: "var(--text)" }}
-              >
-                HASSAN<span className="font-serif italic text-[var(--muted)]">.</span>
-              </motion.span>
-            </span>
+            {/* Top of name — wraps just above the portrait */}
+            <motion.h1
+              aria-label="Zaki ul Hassan"
+              style={{ y: textY }}
+              className="pointer-events-none absolute bottom-full left-1/2 z-0 -translate-x-1/2 translate-y-[24%] select-none whitespace-nowrap text-center leading-[0.85] tracking-[-0.04em]"
+            >
+              <span aria-hidden="true" className="block overflow-hidden">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
+                  className="block text-[clamp(40px,9vw,140px)]"
+                >
+                  ZAKI&nbsp;UL
+                </motion.span>
+              </span>
+            </motion.h1>
+
+            {/* Bottom of name — overlaps the portrait with an exclusion blend */}
+            <motion.div
+              aria-hidden="true"
+              style={{ y: textY }}
+              className="pointer-events-none absolute left-1/2 top-full z-20 -translate-x-1/2 -translate-y-[58%] select-none whitespace-nowrap text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion"
+            >
+              <span className="block overflow-hidden">
+                <motion.span
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1.1, delay: 0.45, ease: EASE }}
+                  className="block text-[clamp(40px,9vw,140px)]"
+                  style={{ color: "var(--text)" }}
+                >
+                  HASSAN<span className="font-serif italic text-[var(--muted)]">.</span>
+                </motion.span>
+              </span>
+            </motion.div>
           </motion.div>
 
           {/* Floating metadata — left */}
