@@ -3,7 +3,7 @@ import Link from "next/link";
 const sitemap: [string, string][] = [
   ["Home", "/"],
   ["Work", "/case-studies"],
-  ["Services", "/#services"],
+  ["Services", "/services"],
   ["About", "/about-me"],
   ["Contact", "/book-a-call"],
 ];

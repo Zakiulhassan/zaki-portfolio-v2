@@ -10,7 +10,7 @@ const EASE = [0.6, 0.01, 0.05, 1] as const;
 const links = [
   { to: "/", label: "Home", num: "01" },
   { to: "/case-studies", label: "Work", num: "02" },
-  { to: "/#services", label: "Services", num: "03" },
+  { to: "/services", label: "Services", num: "03" },
   { to: "/about-me", label: "About", num: "04" },
   { to: "/book-a-call", label: "Contact", num: "05" },
 ];
