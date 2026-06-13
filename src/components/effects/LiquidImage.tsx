@@ -1,25 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import Image from "next/image";
 
 /**
- * LiquidImage — renders an image on a WebGL plane and applies a calm,
- * fluid displacement that eases in while the pointer is over it. The
- * distortion is driven by low-frequency simplex noise plus a soft ripple
- * trailing the pointer; amplitudes are intentionally small so the motion
- * reads as a gentle liquid surface, never a glitch. Colour is matched to
- * the original CSS treatment (grayscale-[20%] contrast-110).
- *
- * Falls back to a plain <img> when WebGL is unavailable or the user
- * prefers reduced motion.
+ * LiquidImage — shows the portrait normally, then crossfades in a WebGL
+ * canvas rendering the same image once its texture is ready. On hover the
+ * shader applies a slow simplex-noise flow plus a gentle lens warp that
+ * follows the pointer — a calm "liquid glass" feel, no RGB split or glitch.
+ * At rest (uHover = 0) the shader output is pixel-identical to the plain
+ * image, so the crossfade is invisible and there's never a black/garbage
+ * frame.
  */
 
 const VERTEX = /* glsl */ `
   varying vec2 vUv;
   void main() {
     vUv = uv;
-    // PlaneGeometry(1,1) spans -0.5..0.5 — expand to fill clip space.
     gl_Position = vec4(position.xy * 2.0, 0.0, 1.0);
   }
 `;
@@ -97,22 +95,24 @@ const FRAGMENT = /* glsl */ `
 
   void main(){
     vec2 uv = vUv;
-
-    // Slow, low-frequency flow — the body of the liquid.
-    float t = uTime * 0.12;
-    float nx = snoise(vec3(uv * 2.2, t));
-    float ny = snoise(vec3(uv * 2.2 + 11.0, t));
-    vec2 flow = vec2(nx, ny);
-
-    // Soft ripple trailing the pointer.
-    float d = distance(uv, uMouse);
-    float ripple = sin(d * 14.0 - uTime * 1.6) * exp(-d * 7.0);
-    vec2 dir = normalize(uv - uMouse + 1e-4);
-
     float amp = uHover;
-    vec2 disp = flow * 0.010 * amp + dir * ripple * 0.012 * amp;
 
-    vec2 cuv = coverUv(uv + disp, uPlaneSize, uImageSize);
+    // Slow ambient flow — the body of the liquid.
+    float t = uTime * 0.1;
+    vec2 flow = vec2(
+      snoise(vec3(uv * 1.6, t)),
+      snoise(vec3(uv * 1.6 + 9.0, t))
+    ) * 0.006;
+
+    // Gentle lens warp following the pointer.
+    vec2 toMouse = uv - uMouse;
+    float dist = length(toMouse);
+    float lens = smoothstep(0.4, 0.0, dist);
+    vec2 lensWarp = toMouse * lens * 0.12;
+
+    vec2 disp = (flow + lensWarp) * amp;
+
+    vec2 cuv = coverUv(uv - disp, uPlaneSize, uImageSize);
     vec3 color = texture2D(uTexture, cuv).rgb;
 
     // Match the CSS look: grayscale-[20%] contrast-110.
@@ -127,39 +127,37 @@ const FRAGMENT = /* glsl */ `
 export default function LiquidImage({
   src,
   alt,
+  sizes,
   className = "",
 }: {
   src: string;
   alt: string;
+  sizes?: string;
   className?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [failed, setFailed] = useState(false);
+  const canvasWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setFailed(true);
-      return;
-    }
+    const canvasWrap = canvasWrapRef.current;
+    if (!container || !canvasWrap) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     } catch {
-      setFailed(true);
       return;
     }
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    // Pass the sRGB texture straight through, matching a normal <img>.
-    renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+    renderer.setClearColor(0x000000, 0);
     const canvas = renderer.domElement;
     canvas.style.width = "100%";
     canvas.style.height = "100%";
     canvas.style.display = "block";
-    container.appendChild(canvas);
+    canvasWrap.appendChild(canvas);
 
     const scene = new THREE.Scene();
     const camera = new THREE.Camera();
@@ -183,20 +181,6 @@ export default function LiquidImage({
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    const loader = new THREE.TextureLoader();
-    loader.load(
-      src,
-      (texture) => {
-        texture.minFilter = THREE.LinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.generateMipmaps = false;
-        uniforms.uTexture.value = texture;
-        uniforms.uImageSize.value.set(texture.image.width, texture.image.height);
-      },
-      undefined,
-      () => setFailed(true)
-    );
-
     const setSize = () => {
       const w = container.clientWidth;
       const h = container.clientHeight;
@@ -204,14 +188,9 @@ export default function LiquidImage({
       renderer.setSize(w, h, false);
       uniforms.uPlaneSize.value.set(w, h);
     };
-    setSize();
-    const ro = new ResizeObserver(setSize);
-    ro.observe(container);
 
-    // Eased hover + pointer targets for a calm response.
     let hoverTarget = 0;
     const mouseTarget = new THREE.Vector2(0.5, 0.5);
-
     const onEnter = () => (hoverTarget = 1);
     const onLeave = () => (hoverTarget = 0);
     const onMove = (e: PointerEvent) => {
@@ -221,9 +200,6 @@ export default function LiquidImage({
         1 - (e.clientY - rect.top) / rect.height
       );
     };
-    container.addEventListener("pointerenter", onEnter);
-    container.addEventListener("pointerleave", onLeave);
-    container.addEventListener("pointermove", onMove);
 
     const clock = new THREE.Clock();
     let rafId = 0;
@@ -235,11 +211,43 @@ export default function LiquidImage({
       uniforms.uMouse.value.y += (mouseTarget.y - uniforms.uMouse.value.y) * 0.08;
       renderer.render(scene, camera);
     };
-    rafId = requestAnimationFrame(render);
+
+    let ro: ResizeObserver | undefined;
+
+    const loader = new THREE.TextureLoader();
+    loader.load(
+      src,
+      (texture) => {
+        texture.colorSpace = THREE.SRGBColorSpace;
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.generateMipmaps = false;
+        uniforms.uTexture.value = texture;
+        uniforms.uImageSize.value.set(texture.image.width, texture.image.height);
+
+        setSize();
+        ro = new ResizeObserver(setSize);
+        ro.observe(container);
+
+        container.addEventListener("pointerenter", onEnter);
+        container.addEventListener("pointerleave", onLeave);
+        container.addEventListener("pointermove", onMove);
+
+        rafId = requestAnimationFrame(render);
+        // Crossfade in once the first frame is ready.
+        requestAnimationFrame(() => {
+          canvasWrap.style.opacity = "1";
+        });
+      },
+      undefined,
+      () => {
+        /* keep showing the plain <Image> on load failure */
+      }
+    );
 
     return () => {
       cancelAnimationFrame(rafId);
-      ro.disconnect();
+      ro?.disconnect();
       container.removeEventListener("pointerenter", onEnter);
       container.removeEventListener("pointerleave", onLeave);
       container.removeEventListener("pointermove", onMove);
@@ -247,20 +255,25 @@ export default function LiquidImage({
       geometry.dispose();
       material.dispose();
       renderer.dispose();
-      if (canvas.parentNode === container) container.removeChild(canvas);
+      if (canvas.parentNode === canvasWrap) canvasWrap.removeChild(canvas);
     };
   }, [src]);
 
   return (
     <div ref={containerRef} className={`relative h-full w-full ${className}`}>
-      {failed && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src}
-          alt={alt}
-          className="absolute inset-0 h-full w-full object-cover object-top grayscale-[20%] contrast-110"
-        />
-      )}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority
+        sizes={sizes}
+        className="object-cover object-top grayscale-[20%] contrast-110"
+      />
+      <div
+        ref={canvasWrapRef}
+        className="absolute inset-0 opacity-0 transition-opacity duration-700 ease-out"
+        aria-hidden
+      />
     </div>
   );
 }

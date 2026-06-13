@@ -78,7 +78,7 @@ export function FigmaHero() {
           {/* Center portrait */}
           <motion.div
             style={{ y: imgY }}
-            className="relative z-10 mx-auto -mt-[3vw] aspect-[3/4] w-[60%] max-w-[340px] md:-mt-[2vw] md:w-[28%]"
+            className="relative z-10 mx-auto -mt-[3vw] aspect-[3/4] w-[72%] max-w-[420px] md:-mt-[2vw] md:w-[34%] md:max-w-[460px]"
           >
             <motion.div
               initial={{ scaleY: 1 }}
@@ -93,7 +93,11 @@ export function FigmaHero() {
               transition={{ duration: 2.2, delay: 0.5, ease: EASE }}
               className="relative h-full w-full overflow-hidden"
             >
-              <LiquidImage src="/zaki-portrait.webp" alt="Zaki ul Hassan" />
+              <LiquidImage
+                src="/zaki-portrait.webp"
+                alt="Zaki ul Hassan"
+                sizes="(min-width: 768px) 34vw, 68vw"
+              />
             </motion.div>
           </motion.div>
 
