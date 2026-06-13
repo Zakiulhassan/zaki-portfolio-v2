@@ -15,7 +15,7 @@ export function FigmaHero() {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   return (
-    <section ref={ref} className="relative flex min-h-[100svh] flex-col overflow-hidden pt-28 md:pt-32">
+    <section ref={ref} className="relative flex h-[100svh] flex-col overflow-hidden pt-28 md:pt-32">
       {/* Subtle dot grid */}
       <div
         aria-hidden
@@ -61,7 +61,7 @@ export function FigmaHero() {
           {/* Center portrait */}
           <motion.div
             style={{ y: imgY }}
-            className="relative z-10 mx-auto -mt-[3vw] aspect-[3/4] w-[72%] max-w-[420px] md:-mt-[2vw] md:w-[34%] md:max-w-[460px]"
+            className="relative z-10 mx-auto -mt-[3vw] aspect-[3/4] h-[42vh] max-h-[440px] md:-mt-[2vw] md:h-[50vh] md:max-h-[520px]"
           >
             <motion.div
               initial={{ scaleY: 1 }}
