@@ -11,8 +11,8 @@ import { FigmaFinalCTA } from "@/components/figma/FigmaFinalCTA";
 import { figmaProjects } from "@/components/figma/FigmaSelectedWork";
 
 export default function CaseStudyDetail() {
-  const params = useParams<{ title: string }>();
-  const slug = params?.title;
+  const params = useParams<{ title?: string; slug?: string }>();
+  const slug = params?.title ?? params?.slug;
   const project = figmaProjects.find((p) => p.slug === slug) ?? figmaProjects[0];
   const next = figmaProjects[(figmaProjects.indexOf(project) + 1) % figmaProjects.length];
 
