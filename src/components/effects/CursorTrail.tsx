@@ -108,9 +108,9 @@ const CursorTrail = () => {
         ctx.restore();
       }
 
-      // Dot: solid at rest, hollow ring scaled up over interactive elements.
+      // Dot: solid at rest, hollow outline over interactive elements — same size either way.
       dot.style.opacity = "1";
-      dot.style.transform = `translate(${mouse.x}px, ${mouse.y}px) translate(-50%, -50%) scale(${hovering ? 3 : 1})`;
+      dot.style.transform = `translate(${mouse.x}px, ${mouse.y}px) translate(-50%, -50%)`;
       if (hovering) {
         dot.style.background = "transparent";
         dot.style.border = "1px solid rgba(198, 254, 30, 0.9)";

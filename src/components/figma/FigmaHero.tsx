@@ -15,7 +15,7 @@ export function FigmaHero() {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   return (
-    <section ref={ref} className="relative min-h-[100svh] overflow-hidden pt-32 md:pt-40">
+    <section ref={ref} className="relative flex min-h-[100svh] flex-col overflow-hidden pt-28 md:pt-32">
       {/* Subtle dot grid */}
       <div
         aria-hidden
@@ -27,38 +27,20 @@ export function FigmaHero() {
         }}
       />
 
-      {/* Curved signal lines */}
-      <svg
+      {/* Ambient signal glow */}
+      <motion.div
         aria-hidden
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        viewBox="0 0 1440 1000"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <motion.path
-          d="M -100 720 Q 360 360, 720 540 T 1540 360"
-          fill="none"
-          stroke="var(--signal)"
-          strokeWidth="0.6"
-          strokeOpacity="0.6"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 3, delay: 0.6, ease: EASE }}
-        />
-        <motion.path
-          d="M 1540 880 Q 1080 760, 720 880 T -100 1000"
-          fill="none"
-          stroke="var(--text)"
-          strokeWidth="0.4"
-          strokeOpacity="0.15"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 3.5, delay: 1, ease: EASE }}
-        />
-      </svg>
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[80vw] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background: "radial-gradient(circle at center, rgba(198,254,30,0.12) 0%, rgba(198,254,30,0) 65%)",
+        }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      <div className="relative mx-auto max-w-[1440px] px-6 md:px-16">
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 md:px-16">
         {/* Composition: portrait center, name wraps top + bottom */}
-        <div className="relative mt-4 md:mt-8">
+        <div className="relative flex flex-1 flex-col justify-center">
           <motion.h1
             aria-label="Zaki ul Hassan"
             style={{ y: textY }}
@@ -69,7 +51,7 @@ export function FigmaHero() {
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-                className="block text-[clamp(72px,17vw,260px)]"
+                className="block text-[clamp(56px,13vw,190px)]"
               >
                 ZAKI&nbsp;UL
               </motion.span>
@@ -79,7 +61,7 @@ export function FigmaHero() {
           {/* Center portrait */}
           <motion.div
             style={{ y: imgY }}
-            className="relative z-10 mx-auto -mt-[6vw] aspect-[3/4] w-[68%] max-w-[420px] md:-mt-[5vw] md:w-[34%]"
+            className="relative z-10 mx-auto -mt-[4vw] aspect-[3/4] w-[56%] max-w-[320px] md:-mt-[3vw] md:w-[26%]"
           >
             <motion.div
               initial={{ scaleY: 1 }}
@@ -109,14 +91,14 @@ export function FigmaHero() {
           <motion.div
             aria-hidden="true"
             style={{ y: textY }}
-            className="relative z-20 -mt-[11vw] select-none text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion md:-mt-[13vw]"
+            className="relative z-20 -mt-[7vw] select-none text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion md:-mt-[8vw]"
           >
             <span className="block overflow-hidden">
               <motion.span
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.1, delay: 0.45, ease: EASE }}
-                className="block text-[clamp(72px,17vw,260px)]"
+                className="block text-[clamp(56px,13vw,190px)]"
                 style={{ color: "var(--text)" }}
               >
                 HASSAN<span className="font-serif italic text-[var(--muted)]">.</span>

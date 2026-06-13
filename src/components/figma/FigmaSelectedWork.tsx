@@ -46,34 +46,24 @@ function Tile({
   project,
   index,
   className = "",
-  ratio = "aspect-[4/5]",
-  size = "lg",
 }: {
   project: (typeof figmaProjects)[number];
   index: number;
   className?: string;
-  ratio?: string;
-  size?: "lg" | "md" | "wide";
 }) {
   const [hover, setHover] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
   return (
     <Reveal className={className} delay={(index % 4) * 0.08} y={32}>
       <Link
         href={`/case-studies/${project.slug}`}
         data-cursor="hover"
-        onMouseMove={(e) => {
-          const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
-          setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
-        }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        className="group block"
+        className="group block overflow-hidden border border-[var(--border-c)] transition-colors duration-300 hover:border-[var(--signal)]"
+        style={{ background: "var(--surface)" }}
       >
-        <div
-          className={`relative ${ratio} w-full overflow-hidden border border-[var(--border-c)]`}
-          style={{ background: "var(--surface)" }}
-        >
+        {/* Image */}
+        <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[16/11]">
           <motion.div
             className="absolute inset-0"
             animate={{ scale: hover ? 1.05 : 1 }}
@@ -83,7 +73,7 @@ function Tile({
               src={project.image}
               alt={project.title}
               fill
-              sizes="(min-width: 768px) 60vw, 100vw"
+              sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"
             />
           </motion.div>
@@ -95,81 +85,58 @@ function Tile({
             </span>
             <span>{project.year}</span>
           </div>
-
-          {/* View disc */}
-          <motion.div
-            className="pointer-events-none absolute z-20 grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-center font-mono text-[10px] uppercase leading-tight tracking-[0.22em]"
-            style={{ left: pos.x, top: pos.y, background: "var(--signal)", color: "var(--bg)" }}
-            animate={{ scale: hover ? 1 : 0, opacity: hover ? 1 : 0 }}
-            transition={{ duration: 0.4, ease: EASE }}
-          >
-            View
-            <br />
-            Case
-          </motion.div>
-
-          <motion.span
-            className="absolute bottom-0 left-0 h-px"
-            style={{ background: "var(--signal)" }}
-            animate={{ width: hover ? "100%" : "0%" }}
-            transition={{ duration: 0.7, ease: EASE }}
-          />
         </div>
 
-        {/* Caption — below the image, never over it */}
-        <div className="mt-4 flex items-start justify-between gap-4">
+        {/* Caption — distinct panel below the image, clearly part of the same card */}
+        <div className="flex items-start justify-between gap-4 border-t border-[var(--border-c)] p-5 md:p-6">
           <div>
-            <h3
-              className={
-                size === "lg"
-                  ? "text-[clamp(28px,3.4vw,56px)] tracking-tight text-[var(--text)]"
-                  : size === "wide"
-                  ? "text-[clamp(26px,3vw,48px)] tracking-tight text-[var(--text)]"
-                  : "text-[clamp(22px,2.4vw,36px)] tracking-tight text-[var(--text)]"
-              }
-            >
+            <h3 className="text-[clamp(22px,2.6vw,40px)] tracking-tight text-[var(--text)]">
               {project.title}
             </h3>
             <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
               {project.cat} · {project.role}
             </p>
           </div>
-          <ArrowUpRight
-            size={20}
-            className="mt-2 shrink-0 text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--signal)]"
-          />
+          <span
+            className="grid h-9 w-9 shrink-0 place-items-center border border-[var(--border-c)] transition-colors duration-300 group-hover:border-[var(--signal)] group-hover:text-[var(--signal)]"
+            style={{ color: "var(--muted)" }}
+          >
+            <ArrowUpRight size={16} />
+          </span>
         </div>
       </Link>
     </Reveal>
   );
 }
 
-function CTATile({ children }: { children: ReactNode }) {
+function CTATile({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <Link
-      href="/case-studies"
-      data-cursor="hover"
-      className="group relative flex h-full flex-col justify-between border border-[var(--border-c)] p-8 md:p-10"
-      style={{ background: "var(--surface)" }}
-    >
-      <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
-        / All Work
-      </span>
-      <div>
-        <h3 className="text-[clamp(28px,3vw,48px)] tracking-tight text-[var(--text)]">
-          {children}
-          <span className="font-serif italic text-[var(--muted)]">.</span>
-        </h3>
-        <span className="mt-6 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text)] transition-colors group-hover:text-[var(--signal)]">
-          View archive
-          <ArrowUpRight size={14} />
+    <Reveal className={className} delay={0.24} y={32}>
+      <Link
+        href="/case-studies"
+        data-cursor="hover"
+        className="group relative flex aspect-[4/5] flex-col justify-between border border-[var(--border-c)] p-6 transition-colors duration-300 hover:border-[var(--signal)] md:aspect-[16/11] md:p-8"
+        style={{ background: "var(--surface)" }}
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
+          / All Work
         </span>
-      </div>
-      <span
-        className="absolute right-6 top-6 h-1.5 w-1.5 rounded-full"
-        style={{ background: "var(--signal)" }}
-      />
-    </Link>
+        <div>
+          <h3 className="text-[clamp(22px,2.6vw,40px)] tracking-tight text-[var(--text)]">
+            {children}
+            <span className="font-serif italic text-[var(--muted)]">.</span>
+          </h3>
+          <span className="mt-6 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--text)] transition-colors group-hover:text-[var(--signal)]">
+            View archive
+            <ArrowUpRight size={14} />
+          </span>
+        </div>
+        <span
+          className="absolute right-6 top-6 h-1.5 w-1.5 rounded-full"
+          style={{ background: "var(--signal)" }}
+        />
+      </Link>
+    </Reveal>
   );
 }
 
@@ -194,39 +161,12 @@ export function FigmaSelectedWork() {
           </p>
         </div>
 
-        {/* Bento grid */}
-        <div className="grid auto-rows-[minmax(0,1fr)] grid-cols-12 gap-3 md:gap-5">
-          <Tile
-            project={figmaProjects[0]}
-            index={0}
-            size="lg"
-            ratio="aspect-[4/5] md:aspect-[5/6]"
-            className="col-span-12 md:col-span-7 md:row-span-2"
-          />
-          <Tile
-            project={figmaProjects[1]}
-            index={1}
-            size="md"
-            ratio="aspect-[4/5] md:aspect-[5/4]"
-            className="col-span-12 md:col-span-5"
-          />
-          <Tile
-            project={figmaProjects[2]}
-            index={2}
-            size="md"
-            ratio="aspect-[4/5] md:aspect-[5/4]"
-            className="col-span-12 md:col-span-5"
-          />
-          <Tile
-            project={figmaProjects[1]}
-            index={3}
-            size="wide"
-            ratio="aspect-[16/9] md:aspect-[16/7]"
-            className="col-span-12 md:col-span-8"
-          />
-          <div className="col-span-12 md:col-span-4">
-            <CTATile>+ 12 more projects in the archive</CTATile>
-          </div>
+        {/* Project cards — uniform grid, image and caption share one bordered card */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          {figmaProjects.map((project, i) => (
+            <Tile key={project.slug} project={project} index={i} />
+          ))}
+          <CTATile>+ 12 more projects in the archive</CTATile>
         </div>
       </div>
     </section>

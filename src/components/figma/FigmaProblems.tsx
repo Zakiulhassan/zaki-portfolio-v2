@@ -21,7 +21,7 @@ export function FigmaProblems() {
   return (
     <section className="relative border-y border-[var(--border-c)]" style={{ background: "var(--surface)" }}>
       <div className="mx-auto max-w-[1440px] px-6 py-32 md:px-16 md:py-56">
-        <div className="grid grid-cols-12 items-start gap-6">
+        <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-4 md:sticky md:top-32 md:self-start">
             <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--muted)]">
               <span style={{ color: "var(--signal)" }}>04</span>

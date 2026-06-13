@@ -24,7 +24,7 @@ export function FigmaPrinciples() {
               <span className="h-px w-10 bg-[var(--border-c)]" />
               <span>Principles</span>
             </div>
-            <h2 className="h-section mt-10 text-[var(--text)]">
+            <h2 className="mt-10 text-[clamp(2rem,4vw,3.5rem)] leading-[0.98] tracking-[-0.02em] text-[var(--text)]">
               I design <span className="font-serif italic text-[var(--muted)]">by.</span>
             </h2>
           </div>
@@ -39,7 +39,7 @@ export function FigmaPrinciples() {
               key={n}
               onMouseEnter={() => setActive(i)}
               onMouseLeave={() => setActive(null)}
-              className="group relative grid cursor-default grid-cols-12 items-baseline gap-4 border-b border-[var(--border-c)] py-12 md:py-20"
+              className="group relative grid cursor-default grid-cols-12 items-baseline gap-4 border-b border-[var(--border-c)] py-8 md:py-12"
             >
               <span className="col-span-2 font-mono text-[clamp(14px,1.4vw,18px)] tracking-[0.2em] text-[var(--muted)] md:col-span-1">
                 {`{${n}}`}
@@ -48,7 +48,7 @@ export function FigmaPrinciples() {
               <motion.span
                 animate={{ x: active === i ? 16 : 0 }}
                 transition={{ duration: 0.6, ease: EASE }}
-                className="col-span-10 text-[clamp(28px,4.4vw,64px)] leading-[1.05] tracking-[-0.02em] md:col-span-7"
+                className="col-span-10 text-[clamp(22px,3vw,40px)] leading-[1.15] tracking-[-0.01em] md:col-span-7"
                 style={{ color: active === i ? "var(--text)" : "var(--muted)" }}
               >
                 {t}
