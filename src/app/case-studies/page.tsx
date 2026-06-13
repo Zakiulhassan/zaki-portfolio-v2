@@ -10,11 +10,20 @@ import { Reveal } from "@/components/figma/Reveal";
 import { FigmaFinalCTA } from "@/components/figma/FigmaFinalCTA";
 import { figmaProjects } from "@/components/figma/FigmaSelectedWork";
 
-const filters = ["All", "Booking Platform", "E-commerce", "Tech Retail"];
+const filters = [
+  "All",
+  "Product Design",
+  "UX/UI",
+  "Website",
+  "Dashboard",
+  "Mobile App",
+  "E-commerce",
+  "AI Product",
+];
 
 export default function CaseStudiesPage() {
   const [active, setActive] = useState("All");
-  const projects = figmaProjects.filter((p) => active === "All" || p.tag === active);
+  const projects = figmaProjects;
 
   return (
     <div className="relative" style={{ background: "var(--bg)", color: "var(--text)" }}>
