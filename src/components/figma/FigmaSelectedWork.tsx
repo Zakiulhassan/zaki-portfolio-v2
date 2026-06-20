@@ -9,7 +9,89 @@ import { Reveal } from "./Reveal";
 
 const EASE = [0.6, 0.01, 0.05, 1] as const;
 
-export const figmaProjects = [
+type FigmaProject = {
+  slug: string;
+  title: string;
+  tag: string;
+  cat: string;
+  year: string;
+  role: string;
+  summary: string;
+  image: string;
+  tools?: string;
+  behanceUrl?: string;
+  gallery?: string[];
+  narrative?: [string, string, string][];
+};
+
+export const figmaProjects: FigmaProject[] = [
+  {
+    slug: "implement-ai",
+    title: "Implement AI",
+    tag: "AI CRM Platform",
+    cat: "Product Design · UI/UX",
+    year: "2026",
+    role: "Lead Product Designer",
+    summary:
+      "A CRM and campaign management platform built around AI-driven business automation — sales, support, and messaging agents in one operational system.",
+    tools: "Figma · Illustrator · Photoshop",
+    behanceUrl: "https://www.behance.net/gallery/250375935/Implement-AI-CRM-and-campaign-management-platform",
+    image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/f50c12250375935.Y3JvcCwyNTA4LDE5NjIsMCww.png",
+    gallery: [
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/f4e500250375935.6a1e140491a00.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/134cba250375935.6a1e1404931a0.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/ca45f9250375935.6a1e140492976.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/1c4f48250375935.6a1e140492d74.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d87e4f250375935.6a1e1de6556b1.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/98a266250375935.6a1e140491df2.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/697733250375935.6a1e1404921c5.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/045457250375935.6a1e14049257e.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/192411250375935.6a1e14049366d.png",
+      "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/461846250375935.6a1e140490fa2.png",
+    ],
+    narrative: [
+      [
+        "01",
+        "Overview",
+        "ImplementAI is a CRM and campaign management platform built around AI-driven business automation. It allows teams to manage communication across calls, email, SMS, WhatsApp, and other connected channels.",
+      ],
+      [
+        "02",
+        "Capabilities",
+        "The product supports AI sales agents, support agents, messaging agents, knowledge base agents, call analysis, task automation, campaign workflows, document data sources, billing, integrations, and usage monitoring.",
+      ],
+      [
+        "03",
+        "Design Challenge",
+        "The challenge was not only to make the interface look clean. The bigger challenge was to make a very feature-heavy AI product feel understandable, controllable, and operationally reliable.",
+      ],
+    ] as [string, string, string][],
+  },
+  {
+    slug: "techanzy",
+    title: "Techanzy",
+    tag: "Software & AI Agency",
+    cat: "Website · UI/UX",
+    year: "2026",
+    role: "Product Designer",
+    summary:
+      "A marketing website for a software development and AI automation studio, built to present services and case work with clarity.",
+    behanceUrl:
+      "https://www.behance.net/gallery/250044237/Techanzy-Website-Software-Development-AI-Automation",
+    image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/a549ee250044237.Y3JvcCwyNTA4LDE5NjIsMCww.png",
+  },
+  {
+    slug: "arabsocials",
+    title: "ArabSocials",
+    tag: "Social Networking App",
+    cat: "Mobile App · UX/UI",
+    year: "2025",
+    role: "UX/UI Designer",
+    summary:
+      "A networking and events app connecting communities through shared interests, meetups, and social discovery.",
+    behanceUrl: "https://www.behance.net/gallery/220816509/ArabSocials-A-Networking-and-Events-Apps",
+    image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/653ff7220816509.Y3JvcCwyMzI2LDE4MjAsMjM2LDA.png",
+  },
   {
     slug: "cleanly",
     title: "Cleanly",
@@ -17,8 +99,20 @@ export const figmaProjects = [
     cat: "UX/UI · Web App",
     year: "2025",
     role: "Lead Product Designer",
-    summary: "A clearer booking and admin experience for a service platform.",
-    image: "/figma/proj-1.jpg",
+    summary: "A clearer booking and admin experience for a cleaning service platform.",
+    behanceUrl: "https://www.behance.net/gallery/220672023/Cleanly-Cleaning-Service-Booking-Web-App",
+    image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/643cbd220672023.Y3JvcCwyMjIxLDE3MzcsMTg2LDQz.png",
+  },
+  {
+    slug: "therapyquizgame",
+    title: "TherapyQuizGame",
+    tag: "Wellness Web App",
+    cat: "UX/UI · Web App",
+    year: "2025",
+    role: "UX/UI Designer",
+    summary: "An interactive quiz-style web app guiding users through a therapy-focused self-assessment.",
+    behanceUrl: "https://www.behance.net/gallery/220667873/TherapyQuizGame-Web-App-UIUx-Design",
+    image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/0ab64e220667873.Y3JvcCwyMzI2LDE4MjAsMTk1LDA.png",
   },
   {
     slug: "furnium",
@@ -27,18 +121,20 @@ export const figmaProjects = [
     cat: "Product Design · UI System",
     year: "2024",
     role: "Senior Designer",
-    summary: "Redesigned browsing, product pages, and checkout for a cleaner shopping experience.",
-    image: "/figma/proj-2.jpg",
+    summary: "Redesigned browsing, product pages, and checkout for a cleaner furniture shopping experience.",
+    behanceUrl: "https://www.behance.net/gallery/205907031/Furnium-eCommerce-Furniture-Website-Design",
+    image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e53e29205907031.Y3JvcCwyMzI2LDE4MjAsNTcsMA.png",
   },
   {
     slug: "rivo",
-    title: "Rivo",
+    title: "Rivo Tech",
     tag: "Tech Retail",
     cat: "Mobile UX · Checkout",
     year: "2024",
     role: "UX/UI Designer",
     summary: "Improved product discovery, comparison, and checkout flow for a tech retail experience.",
-    image: "/figma/proj-3.jpg",
+    behanceUrl: "https://www.behance.net/gallery/205827347/Rivo-Tech-E-commerce-Mobile-Ux-App-Case-Study",
+    image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/a7cae4205827347.Y3JvcCwyMzI2LDE4MjAsMTQ5LDA.png",
   },
 ];
 
@@ -140,6 +236,8 @@ function CTATile({ children, className = "" }: { children: ReactNode; className?
   );
 }
 
+const featured = figmaProjects.slice(0, 3);
+
 export function FigmaSelectedWork() {
   return (
     <section className="relative">
@@ -158,10 +256,10 @@ export function FigmaSelectedWork() {
 
         {/* Project cards — uniform grid, image and caption share one bordered card */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {figmaProjects.map((project, i) => (
+          {featured.map((project, i) => (
             <Tile key={project.slug} project={project} index={i} />
           ))}
-          <CTATile>+ 12 more projects in the archive</CTATile>
+          <CTATile>+ {figmaProjects.length - featured.length} more projects in the archive</CTATile>
         </div>
       </div>
     </section>
