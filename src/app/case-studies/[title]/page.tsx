@@ -20,6 +20,27 @@ export default function CaseStudyDetail() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
+  const gallery = project.gallery ?? [project.image];
+  const narrative =
+    project.narrative ??
+    ([
+      [
+        "01",
+        "Context",
+        "An existing product with growing usage, but unclear flows and inconsistent screens slowing down both new users and the internal team.",
+      ],
+      [
+        "02",
+        "Problem",
+        "Key tasks took too many steps, the dashboard hierarchy was unclear, and the visual system had drifted across teams.",
+      ],
+      [
+        "03",
+        "Goal",
+        "Reduce friction in the core flow, clarify the dashboard's job, and ship a small, durable design system.",
+      ],
+    ] as [string, string, string][]);
+
   return (
     <div className="relative" style={{ background: "var(--bg)", color: "var(--text)" }}>
       <section ref={heroRef} className="relative pt-36 md:pt-44">
@@ -42,6 +63,18 @@ export default function CaseStudyDetail() {
           <p className="mt-8 max-w-2xl text-[18px] leading-relaxed text-[var(--muted)] md:text-[22px]">
             {project.summary}
           </p>
+          {project.behanceUrl && (
+            <a
+              href={project.behanceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="hover"
+              className="mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--muted)] link-underline"
+            >
+              View on Behance
+              <ArrowUpRight size={14} />
+            </a>
+          )}
         </div>
 
         <motion.div style={{ y: heroY }} className="mt-16 px-6 md:px-10">
@@ -59,7 +92,7 @@ export default function CaseStudyDetail() {
             ["Timeline", "10 weeks"],
             ["Platform", "Web · Mobile"],
             ["Scope", "UX · UI · System"],
-            ["Tools", "Figma · Notion"],
+            ["Tools", project.tools ?? "Figma · Notion"],
             ["Status", "Shipped"],
           ].map(([k, v]) => (
             <div key={k}>
@@ -73,23 +106,7 @@ export default function CaseStudyDetail() {
       {/* Context / Problem / Goal */}
       <section className="mx-auto max-w-[1440px] px-6 pb-24 md:px-10 md:pb-32">
         <div className="grid grid-cols-12 gap-6">
-          {[
-            [
-              "01",
-              "Context",
-              "An existing product with growing usage, but unclear flows and inconsistent screens slowing down both new users and the internal team.",
-            ],
-            [
-              "02",
-              "Problem",
-              "Key tasks took too many steps, the dashboard hierarchy was unclear, and the visual system had drifted across teams.",
-            ],
-            [
-              "03",
-              "Goal",
-              "Reduce friction in the core flow, clarify the dashboard's job, and ship a small, durable design system.",
-            ],
-          ].map(([n, t, b]) => (
+          {narrative.map(([n, t, b]) => (
             <Reveal key={n} className="col-span-12 md:col-span-4">
               <div className="border-t border-[var(--border-c)] pt-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--muted)]">
@@ -145,9 +162,9 @@ export default function CaseStudyDetail() {
           Final <span className="font-serif italic text-[var(--muted)]">design.</span>
         </h2>
         <div className="mt-16 grid grid-cols-12 gap-6">
-          {figmaProjects.map((p, i) => (
+          {gallery.map((src, i) => (
             <Reveal
-              key={p.slug + i}
+              key={src + i}
               className={
                 i % 3 === 0
                   ? "col-span-12 md:col-span-8"
@@ -157,7 +174,7 @@ export default function CaseStudyDetail() {
               }
             >
               <div className="relative aspect-[16/10] overflow-hidden border border-[var(--border-c)]">
-                <Image src={p.image} alt="" fill sizes="100vw" className="object-cover" />
+                <Image src={src} alt="" fill sizes="100vw" className="object-cover" />
               </div>
             </Reveal>
           ))}
