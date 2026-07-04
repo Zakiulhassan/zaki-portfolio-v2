@@ -8,6 +8,22 @@ import { Reveal, RevealLines } from "./Reveal";
 
 const EASE = [0.6, 0.01, 0.05, 1] as const;
 
+/** Portrait + name offsets — mobile/sm tuned; md+ locked to approved desktop layout */
+const NAME = {
+  topBottom: "top-[35%] sm:bottom-[81%] md:bottom-[83%]",
+  bottomTop: "top-[54%] sm:top-[56%] md:top-[59%]",
+  topWrap:
+    "lg:left-[15%] md:left-1/2 w-[100vw] -translate-x-1/2 px-4 text-left sm:px-5 md:w-max md:px-0 md:text-center md:-translate-x-[calc(50%+clamp(12px,3.2vw,40px))]",
+  bottomWrap:
+    "lg:left-[100%] md:left-1/2 w-[100vw] -translate-x-1/2 px-4 text-right sm:px-5 md:w-max md:px-0 md:text-center md:-translate-x-[calc(50%-clamp(12px,3.2vw,40px))]",
+  textSize: "text-[clamp(48px,14.5vw,80px)] md:text-[clamp(36px,min(9vw,12vh),140px)]",
+} as const;
+
+/** Side metadata — pinned to bottom of hero composition */
+const META = {
+  bottom: "bottom-[clamp(1.25rem,3.5vh,2.75rem)]",
+} as const;
+
 export function FigmaHero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -15,7 +31,7 @@ export function FigmaHero() {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   return (
-    <section ref={ref} className="relative flex h-[100svh] flex-col overflow-hidden pt-28 md:pt-32">
+    <section ref={ref} className="relative h-[100svh] overflow-hidden">
       {/* Subtle dot grid */}
       <div
         aria-hidden
@@ -38,15 +54,12 @@ export function FigmaHero() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-6 md:px-16">
-        {/* Composition: portrait center, name wraps top + bottom */}
-        <div className="relative flex flex-1 items-center justify-center">
-          {/* Center portrait — the only element that occupies layout height,
-              so the section always stays inside the viewport. The name wraps
-              the portrait via absolute positioning (top + bottom). */}
+      <div className="relative mx-auto flex h-full w-full max-w-[1440px] flex-col px-6 md:px-16">
+        {/* Portrait flush to viewport bottom; name wraps via absolute % offsets */}
+        <div className="relative flex flex-1 items-end justify-center pt-28 md:pt-32">
           <motion.div
             style={{ y: imgY }}
-            className="relative z-10 aspect-[3/4] w-[72%] max-w-[420px] md:w-[34%] md:max-w-[460px]"
+            className="relative z-10 aspect-[3/4] h-[calc(100svh-7rem)] w-[min(88vw,calc((100svh-7rem)*0.75))] md:h-[calc(100svh-8rem)] md:w-[min(44vw,calc((100svh-8rem)*0.75))] lg:w-[min(40vw,calc((100svh-8rem)*0.75))]"
           >
             <motion.div
               initial={{ scaleY: 1 }}
@@ -66,55 +79,58 @@ export function FigmaHero() {
                 alt="Zaki ul Hassan"
                 fill
                 priority
-                sizes="(min-width: 768px) 34vw, 68vw"
+                sizes="(min-width: 1024px) 40vw, (min-width: 768px) 44vw, 92vw"
                 className="object-cover object-top grayscale-[20%] contrast-110"
               />
             </motion.div>
 
-            {/* Top of name — wraps just above the portrait */}
-            <motion.h1
-              aria-label="Zaki ul Hassan"
-              style={{ y: textY }}
-              className="pointer-events-none absolute bottom-full left-1/2 z-0 -translate-x-1/2 translate-y-[24%] select-none whitespace-nowrap text-center leading-[0.85] tracking-[-0.04em]"
+            {/* Top of name — behind the head, slightly left */}
+            <div
+              className={`pointer-events-none absolute z-0 select-none leading-[0.82] tracking-[-0.04em] mix-blend-exclusion ${NAME.topBottom} ${NAME.topWrap}`}
             >
-              <span aria-hidden="true" className="block overflow-hidden">
-                <motion.span
-                  initial={{ y: "110%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-                  className="block text-[clamp(40px,9vw,140px)]"
-                >
-                  ZAKI&nbsp;UL
-                </motion.span>
-              </span>
-            </motion.h1>
+              <motion.div style={{ y: textY }}>
+                <h1 aria-label="Zaki ul Hassan" className="whitespace-nowrap">
+                  <span aria-hidden="true" className="block overflow-hidden">
+                    <motion.span
+                      initial={{ y: "110%" }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
+                      className={`block font-medium ${NAME.textSize}`}
+                    >
+                      ZAKI&nbsp;UL
+                    </motion.span>
+                  </span>
+                </h1>
+              </motion.div>
+            </div>
 
-            {/* Bottom of name — overlaps the portrait with an exclusion blend */}
-            <motion.div
+            {/* Bottom of name — overlaps portrait, slightly right */}
+            <div
               aria-hidden="true"
-              style={{ y: textY }}
-              className="pointer-events-none absolute left-1/2 top-full z-20 -translate-x-1/2 -translate-y-[58%] select-none whitespace-nowrap text-center leading-[0.85] tracking-[-0.04em] mix-blend-exclusion"
+              className={`pointer-events-none absolute z-20 select-none whitespace-nowrap leading-[0.82] tracking-[-0.04em] mix-blend-exclusion ${NAME.bottomTop} ${NAME.bottomWrap}`}
             >
+              <motion.div style={{ y: textY }}>
               <span className="block overflow-hidden">
                 <motion.span
                   initial={{ y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.1, delay: 0.45, ease: EASE }}
-                  className="block text-[clamp(40px,9vw,140px)]"
+                  className={`block font-medium ${NAME.textSize}`}
                   style={{ color: "var(--text)" }}
                 >
                   HASSAN<span className="font-serif italic text-[var(--muted)]">.</span>
                 </motion.span>
               </span>
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
 
-          {/* Floating metadata — left */}
+          {/* Floating metadata — left, bottom-aligned */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="pointer-events-none absolute left-0 top-[34%] z-30 hidden md:block"
+            className={`pointer-events-none absolute left-0 z-30 hidden md:block ${META.bottom}`}
           >
             <motion.div
               animate={{ y: [0, -6, 0] }}
@@ -132,12 +148,12 @@ export function FigmaHero() {
             </motion.div>
           </motion.div>
 
-          {/* Floating metadata — right */}
+          {/* Floating metadata — right, bottom-aligned */}
           <motion.div
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 1.35 }}
-            className="pointer-events-none absolute right-0 top-[42%] z-30 hidden text-right md:block"
+            className={`pointer-events-none absolute right-0 z-30 hidden text-right md:block ${META.bottom}`}
           >
             <motion.div
               animate={{ y: [0, 6, 0] }}
@@ -157,7 +173,7 @@ export function FigmaHero() {
       </div>
 
       {/* Bottom edge — scroll cue */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.8 }}
@@ -172,7 +188,7 @@ export function FigmaHero() {
           transition={{ duration: 1.6, delay: 1.6 }}
         />
         <span>↓</span>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }
@@ -180,30 +196,28 @@ export function FigmaHero() {
 /* Statement + CTAs — the second, fully composed section beneath the hero */
 export function FigmaStatement() {
   return (
-    <section className="relative border-t border-[var(--border-c)] py-20 md:py-28">
+    <section className="relative border-t border-[var(--border-c)] py-16 md:py-24 lg:py-28">
       <div className="mx-auto max-w-[1440px] px-6 md:px-16">
-        <div className="grid grid-cols-12 gap-y-10 gap-x-6 md:gap-x-10">
-          <div className="col-span-12">
-            <RevealLines
-              text="Senior Product Designer for SaaS, AI, and digital products."
-              className="text-[clamp(28px,4vw,52px)] leading-[1.12] tracking-[-0.02em] text-[var(--text)]"
-            />
+        <div className="mx-auto flex max-w-[min(92vw,820px)] flex-col items-center text-center">
+          <RevealLines
+            text={"Senior Product Designer for SaaS, AI,\nand digital products."}
+            className="text-[clamp(26px,4.5vw,52px)] leading-[1.15] tracking-[-0.02em] text-[var(--text)]"
+          />
 
-            <Reveal delay={0.15} className="mt-6 max-w-2xl">
-              <p className="text-[17px] leading-[1.6] text-[var(--muted)] md:text-[19px]">
-                I design interfaces, websites, and design systems that make complex products
-                easier to{" "}
-                <span className="font-serif italic text-[var(--text)]">use, present, and build.</span>
-              </p>
-            </Reveal>
+          <Reveal delay={0.15} className="mt-5 max-w-[min(88vw,640px)] md:mt-6">
+            <p className="text-[clamp(15px,2.2vw,19px)] leading-[1.65] text-[var(--muted)]">
+              I design interfaces, websites, and design systems that make complex products
+              easier to{" "}
+              <span className="font-serif italic text-[var(--text)]">use, present, and build.</span>
+            </p>
+          </Reveal>
 
-            <Reveal delay={0.3} className="mt-10 flex flex-wrap items-center gap-4">
-              <MagneticButton to="/case-studies">View Work</MagneticButton>
-              <MagneticButton to="/book-a-call" variant="ghost">
-                Book a Call
-              </MagneticButton>
-            </Reveal>
-          </div>
+          <Reveal delay={0.3} className="mt-8 flex flex-wrap items-center justify-center gap-3 md:mt-10 md:gap-4">
+            <MagneticButton to="/case-studies">View Work</MagneticButton>
+            <MagneticButton to="/book-a-call" variant="ghost">
+              Book a Call
+            </MagneticButton>
+          </Reveal>
         </div>
       </div>
     </section>

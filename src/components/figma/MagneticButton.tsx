@@ -35,17 +35,20 @@ export function MagneticButton({
     if (ref.current) ref.current.style.transform = "";
   };
 
-  const base =
-    "group relative inline-flex items-center gap-3 rounded-full px-6 py-3 text-[14px] transition-colors duration-300 will-change-transform";
+  const base = `group relative inline-flex items-center rounded-full px-6 py-3 text-[14px] transition-colors duration-300 will-change-transform${
+    variant === "primary" ? "" : " gap-3"
+  }`;
   const styles =
     variant === "primary"
       ? "bg-[var(--signal)] text-[var(--bg)] hover:bg-[var(--text)]"
       : "border border-[var(--border-c)] text-[var(--text)] hover:border-[var(--signal)] hover:text-[var(--signal)]";
 
+  const showArrow = arrow && variant !== "primary";
+
   const inner = (
     <>
       <span className="relative z-10">{children}</span>
-      {arrow && (
+      {showArrow && (
         <ArrowUpRight
           size={16}
           className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

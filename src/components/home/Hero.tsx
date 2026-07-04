@@ -194,7 +194,7 @@ const Hero = () => {
           className="pointer-events-auto absolute inset-x-0 bottom-[4vh] flex justify-center sm:hidden"
         >
           <Link href="/case-studies" data-cursor="hover" className="btn btn-primary">
-            View work <span className="arr">→</span>
+            View work
           </Link>
         </FadeIn>
 
@@ -222,7 +222,7 @@ const Hero = () => {
             Book a call
           </Link>
           <Link href="/case-studies" data-cursor="hover" className="btn btn-primary">
-            View work <span className="arr">→</span>
+            View work
           </Link>
         </FadeIn>
       </Container>
